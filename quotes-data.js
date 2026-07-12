@@ -27,6 +27,10 @@ const QUOTES_DB = {
       { text: '已過濾', redacted: true },
       { text: '已過濾', redacted: true },
     ],
+    lily: [
+      { text: '你們害怕的是我的智慧，而不是我的信念，而那正是你們會落敗的原因。' },
+      { text: '去吧，她需要妳，這是老闆的指令。' },
+    ],
   },
 };
 

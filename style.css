@@ -5071,18 +5071,59 @@ html.is-tag-modal-open {
   stroke: rgba(229, 57, 53, 0.45);
   stroke-width: 1.5;
   stroke-linecap: round;
+  transition: stroke 0.25s ease, stroke-width 0.25s ease, filter 0.25s ease, opacity 0.25s ease;
+}
+
+.relationships__edge-line--pulse {
+  stroke: rgba(229, 57, 53, 0.35);
+}
+
+.relationships__edge-line--hidden {
+  opacity: 0;
+}
+
+.relationships__ecg {
+  fill: none;
+  stroke: #e53935;
+  stroke-width: 1.8;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  opacity: 1;
+  transition: opacity 0.24s ease;
+  pointer-events: none;
+}
+
+.relationships__ecg.is-active {
+  opacity: 1;
+}
+
+.relationships__ecg.is-fading {
+  opacity: 0;
+}
+
+.relationships__edge-lines {
+  pointer-events: none;
+}
+
+.relationships__edge-labels {
+  pointer-events: none;
 }
 
 .relationships__edge-label {
-  fill: var(--text-muted);
+  fill: #ffffff;
   font-family: var(--font-body);
   font-size: 12px;
   letter-spacing: 0.04em;
   text-anchor: middle;
   dominant-baseline: middle;
-  paint-order: stroke;
-  stroke: rgba(0, 0, 0, 0.85);
-  stroke-width: 3px;
+  paint-order: stroke fill;
+  stroke: rgba(0, 0, 0, 0.92);
+  stroke-width: 4px;
+  transition: fill 0.2s ease;
+}
+
+.relationships__edge-label--feeling {
+  fill: #ffb4b0;
 }
 
 .relationships__nodes {
@@ -5108,6 +5149,26 @@ html.is-tag-modal-open {
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   user-select: none;
   pointer-events: none;
+}
+
+.relationship-card--interactive {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.relationship-card--interactive:hover,
+.relationship-card--interactive:focus-visible {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+.relationship-card--feeling {
+  border-color: rgba(255, 180, 176, 0.55);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.45),
+    0 0 18px rgba(229, 57, 53, 0.22);
 }
 
 .relationship-card--center {
@@ -5157,20 +5218,20 @@ html.is-tag-modal-open {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--text-primary);
+  color: #ffffff;
   text-align: center;
 }
 
 .relationship-card__role {
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  color: var(--text-muted);
+  color: #ffffff;
   text-align: center;
   line-height: 1.35;
 }
 
 .relationship-card--center .relationship-card__name {
-  color: var(--accent-red-bright);
+  color: #ffffff;
 }
 
 /* --- 異常事件分層 --- */

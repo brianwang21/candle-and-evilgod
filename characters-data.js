@@ -31,6 +31,12 @@ const CHARACTERS_DB = {
       profilePage: 'html/character-profile-42.html',
       icon: 'images/profile_icon/42_profile_ICON.png',
     },
+    {
+      id: 'lily',
+      name: '莉莉．莫里斯',
+      profilePage: 'html/character-profile-lily.html',
+      icon: 'images/Lily_Head.jpg',
+    },
     // 新增角色時在此加入一筆
   ],
 };

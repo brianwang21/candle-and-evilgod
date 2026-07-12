@@ -243,7 +243,7 @@
       </h2>
       <div class="relationships__content">
         <div class="relationships__toolbar">
-          <p class="relationships__hint">拖曳移動 · 滾輪縮放</p>
+          <p class="relationships__hint">拖曳移動 · 滾輪縮放 · 點擊角色切換感覺</p>
           <div class="relationships__controls">
             <button type="button" class="relationships__btn" id="relationships-zoom-in" aria-label="放大">+</button>
             <button type="button" class="relationships__btn" id="relationships-zoom-out" aria-label="縮小">−</button>
@@ -301,6 +301,7 @@
   <script src="../quotes-data.js"></script>
   <script src="../character-sections-data.js"></script>
   <script src="../relationships-data.js"></script>
+  <script src="../relationships-ui.js"></script>
   <script>
     (function () {
       const CURRENT_CHARACTER_ID = 'cae';
@@ -1067,196 +1068,6 @@
             </div>
           `;
         });
-      }
-
-      function buildRelationships() {
-        const viewport = document.getElementById('relationships-viewport');
-        const world = document.getElementById('relationships-world');
-        const edgesEl = document.getElementById('relationships-edges');
-        const nodesEl = document.getElementById('relationships-nodes');
-        const zoomInBtn = document.getElementById('relationships-zoom-in');
-        const zoomOutBtn = document.getElementById('relationships-zoom-out');
-        const resetBtn = document.getElementById('relationships-reset');
-        if (!viewport || !world || !edgesEl || !nodesEl) return;
-
-        const network = getRelationshipNetwork(CURRENT_CHARACTER_ID);
-        if (!network || !network.nodes.length) {
-          viewport.innerHTML = '<p class="relationships__hint" style="padding:2rem;text-align:center">尚無人際關係資料。</p>';
-          return;
-        }
-
-        const nodeMap = new Map(network.nodes.map((node) => [node.id, node]));
-        const state = {
-          x: 0,
-          y: 0,
-          scale: 1,
-          minScale: 0.45,
-          maxScale: 2.4,
-          dragging: false,
-          pointerId: null,
-          lastX: 0,
-          lastY: 0,
-        };
-
-        function applyTransform() {
-          world.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
-        }
-
-        function clampScale(value) {
-          return Math.min(state.maxScale, Math.max(state.minScale, value));
-        }
-
-        function zoomAt(clientX, clientY, nextScale) {
-          const rect = viewport.getBoundingClientRect();
-          const px = clientX - rect.left - rect.width / 2;
-          const py = clientY - rect.top - rect.height / 2;
-          const scale = clampScale(nextScale);
-          const ratio = scale / state.scale;
-          state.x = px - (px - state.x) * ratio;
-          state.y = py - (py - state.y) * ratio;
-          state.scale = scale;
-          applyTransform();
-        }
-
-        function resetView() {
-          state.x = 0;
-          state.y = 0;
-          state.scale = 1;
-          applyTransform();
-        }
-
-        edgesEl.innerHTML = '';
-        network.edges.forEach((edge) => {
-          const from = nodeMap.get(edge.from);
-          const to = nodeMap.get(edge.to);
-          if (!from || !to) return;
-
-          const x1 = 2000 + from.x;
-          const y1 = 2000 + from.y;
-          const x2 = 2000 + to.x;
-          const y2 = 2000 + to.y;
-          const mx = (x1 + x2) / 2;
-          const my = (y1 + y2) / 2;
-
-          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-          line.setAttribute('class', 'relationships__edge-line');
-          line.setAttribute('x1', String(x1));
-          line.setAttribute('y1', String(y1));
-          line.setAttribute('x2', String(x2));
-          line.setAttribute('y2', String(y2));
-          edgesEl.appendChild(line);
-
-          if (edge.label) {
-            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            label.setAttribute('class', 'relationships__edge-label');
-            label.setAttribute('x', String(mx));
-            label.setAttribute('y', String(my - 10));
-            label.textContent = edge.label;
-            edgesEl.appendChild(label);
-          }
-        });
-
-        nodesEl.innerHTML = '';
-        network.nodes.forEach((node) => {
-          const isCenter = node.id === network.centerId;
-          const card = document.createElement('article');
-          card.className = `relationship-card${isCenter ? ' relationship-card--center' : ''}`;
-          card.style.left = `${node.x}px`;
-          card.style.top = `${node.y}px`;
-
-          const avatar = document.createElement('div');
-          avatar.className = 'relationship-card__avatar';
-
-          if (node.image) {
-            const img = document.createElement('img');
-            img.className = 'relationship-card__img';
-            img.src = siteUrl(node.image);
-            img.alt = node.name;
-            avatar.appendChild(img);
-          } else {
-            const fallback = document.createElement('span');
-            fallback.className = 'relationship-card__fallback';
-            fallback.textContent = node.name.slice(0, 1);
-            avatar.appendChild(fallback);
-          }
-
-          const name = document.createElement('p');
-          name.className = 'relationship-card__name';
-          name.textContent = node.name;
-
-          const role = document.createElement('p');
-          role.className = 'relationship-card__role';
-          role.textContent = node.role || '';
-
-          card.appendChild(avatar);
-          card.appendChild(name);
-          if (isCenter && node.role) card.appendChild(role);
-          nodesEl.appendChild(card);
-        });
-
-        viewport.addEventListener('pointerdown', (event) => {
-          if (event.button !== 0 && event.pointerType === 'mouse') return;
-          state.dragging = true;
-          state.pointerId = event.pointerId;
-          state.lastX = event.clientX;
-          state.lastY = event.clientY;
-          viewport.classList.add('is-dragging');
-          viewport.setPointerCapture(event.pointerId);
-        });
-
-        viewport.addEventListener('pointermove', (event) => {
-          if (!state.dragging || event.pointerId !== state.pointerId) return;
-          const dx = event.clientX - state.lastX;
-          const dy = event.clientY - state.lastY;
-          state.lastX = event.clientX;
-          state.lastY = event.clientY;
-          state.x += dx;
-          state.y += dy;
-          applyTransform();
-        });
-
-        function endDrag(event) {
-          if (!state.dragging || event.pointerId !== state.pointerId) return;
-          state.dragging = false;
-          state.pointerId = null;
-          viewport.classList.remove('is-dragging');
-          if (viewport.hasPointerCapture(event.pointerId)) {
-            viewport.releasePointerCapture(event.pointerId);
-          }
-        }
-
-        viewport.addEventListener('pointerup', endDrag);
-        viewport.addEventListener('pointercancel', endDrag);
-
-        viewport.addEventListener(
-          'wheel',
-          (event) => {
-            event.preventDefault();
-            const factor = event.deltaY < 0 ? 1.12 : 1 / 1.12;
-            zoomAt(event.clientX, event.clientY, state.scale * factor);
-          },
-          { passive: false }
-        );
-
-        if (zoomInBtn) {
-          zoomInBtn.addEventListener('click', () => {
-            const rect = viewport.getBoundingClientRect();
-            zoomAt(rect.left + rect.width / 2, rect.top + rect.height / 2, state.scale * 1.2);
-          });
-        }
-
-        if (zoomOutBtn) {
-          zoomOutBtn.addEventListener('click', () => {
-            const rect = viewport.getBoundingClientRect();
-            zoomAt(rect.left + rect.width / 2, rect.top + rect.height / 2, state.scale / 1.2);
-          });
-        }
-
-        if (resetBtn) {
-          resetBtn.addEventListener('click', resetView);
-        }
-
-        resetView();
       }
 
       function updateExpandState() {
