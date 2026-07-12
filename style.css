@@ -3450,6 +3450,7 @@ html.is-tag-modal-open {
   position: relative;
   z-index: 2;
   border-radius: calc(var(--radius-md) - 1px);
+  background: var(--bg-secondary);
 }
 
 .character-intro__avatar-frame--swap .character-intro__avatar-img--base,
@@ -3457,6 +3458,7 @@ html.is-tag-modal-open {
   position: absolute;
   inset: 0;
   transition: opacity 0.45s ease;
+  background: var(--bg-secondary);
 }
 
 .character-intro__avatar-frame--swap .character-intro__avatar-img--base {
@@ -3642,6 +3644,7 @@ html.is-tag-modal-open {
   position: relative;
   z-index: 2;
   border-radius: calc(var(--radius-md) - 1px);
+  background: var(--bg-secondary);
 }
 
 /* --- 繪師 HUD 抽屜 --- */
@@ -3655,7 +3658,7 @@ html.is-tag-modal-open {
   top: calc(100% - 0.85rem);
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 0;
   background: var(--accent-red);
   border-top: 2px solid var(--accent-red-bright);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
