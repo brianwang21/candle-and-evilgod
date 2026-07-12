@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>異常適性評級詳情 · 蠟燭與邪神</title>
+  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--left"></div>
+  <div class="bg-glow bg-glow--right"></div>
+
+  <header class="navbar">
+    <nav class="navbar__inner">
+      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回能力區</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="anomaly-detail">
+      <h2 class="section-title">
+        <span class="section-title__icon">◈</span>
+        異常適性 · 評級詳情
+      </h2>
+
+      <div class="anomaly-detail__intro">
+        <p><strong>異常適性</strong>：指單一個體面對「異常事件」時的綜合數值評量。</p>
+        <p>它用來評估個體與異常事件之間的互動關係，並與其他能力項目共用「缺陷／劣勢／普通／優秀／卓越」的呈現等級；實際上，最終等級是從下方五個子項目綜合計算後，再對應到同級結論。</p>
+      </div>
+
+      <article class="anomaly-detail__block">
+        <h3 class="anomaly-detail__block-title">它決定什麼？</h3>
+        <p class="anomaly-detail__lead">異常適性主要反映以下四種變數：</p>
+        <ol class="anomaly-detail__steps">
+          <li><strong>遭遇機率</strong>：遭遇異常事件的機率。</li>
+          <li><strong>黏著程度</strong>：遇到異常後，被其纏上的可能性。</li>
+          <li><strong>操作權限</strong>：若異常轉化為「受管束事件」，個體能控制它的程度。</li>
+          <li><strong>適應能力</strong>：遭遇或容納異常後，身心適應的狀況。</li>
+        </ol>
+      </article>
+
+      <article class="anomaly-detail__block">
+        <h3 class="anomaly-detail__block-title">來源與用途</h3>
+        <p>本評鑑最早由立案《異常事件管理法》、《異常規定法》、《異常處置法》的成員共同提出，並經 CTA 等多個國際異常事件組織背書與審查測試後於全球通用。目前常見於公民健保卡晶片中的標註資料。</p>
+        <p>細節採多項目綜合；可依需求取<strong>綜合評級</strong>，或單獨查看各子項目評級。</p>
+      </article>
+
+      <article class="anomaly-detail__block">
+        <h3 class="anomaly-detail__block-title">五個子項目</h3>
+        <p class="anomaly-detail__lead">異常適性並非單一數值，而是由下列五項綜合計算後得出結論：</p>
+        <ol class="anomaly-detail__steps anomaly-detail__steps--compact">
+          <li><a href="#sub-encounter">遭遇率</a></li>
+          <li><a href="#sub-reception">受體接納</a></li>
+          <li><a href="#sub-transmutation">嬗變性</a></li>
+          <li><a href="#sub-awareness">覺察度</a></li>
+          <li><a href="#sub-luck">運氣</a></li>
+        </ol>
+      </article>
+
+      <div class="anomaly-detail__list anomaly-detail__list--subs">
+        <article id="sub-encounter" class="anomaly-detail__card">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">1. 遭遇率</span>
+            <span class="anomaly-detail__ability">受運氣、覺察度、受體接納交叉影響</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p><strong>定義：</strong>個體在十年內受異常事件直接影響的可能性。</p>
+            <dl class="anomaly-detail__grades">
+              <div><dt>沒有</dt><dd>十年內不可能遭遇異常事件。</dd></div>
+              <div><dt>很小</dt><dd>十年內約有 1% 機率受異常事件直接影響。</dd></div>
+              <div><dt>可能</dt><dd>十年內約有 10% 機率受異常事件直接影響。</dd></div>
+              <div><dt>頗大</dt><dd>十年內有高概率（超過約 80%）被異常事件直接影響。</dd></div>
+              <div><dt>極高</dt><dd>個體本身具有「吸引異常事件」的體質。</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article id="sub-reception" class="anomaly-detail__card">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">2. 受體接納</span>
+            <span class="anomaly-detail__ability">影響管束可能性</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p><strong>定義：</strong>被異常影響後，個體身心（精神、心理、生理、空間、時序等）與該異常的契合完整度。此數值直接影響將異常轉化為「受管束事件」的可能性。</p>
+            <dl class="anomaly-detail__grades">
+              <div><dt>無法</dt><dd>軀體狀況與該異常完全不契合。</dd></div>
+              <div><dt>難以</dt><dd>雖能契合，但後續發展不穩定，多項生理／條件指標將跌至正常水準以下。</dd></div>
+              <div><dt>常態</dt><dd>可契合，並能發展出相對穩定的共存狀況。</dd></div>
+              <div><dt>適合</dt><dd>非常適配，各項指標多能保持在正常水準以上。</dd></div>
+              <div><dt>完整</dt><dd>完美契合，有極高可能性將異常發展為穩定的「受管束事件」。</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article id="sub-transmutation" class="anomaly-detail__card">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">3. 嬗變性</span>
+            <span class="anomaly-detail__ability">管束機率與發展方向</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p><strong>定義：</strong>衡量異常事件在個體身上轉化為「受管束事件」的機率，以及管束發生時的發展方向。</p>
+            <p>通常由四個細項共同描述：</p>
+            <ul class="anomaly-detail__bullets">
+              <li><strong>可否管束</strong>：可／不可（二分）。</li>
+              <li><strong>操作性</strong>：低／中／高（「高」代表能有意識操控）。</li>
+              <li><strong>發展可控性</strong>：可控／不可控（依個體意願、異常性質與外力因素判定）。</li>
+              <li><strong>偏好發展</strong>：適應、侵占、共生、分離共存。</li>
+            </ul>
+            <p class="anomaly-detail__subhead">參考案例</p>
+            <ul class="anomaly-detail__bullets">
+              <li>可管束 ＋ 操作性高 ＋ 不可控 ＋ 分離共存 → 約 <strong>43%</strong>（中低層級）</li>
+              <li>可管束 ＋ 操作性低 ＋ 可控 ＋ 適應 → 約 <strong>62%</strong>（中間層級）</li>
+              <li>不可管束 → <strong>0%</strong></li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="sub-awareness" class="anomaly-detail__card">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">4. 覺察度</span>
+            <span class="anomaly-detail__ability">可理解為直覺</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p><strong>定義：</strong>身處異常，或遭遇認知類異常時的敏銳度。指數越高，越容易發現異常；同時也越容易被高強度認知汙染侵蝕。</p>
+            <p>相關面向包含：感官敏銳（口、眼、耳、鼻、觸）、第六感（直覺、靈異感）、環境感知（光暗、冷熱、乾濕）、氛圍（人群、風氣、流行）。</p>
+            <p>覺察度須以<strong>申論</strong>方式撰寫，再依成果給予評價。</p>
+            <p><strong>評級：</strong>無感、麻痺、常態、高敏、易受。</p>
+            <p class="anomaly-detail__example">範例：五感正常、無第六感、環境感知敏感、氛圍相對遲鈍。</p>
+          </div>
+        </article>
+
+        <article id="sub-luck" class="anomaly-detail__card">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">5. 運氣</span>
+            <span class="anomaly-detail__ability">不穩定變數</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p><strong>定義：</strong>不穩定變數。以投擲一枚公正硬幣為例，常態約為正面 50：反面 50。若個體期待「正面」，運氣高者可將機率改寫為 60：40，甚至 100：0；也不排除能穩定投出「哪面都不是」的特殊個案。</p>
+            <p>運氣可透過算命、塔羅、紫微斗數、真實之口等紀錄，以賽拉克公式換算為浮點數；也可透過約定俗成或心理暗示的儀式增減（如投香油錢、風水布置可能上升；特定忌諱或觸霉頭可能下降）。</p>
+            <p>每人對增減益手段的反應差異極大：有人隨手投香油錢便指數上升，有人全身掛滿兔子腳卻依然倒楣。</p>
+          </div>
+        </article>
+      </div>
+
+      <article class="anomaly-detail__block">
+        <h3 class="anomaly-detail__block-title">綜合評級怎麼來？</h3>
+        <p>以上各指標取每項最終評級後綜合給分，再對應到與其他能力共用的五級結論：缺陷、劣勢、普通、優秀、卓越。</p>
+        <p>因此，頁面角色卡上的「異常適性」等級，是這套細節系統折算後的<strong>同級大約值</strong>；高評級代表與異常共存的特質突出，不必然代表能安全駕馭異常。</p>
+      </article>
+
+      <h3 class="anomaly-detail__block-title anomaly-detail__block-title--anchor">綜合評級對照</h3>
+      <div class="anomaly-detail__list">
+        <article id="defect" class="anomaly-detail__card anomaly-detail__card--defect">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">缺陷</span>
+            <span class="anomaly-detail__ability">異常適性 · 綜合</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p>與異常事件的互動特質整體極弱：遭遇、纏著、適應與管束操作等面向多處於最低區間。個體通常難以與異常建立有效關係，或幾乎無法從中取得可控結果。</p>
+          </div>
+        </article>
+
+        <article id="disadvantage" class="anomaly-detail__card anomaly-detail__card--disadvantage">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">劣勢</span>
+            <span class="anomaly-detail__ability">異常適性 · 綜合</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p>綜合表現低於常人：可能較少被異常纏上，或纏上後適應／管束空間有限。面對異常時風險與代價往往大於收益。</p>
+          </div>
+        </article>
+
+        <article id="normal" class="anomaly-detail__card anomaly-detail__card--normal">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">普通</span>
+            <span class="anomaly-detail__ability">異常適性 · 綜合</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p>大眾平均水準。遭遇機率、黏著程度、適應與操作權限大致落在常見區間，無特別突出的吸引或駕馭傾向。</p>
+          </div>
+        </article>
+
+        <article id="excellent" class="anomaly-detail__card anomaly-detail__card--excellent">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">優秀</span>
+            <span class="anomaly-detail__ability">異常適性 · 綜合</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p>綜合表現高於平均。在遭遇、接納、嬗變或覺察等面向中，至少有多項穩定偏高，較容易與異常形成可觀察、可記錄的互動關係。</p>
+          </div>
+        </article>
+
+        <article id="outstanding" class="anomaly-detail__card anomaly-detail__card--outstanding">
+          <header class="anomaly-detail__card-header">
+            <span class="anomaly-detail__level">卓越</span>
+            <span class="anomaly-detail__ability">異常適性 · 綜合</span>
+          </header>
+          <div class="anomaly-detail__card-body">
+            <p>與異常共存的特質極其突出。不代表必然安全或必然可管束；可能同時具備高遭遇、高接納、高覺察等極端組合，實際風險需另案評估。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
+  </footer>
+
+  <script src="characters-data.js"></script>
+  <script>
+    (function () {
+      const fromParam = new URLSearchParams(location.search).get('from');
+      const backCharacterId = getCharacterProfilePage(fromParam)
+        ? fromParam
+        : resolveProfileCharacterId([]);
+      const backHref = backCharacterId
+        ? getCharacterProfileHref(backCharacterId, 'abilities')
+        : 'index.html#characters';
+
+      const backLinkLeft = document.querySelector('.navbar__link--left');
+      if (backLinkLeft) {
+        backLinkLeft.href = backHref;
+        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回人物設定';
+      }
+
+      const iconHref = getCharacterIcon(backCharacterId);
+      const iconLink = document.querySelector('link[rel="icon"]');
+      if (iconLink && iconHref) iconLink.href = iconHref;
+    })();
+  </script>
+</body>
+</html>

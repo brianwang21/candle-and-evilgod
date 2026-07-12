@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>主線《蠟燭與邪神》 · 蠟燭與邪神</title>
+  <link rel="icon" href="../../images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="story-page story-page--main">
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--left"></div>
+  <div class="bg-glow bg-glow--right"></div>
+
+  <header class="navbar navbar--story">
+    <nav class="navbar__inner">
+      <a href="../../index.html#story" class="navbar__link navbar__link--left">← 返回劇情</a>
+    </nav>
+  </header>
+
+  <main class="story-reader">
+    <header class="story-reader__header">
+      <p class="story-reader__eyebrow">Main Story</p>
+      <h1 class="story-reader__title">主線《蠟燭與邪神》</h1>
+      <p class="story-reader__subtitle">Candle And Evilgod</p>
+    </header>
+
+    <section class="story-chapters" id="story-chapters" aria-labelledby="story-chapters-title">
+      <h2 id="story-chapters-title" class="story-chapters__title">章節一覽</h2>
+      <div class="story-chapters__grid" id="story-chapters-grid" role="list"></div>
+    </section>
+  </main>
+
+  <div class="story-chapter-modal" id="story-chapter-modal" hidden aria-hidden="true">
+    <div class="story-chapter-modal__backdrop" data-close-modal></div>
+    <div
+      class="story-chapter-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="story-chapter-modal-title"
+      tabindex="-1"
+    >
+      <button type="button" class="story-chapter-modal__close" data-close-modal aria-label="關閉">×</button>
+      <div class="story-chapter-modal__media">
+        <div class="story-chapter-modal__face" id="story-chapter-modal-face" aria-hidden="true"></div>
+      </div>
+      <div class="story-chapter-modal__content">
+        <p class="story-chapter-modal__num" id="story-chapter-modal-num"></p>
+        <h3 class="story-chapter-modal__title" id="story-chapter-modal-title"></h3>
+        <p class="story-chapter-modal__en" id="story-chapter-modal-en"></p>
+        <p class="story-chapter-modal__tagline" id="story-chapter-modal-tagline"></p>
+        <p class="story-chapter-modal__summary" id="story-chapter-modal-summary"></p>
+        <a class="story-chapter-modal__read" id="story-chapter-modal-read" href="#">檢視章節</a>
+        <p class="story-chapter-modal__updated" id="story-chapter-modal-updated"></p>
+      </div>
+      <div class="story-chapter-modal__lock" id="story-chapter-modal-lock" hidden aria-hidden="true">
+        <span class="story-chapter-modal__lock-banner">未公開</span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer footer--story">
+    <p>© 2026 蠟燭與邪神 · 主線</p>
+  </footer>
+
+  <script>
+    (function () {
+      const CHAPTERS = [
+        { num: '0', name: '愚者', en: 'The Fool', tagline: '眾生云云，前路凶險。' },
+        { num: 'I', name: '魔術師', en: 'The Magician', tagline: '生命會自己找到出路的。' },
+        { num: 'II', name: '女祭司', en: 'The High Priestess', tagline: '以妳的冷血為冰，放入杯中，添上一杯威士忌吧。' },
+        { num: 'III', name: '女皇', en: 'The Empress', locked: true },
+        { num: 'IV', name: '皇帝', en: 'The Emperor', tagline: '折衷的方案。' },
+        { num: 'V', name: '教皇', en: 'The Hierophant', locked: true },
+        { num: 'VI', name: '戀人', en: 'The Lovers', tagline: '這是以恨輝映著愛的歌謠。' },
+        { num: 'VII', name: '戰車', en: 'The Chariot', tagline: '就算是懸崖，也得把油門踩到底。' },
+        { num: 'VIII', name: '力量', en: 'Strength', tagline: '非善類、亦非惡者。只問手段、與你要出多少。' },
+        { num: 'IX', name: '隱者', en: 'The Hermit', tagline: '埋葬。' },
+        { num: 'X', name: '命運之輪', en: 'Wheel of Fortune', tagline: '這裡甚麼都沒有，又或著你已經瞧見了他的真實面貌。' },
+        { num: 'XI', name: '正義', en: 'Justice', tagline: '天秤的兩端，要擺上什麼呢？' },
+        { num: 'XII', name: '倒吊人', en: 'The Hanged Man', tagline: '犧牲。' },
+        { num: 'XIII', name: '死神', en: 'Death', tagline: '變與不變。' },
+        { num: 'XIV', name: '節制', en: 'Temperance', tagline: '心理諮商。' },
+        { num: 'XV', name: '惡魔', en: 'The Devil', tagline: '這世界上沒有絕對的惡事與壞事、只有潔西卡想做的事。' },
+        { num: 'XVI', name: '高塔', en: 'The Tower', tagline: '再堅固的高塔亦會動搖。' },
+        { num: 'XVII', name: '星星', en: 'The Star', tagline: '說不出口的希望。' },
+        { num: 'XVIII', name: '月亮', en: 'The Moon', tagline: '虛實萬象、唯有聆聽內心最真實的聲音。' },
+        { num: 'XIX', name: '太陽', en: 'The Sun', tagline: '終究會天明的對吧。' },
+        { num: 'XX', name: '審判', en: 'Judgement', tagline: '有些事情你就不該去知道。' },
+        { num: 'XXI', name: '世界', en: 'The World', locked: true },
+      ].map((chapter, index) => ({
+        id: index,
+        folder: String(index).padStart(2, '0'),
+        tagline: '',
+        summary: '',
+        updated: '2026-07-12',
+        locked: false,
+        ...chapter,
+      }));
+
+      const grid = document.getElementById('story-chapters-grid');
+      const modal = document.getElementById('story-chapter-modal');
+      if (!grid || !modal) return;
+
+      const dialog = modal.querySelector('.story-chapter-modal__dialog');
+      const numEl = document.getElementById('story-chapter-modal-num');
+      const titleEl = document.getElementById('story-chapter-modal-title');
+      const enEl = document.getElementById('story-chapter-modal-en');
+      const taglineEl = document.getElementById('story-chapter-modal-tagline');
+      const summaryEl = document.getElementById('story-chapter-modal-summary');
+      const updatedEl = document.getElementById('story-chapter-modal-updated');
+      const readEl = document.getElementById('story-chapter-modal-read');
+      const lockEl = document.getElementById('story-chapter-modal-lock');
+
+      let lastFocus = null;
+      let originCard = null;
+      let originRectSnapshot = null;
+      let closing = false;
+      let expandTimer = 0;
+      let phase = 'idle';
+
+      const MOVE_MS = 380;
+      const EXPAND_MS = 360;
+      const CARD_ASPECT = 1500 / 900;
+
+      CHAPTERS.forEach((chapter, index) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'story-chapter-card' + (chapter.locked ? ' story-chapter-card--locked' : '');
+        card.setAttribute('role', 'listitem');
+        card.style.setProperty('--enter-delay', `${index * 70}ms`);
+        card.dataset.id = String(chapter.id);
+        card.dataset.num = chapter.num;
+        card.dataset.name = chapter.name;
+        card.dataset.en = chapter.en;
+        card.dataset.tagline = chapter.tagline;
+        card.dataset.summary = chapter.summary;
+        card.dataset.updated = chapter.updated;
+        card.dataset.folder = chapter.folder;
+        card.dataset.locked = chapter.locked ? 'true' : 'false';
+        if (chapter.locked) {
+          card.setAttribute('aria-label', `${chapter.num} ${chapter.name}（未公開）`);
+        }
+        card.innerHTML = `
+          <div class="story-chapter-card__face" aria-hidden="true"></div>
+          <div class="story-chapter-card__meta">
+            <span class="story-chapter-card__num">${chapter.num}</span>
+            <span class="story-chapter-card__name">${chapter.name}</span>
+            <span class="story-chapter-card__en">${chapter.en}</span>
+          </div>
+        `;
+        card.addEventListener('click', () => openModal(card));
+        card.addEventListener(
+          'animationend',
+          (event) => {
+            if (event.target !== card || event.animationName.indexOf('story-chapter-card-enter') === -1) {
+              return;
+            }
+            card.classList.add('is-entered');
+          },
+          { once: true }
+        );
+        grid.appendChild(card);
+      });
+
+      function lockScroll() {
+        document.documentElement.classList.add('is-chapter-modal-open');
+        document.body.classList.add('is-chapter-modal-open');
+      }
+
+      function unlockScroll() {
+        document.documentElement.classList.remove('is-chapter-modal-open');
+        document.body.classList.remove('is-chapter-modal-open');
+      }
+
+      function setBox(x, y, w, h, mediaW, mediaH, pad, gap) {
+        dialog.style.setProperty('--ch-x', `${x}px`);
+        dialog.style.setProperty('--ch-y', `${y}px`);
+        dialog.style.setProperty('--ch-w', `${w}px`);
+        dialog.style.setProperty('--ch-h', `${h}px`);
+        dialog.style.setProperty('--ch-media-w', `${mediaW}px`);
+        dialog.style.setProperty('--ch-media-h', `${mediaH}px`);
+        dialog.style.setProperty('--ch-pad', `${pad}px`);
+        dialog.style.setProperty('--ch-gap', `${gap}px`);
+      }
+
+      function isNarrow() {
+        return window.matchMedia('(max-width: 640px)').matches;
+      }
+
+      function getLayouts(originRect) {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const narrow = isNarrow();
+        const mediaWRaw = narrow
+          ? Math.min(10.5 * 16, Math.max(7 * 16, originRect.width * 1.15))
+          : Math.min(18 * 16, Math.max(12 * 16, originRect.width * 1.55));
+        const pad = narrow ? 18 : 28;
+        const gap = narrow ? 16 : 28;
+        const maxMediaH = vh - pad * 2 - 48;
+        let mediaW = mediaWRaw;
+        let mediaH = mediaW * CARD_ASPECT;
+        if (mediaH > maxMediaH) {
+          mediaH = maxMediaH;
+          mediaW = mediaH / CARD_ASPECT;
+        }
+        const contentW = narrow
+          ? Math.min(vw - 48, mediaW + pad * 2) - pad * 2
+          : Math.min(38 * 16, Math.max(24 * 16, vw * 0.48));
+        const contentH = narrow ? Math.min(14 * 16, vh * 0.34) : 0;
+
+        const origin = {
+          x: originRect.left,
+          y: originRect.top,
+          w: originRect.width,
+          h: originRect.height,
+          mediaW: originRect.width,
+          mediaH: originRect.height,
+          pad: 0,
+          gap: 0,
+        };
+
+        let expanded;
+        let centered;
+
+        if (narrow) {
+          const fullW = mediaW + pad * 2;
+          const fullH = mediaH + gap + contentH + pad * 2;
+          const x = Math.max(16, (vw - fullW) / 2);
+          const y = Math.max(16, (vh - fullH) / 2);
+          expanded = { x, y, w: fullW, h: fullH, mediaW, mediaH, pad, gap };
+          centered = {
+            x,
+            y,
+            w: fullW,
+            h: mediaH + pad * 2,
+            mediaW,
+            mediaH,
+            pad,
+            gap: 0,
+          };
+        } else {
+          const fullW = mediaW + gap + contentW + pad * 2;
+          const fullH = mediaH + pad * 2;
+          const x = Math.max(24, (vw - fullW) / 2);
+          const y = Math.max(24, (vh - fullH) / 2);
+          expanded = { x, y, w: fullW, h: fullH, mediaW, mediaH, pad, gap };
+          centered = {
+            x,
+            y,
+            w: mediaW + pad * 2,
+            h: fullH,
+            mediaW,
+            mediaH,
+            pad,
+            gap: 0,
+          };
+        }
+
+        return { origin, centered, expanded };
+      }
+
+      function applyLayout(layout) {
+        setBox(
+          layout.x,
+          layout.y,
+          layout.w,
+          layout.h,
+          layout.mediaW,
+          layout.mediaH,
+          layout.pad,
+          layout.gap
+        );
+      }
+
+      function openModal(card) {
+        if (closing || phase !== 'idle') return;
+
+        const face = card.querySelector('.story-chapter-card__face');
+        if (!face) return;
+
+        phase = 'preparing';
+        lastFocus = card;
+        originCard = card;
+
+        const locked = card.dataset.locked === 'true';
+
+        numEl.textContent = card.dataset.num || '';
+        titleEl.textContent = card.dataset.name || '';
+        enEl.textContent = card.dataset.en || '';
+        taglineEl.textContent = locked ? '' : (card.dataset.tagline || '');
+        summaryEl.textContent = locked ? '' : (card.dataset.summary || '');
+        updatedEl.textContent = locked
+          ? ''
+          : card.dataset.updated
+            ? `最新更新：${card.dataset.updated}`
+            : '';
+
+        modal.classList.toggle('is-locked', locked);
+        if (lockEl) {
+          lockEl.hidden = !locked;
+          lockEl.setAttribute('aria-hidden', locked ? 'false' : 'true');
+        }
+
+        if (readEl) {
+          if (locked) {
+            readEl.hidden = true;
+            readEl.removeAttribute('href');
+            readEl.setAttribute('aria-disabled', 'true');
+          } else {
+            readEl.hidden = false;
+            readEl.href = `${card.dataset.folder || '00'}/index.html`;
+            readEl.removeAttribute('aria-disabled');
+            readEl.setAttribute(
+              'aria-label',
+              `檢視章節：${card.dataset.name || ''}`
+            );
+          }
+        }
+
+        const rect = face.getBoundingClientRect();
+        originRectSnapshot = {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        };
+
+        lockScroll();
+        const layouts = getLayouts(originRectSnapshot);
+
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('is-origin');
+        modal.classList.remove('is-open', 'is-centered', 'is-expanded');
+        card.classList.add('is-origin');
+        applyLayout(layouts.origin);
+        phase = 'moving';
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (phase !== 'moving') return;
+            modal.classList.add('is-open');
+            modal.classList.remove('is-origin');
+            applyLayout(layouts.centered);
+            modal.classList.add('is-centered');
+
+            window.clearTimeout(expandTimer);
+            expandTimer = window.setTimeout(() => {
+              if (phase !== 'moving') return;
+              applyLayout(layouts.expanded);
+              modal.classList.add('is-expanded');
+              phase = 'open';
+              dialog.focus({ preventScroll: true });
+            }, MOVE_MS);
+          });
+        });
+      }
+
+      function closeModal() {
+        if ((phase !== 'open' && phase !== 'moving' && phase !== 'preparing') || closing) {
+          return;
+        }
+        if (phase === 'preparing') {
+          phase = 'idle';
+          originCard = null;
+          return;
+        }
+        if (!originCard) return;
+
+        closing = true;
+        phase = 'closing';
+        window.clearTimeout(expandTimer);
+
+        const rect = originRectSnapshot || {
+          left: window.innerWidth / 2,
+          top: window.innerHeight / 2,
+          width: 80,
+          height: 120,
+        };
+        const layouts = getLayouts(rect);
+
+        modal.classList.remove('is-expanded');
+        applyLayout(layouts.centered);
+
+        window.setTimeout(() => {
+          modal.classList.remove('is-open', 'is-centered');
+          modal.classList.add('is-origin');
+          applyLayout(layouts.origin);
+
+          window.setTimeout(() => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            modal.classList.remove('is-origin', 'is-open', 'is-centered', 'is-expanded', 'is-locked');
+            if (lockEl) {
+              lockEl.hidden = true;
+              lockEl.setAttribute('aria-hidden', 'true');
+            }
+            if (originCard) originCard.classList.remove('is-origin');
+            unlockScroll();
+            closing = false;
+            phase = 'idle';
+            if (lastFocus) lastFocus.focus({ preventScroll: true });
+            originCard = null;
+            originRectSnapshot = null;
+          }, MOVE_MS);
+        }, EXPAND_MS * 0.75);
+      }
+
+      modal.querySelectorAll('[data-close-modal]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && phase !== 'idle') {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

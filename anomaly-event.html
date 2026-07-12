@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>異常事件詳情 · 蠟燭與邪神</title>
+  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--left"></div>
+  <div class="bg-glow bg-glow--right"></div>
+
+  <header class="navbar">
+    <nav class="navbar__inner">
+      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回能力區</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="anomaly-event-detail" id="anomaly-event-detail"></section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
+  </footer>
+
+  <script src="characters-data.js"></script>
+  <script src="anomaly-events-data.js"></script>
+  <script>
+    (function () {
+      const container = document.getElementById('anomaly-event-detail');
+      const id = location.hash.slice(1) || new URLSearchParams(location.search).get('id');
+      const event = getAnomalyEventById(id);
+      const subjects = event ? getCharactersByAnomalyEvent(event.id) : [];
+      const subjectIds = subjects.map((character) => character.id);
+      const backCharacterId = resolveProfileCharacterId(subjectIds);
+      const backHref = backCharacterId
+        ? getCharacterProfileHref(backCharacterId, 'abilities')
+        : 'index.html#characters';
+
+      const backLinkLeft = document.querySelector('.navbar__link--left');
+      if (backLinkLeft) {
+        backLinkLeft.href = backHref;
+        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回人物設定';
+      }
+
+      if (!event) {
+        container.innerHTML = `
+          <h2 class="section-title">
+            <span class="section-title__icon">◈</span>
+            異常事件詳情
+          </h2>
+          <div class="anomaly-event-detail__empty">
+            <p>找不到對應的事件資料。</p>
+            <a href="${backHref}" class="anomaly-event-detail__back">${
+              backCharacterId ? '返回能力區' : '返回人物設定'
+            }</a>
+          </div>
+        `;
+        document.title = '異常事件詳情 · 蠟燭與邪神';
+        return;
+      }
+
+      const typeLabel = getAnomalyEventTypeLabel(event.type);
+      const typeClass = event.type === 'controlled' ? 'controlled' : 'anomaly';
+
+      document.title = `${event.name} · 異常事件詳情`;
+
+      const iconHref = getCharacterIcon(backCharacterId);
+      const iconLink = document.querySelector('link[rel="icon"]');
+      if (iconLink && iconHref) iconLink.href = iconHref;
+
+      const subjectsHtml = subjects.length
+        ? `<div class="anomaly-event-detail__subjects">
+            <span class="anomaly-event-detail__subjects-label">相關角色</span>
+            <span class="anomaly-event-detail__subjects-list">${subjects.map((c) => c.name).join('、')}</span>
+          </div>`
+        : '';
+
+      const detailBrief = getAnomalyEventDetailBrief(event);
+      const bodyHtml = renderAnomalyEventDetail(event);
+
+      container.innerHTML = `
+        <h2 class="section-title">
+          <span class="section-title__icon">◈</span>
+          異常事件
+        </h2>
+        <div class="anomaly-event-detail__card anomaly-event-detail__card--${typeClass}">
+          <div class="anomaly-event-detail__header">
+            <span class="anomaly-event-detail__type">${typeLabel}</span>
+            <h1 class="anomaly-event-detail__name">${event.name}</h1>
+            <p class="anomaly-event-detail__brief">${detailBrief}</p>
+          </div>
+          ${subjectsHtml}
+          <div class="anomaly-event-detail__body">
+            ${bodyHtml}
+          </div>
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

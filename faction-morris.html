@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>莫里斯公司 · 蠟燭與邪神</title>
+  <link rel="icon" href="images/MORRIS_LOGO.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="faction-page faction-page--morris faction-page--morris-home">
+  <header class="navbar navbar--faction">
+    <nav class="navbar__inner">
+      <a href="index.html#factions" class="navbar__link navbar__link--left">← 返回勢力</a>
+    </nav>
+  </header>
+
+  <main class="faction-detail">
+    <p class="faction-detail__eyebrow">Faction</p>
+    <h1 class="faction-detail__title">莫里斯公司</h1>
+
+    <div class="faction-detail__banner">
+      <img src="images/force_morris.png" alt="莫里斯公司" width="2511" height="1080">
+    </div>
+
+    <blockquote class="faction-detail__quote">
+      <p>「有需必有供，大家都是這樣做的，沒必要在那糾結你那無用的個人價值觀。」</p>
+      <footer class="faction-detail__quote-attr">—— 莉莉 莫里斯</footer>
+    </blockquote>
+
+    <section class="faction-detail__section" aria-labelledby="morris-brief">
+      <h2 id="morris-brief" class="faction-detail__section-title">簡述</h2>
+      <div class="faction-detail__body">
+        <p>莫里斯公司致力於<strong>充分利用異常事件</strong>與其產出物，並在將其進行合理試驗與包裝後<strong>進入指定市場進行販售。</strong></p>
+        <p>公司認為，異常事件具有高度的可營利性質與不可替代性，且當今市場上暫無明顯競品，公司創始人將其視為藍海市場，並以「商業化」為目的，進行組織運營與各式服務銷售。</p>
+        <p>因此，公司內部設有數個組織化的部門，以滿足管理、研究、製造、試驗、銷售、物流等各式需求。</p>
+        <p>且為因應幾年較混亂的國際局勢，公司內也有進行軍事承包等服務。</p>
+        <p>即使在販售異常物品屬違法的現在，公司仍舊持續著販售，24小時不打烊。</p>
+      </div>
+    </section>
+
+    <section id="company-body" class="faction-detail__section faction-detail__section--anchor" aria-labelledby="company-body-title">
+      <h2 id="company-body-title" class="faction-detail__section-title">公司本體</h2>
+      <div class="faction-detail__body">
+        <p>莫里斯公司本體是一棟有著各式由混凝土製成的超大型室內設施。建築本體風格近似於粗曠主義（Brutalism）建築。</p>
+        <p>該建築物本體的具體大小、建築群規模等無法以常規手段測量，也無法確認該建築物於地球上的具體座標位置。更有可能公司本體並不物理存在於地球上。</p>
+        <p>事實上，公司本體似乎是一種有意識的活物，是會自行生長與進食的生物。</p>
+      </div>
+      <div class="faction-detail__tiles">
+        <a class="faction-detail__tile" href="faction-morris-ontology.html">
+          <span class="faction-detail__tile-label">Entry</span>
+          <span class="faction-detail__tile-title">公司本體</span>
+          <span class="faction-detail__tile-hint">建築與存在形態</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="management-layers" class="faction-detail__section faction-detail__section--anchor" aria-labelledby="management-layers-title">
+      <h2 id="management-layers-title" class="faction-detail__section-title">管理單位與分層</h2>
+      <div class="faction-detail__body">
+        <p>公司內部採單位管理制。會根據不同的功能區分出不同的管理層級來進行分工。</p>
+        <p>管理階層分為多個編號單位，每一號部門皆獨立運作，擁有高度自治權限、專屬資源與自身主管。</p>
+        <p>部門分為<strong>主要（Major）</strong>、<strong>協作（Cooperation）</strong>與<strong>輔助（Assistance）</strong>三個不同的分層。</p>
+      </div>
+      <div class="faction-hierarchy-stage">
+        <div class="faction-hierarchy-stage__mark">
+          <span class="faction-hierarchy-stage__stripe" aria-hidden="true"></span>
+          <p class="faction-hierarchy-stage__hint">點擊以查看詳情</p>
+        </div>
+        <div class="faction-hierarchy" role="list">
+          <svg class="faction-hierarchy__edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="67" y1="18" x2="14" y2="51"></line>
+            <line x1="67" y1="18" x2="69" y2="81"></line>
+            <line x1="14" y1="51" x2="69" y2="81"></line>
+          </svg>
+          <a
+            class="faction-hierarchy__node faction-hierarchy__node--major faction-hierarchy__node--link"
+            href="faction-morris-major.html"
+            role="listitem"
+            aria-describedby="tip-major"
+          >
+            <span class="faction-hierarchy__zh">主要</span>
+            <span class="faction-hierarchy__en">Major</span>
+            <div class="faction-hierarchy__tip" id="tip-major" role="tooltip">
+              <p><strong>主要（Major）：</strong>指進行內部研發、研究、管理及作戰的部門</p>
+            </div>
+          </a>
+          <div
+            class="faction-hierarchy__node faction-hierarchy__node--coop"
+            role="listitem"
+            tabindex="0"
+            aria-describedby="tip-coop"
+          >
+            <span class="faction-hierarchy__zh">協作</span>
+            <span class="faction-hierarchy__en">Cooperation</span>
+            <div class="faction-hierarchy__tip" id="tip-coop" role="tooltip">
+              <p><strong>協作（Cooperation）：</strong>指與主要部門共同進行部門內工作的部門。通常為公關處理或各類調查</p>
+            </div>
+          </div>
+          <div
+            class="faction-hierarchy__node faction-hierarchy__node--assist"
+            role="listitem"
+            tabindex="0"
+            aria-describedby="tip-assist"
+          >
+            <span class="faction-hierarchy__zh">輔助</span>
+            <span class="faction-hierarchy__en">Assistance</span>
+            <div class="faction-hierarchy__tip" id="tip-assist" role="tooltip">
+              <p><strong>輔助（Assistance）：</strong>指協助上述兩部門與公司內部運轉的部門。其工作種類包羅萬象</p>
+            </div>
+          </div>
+        </div>
+        <p class="faction-hierarchy-stage__note">三個分層直接聽令於公司執行長的管理，並無職位高低之分。</p>
+      </div>
+    </section>
+
+    <section id="anomaly-archive" class="faction-detail__section faction-detail__section--anchor" aria-labelledby="anomaly-archive-title">
+      <h2 id="anomaly-archive-title" class="faction-detail__section-title">異常事件編號歸檔</h2>
+      <div class="faction-detail__body">
+        <p>公司在命名異常事件時，除了會使用 O.P.C.U 條款外，也會以管理該異常事件主要部門的「管理物質標籤」加上「羅馬數字編號」來命名。</p>
+        <p>例如：一本能夠改變他人信仰的書籍，由於其擁有「心智類異常」以及「難以或不可利用」的性質，將會遭受「認知安全部門」及「物品保存部門」的研究及管理。根據歸屬並綜合編號歸納後，此物品將被歸檔為「未明意識／異常實質-n」，n 的數字將根據當前該分類的物品數量而定。</p>
+      </div>
+
+      <div class="faction-tag-panel" id="faction-tag-panel">
+        <h3 class="faction-tag-grid__heading">管理物質標籤</h3>
+        <div class="faction-tag-grid" role="list" aria-label="十二項管理物質標籤">
+        <button type="button" class="faction-tag" role="listitem" data-tag="1-1" data-title="段訊讀數" data-image="images/Morris/1-1.png" data-desc="（段訊讀數敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/1-1.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">段訊讀數</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="1-2" data-title="密儀標號" data-image="images/Morris/1-2.png" data-desc="（密儀標號敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/1-2.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">密儀標號</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="2" data-title="反應餘料" data-image="images/Morris/2.png" data-desc="（反應餘料敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/2.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">反應餘料</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="3" data-title="活態樣本" data-image="images/Morris/3.png" data-desc="（活態樣本敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/3.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">活態樣本</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="4" data-title="異常實質" data-image="images/Morris/4.png" data-desc="（異常實質敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/4.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">異常實質</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="5" data-title="未明意識" data-image="images/Morris/5.png" data-desc="（未明意識敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/5.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">未明意識</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="6" data-title="逾期變量" data-image="images/Morris/6.png" data-desc="（逾期變量敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/6.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">逾期變量</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="7" data-title="界外矩陣" data-image="images/Morris/7.png" data-desc="（界外矩陣敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/7.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">界外矩陣</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="8" data-title="勢能痕跡" data-image="images/Morris/8.png" data-desc="（勢能痕跡敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/8.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">勢能痕跡</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="8-2" data-title="解裂轟波" data-image="images/Morris/8-2.png" data-desc="（解裂轟波敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/8-2.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">解裂轟波</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="9" data-title="知無條例" data-image="images/Morris/9.png" data-desc="（知無條例敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/9.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">知無條例</span>
+        </button>
+        <button type="button" class="faction-tag" role="listitem" data-tag="10" data-title="未協定概念" data-image="images/Morris/010.png" data-desc="（未協定概念敘述待填入）">
+          <span class="faction-tag__frame">
+            <img src="images/Morris/010.png" alt="" width="512" height="512">
+          </span>
+          <span class="faction-tag__caption">未協定概念</span>
+        </button>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="faction-tag-modal" id="faction-tag-modal" hidden aria-hidden="true">
+    <div class="faction-tag-modal__backdrop" data-close-modal></div>
+    <div
+      class="faction-tag-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="faction-tag-modal-title"
+      tabindex="-1"
+    >
+      <button type="button" class="faction-tag-modal__close" data-close-modal aria-label="關閉">×</button>
+      <div class="faction-tag-modal__media">
+        <img id="faction-tag-modal-image" src="" alt="" width="512" height="512">
+      </div>
+      <div class="faction-tag-modal__content">
+        <p class="faction-tag-modal__label">管理物質標籤</p>
+        <h3 class="faction-tag-modal__title" id="faction-tag-modal-title"></h3>
+        <p class="faction-tag-modal__desc" id="faction-tag-modal-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer footer--faction">
+    <p>© 2026 蠟燭與邪神 · 莫里斯公司</p>
+  </footer>
+
+  <script>
+    (function () {
+      const modal = document.getElementById('faction-tag-modal');
+      if (!modal) return;
+
+      const dialog = modal.querySelector('.faction-tag-modal__dialog');
+      const titleEl = document.getElementById('faction-tag-modal-title');
+      const descEl = document.getElementById('faction-tag-modal-desc');
+      const imageEl = document.getElementById('faction-tag-modal-image');
+      const tags = document.querySelectorAll('.faction-tag');
+      let lastFocus = null;
+      let originTag = null;
+      let originRectSnapshot = null;
+      let closing = false;
+      let expandTimer = 0;
+      let phase = 'idle';
+
+      const MOVE_MS = 380;
+      const EXPAND_MS = 360;
+
+      function lockScroll() {
+        document.documentElement.classList.add('is-tag-modal-open');
+        document.body.classList.add('is-tag-modal-open');
+      }
+
+      function unlockScroll() {
+        document.documentElement.classList.remove('is-tag-modal-open');
+        document.body.classList.remove('is-tag-modal-open');
+      }
+
+      function waitForScrollSettle(maxMs = 700) {
+        return new Promise((resolve) => {
+          let settled = 0;
+          let lastY = window.scrollY;
+          let done = false;
+
+          const finish = () => {
+            if (done) return;
+            done = true;
+            window.removeEventListener('scroll', onScroll);
+            window.clearTimeout(failSafe);
+            window.clearTimeout(idleTimer);
+            resolve();
+          };
+
+          const bumpIdle = () => {
+            window.clearTimeout(idleTimer);
+            idleTimer = window.setTimeout(finish, 140);
+          };
+
+          const onScroll = () => {
+            const y = window.scrollY;
+            settled = Math.abs(y - lastY) < 0.5 ? settled + 1 : 0;
+            lastY = y;
+            if (settled >= 4) {
+              finish();
+              return;
+            }
+            bumpIdle();
+          };
+
+          let idleTimer = window.setTimeout(finish, 140);
+          const failSafe = window.setTimeout(finish, maxMs);
+          window.addEventListener('scroll', onScroll, { passive: true });
+        });
+      }
+
+      function setBox(x, y, w, h, media, pad, gap) {
+        dialog.style.setProperty('--tag-x', `${x}px`);
+        dialog.style.setProperty('--tag-y', `${y}px`);
+        dialog.style.setProperty('--tag-w', `${w}px`);
+        dialog.style.setProperty('--tag-h', `${h}px`);
+        dialog.style.setProperty('--tag-media', `${media}px`);
+        dialog.style.setProperty('--tag-pad', `${pad}px`);
+        dialog.style.setProperty('--tag-gap', `${gap}px`);
+      }
+
+      function isNarrow() {
+        return window.matchMedia('(max-width: 560px)').matches;
+      }
+
+      function getLayouts(originRect) {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const narrow = isNarrow();
+        const media = narrow
+          ? Math.min(8.5 * 16, Math.max(5.5 * 16, originRect.width * 1.15))
+          : Math.min(10 * 16, Math.max(7 * 16, originRect.width * 1.2));
+        const pad = narrow ? 18 : 22;
+        const gap = narrow ? 14 : 22;
+        const contentW = narrow
+          ? Math.min(vw - 48, media + pad * 2) - pad * 2
+          : Math.min(34 * 16, Math.max(24 * 16, vw * 0.56));
+        const contentH = narrow ? Math.min(12 * 16, vh * 0.32) : 0;
+
+        const origin = {
+          x: originRect.left,
+          y: originRect.top,
+          w: originRect.width,
+          h: originRect.height,
+          media: originRect.width,
+          pad: 0,
+          gap: 0,
+        };
+
+        let expanded;
+        let centered;
+
+        if (narrow) {
+          const fullW = media + pad * 2;
+          const fullH = media + gap + contentH + pad * 2;
+          const x = (vw - fullW) / 2;
+          const y = Math.max(24, (vh - fullH) / 2);
+          expanded = { x, y, w: fullW, h: fullH, media, pad, gap };
+          centered = {
+            x,
+            y,
+            w: fullW,
+            h: media + pad * 2,
+            media,
+            pad,
+            gap: 0,
+          };
+        } else {
+          const fullW = media + gap + contentW + pad * 2;
+          const fullH = media + pad * 2;
+          const x = Math.max(24, (vw - fullW) / 2);
+          const y = Math.max(24, (vh - fullH) / 2);
+          expanded = { x, y, w: fullW, h: fullH, media, pad, gap };
+          centered = {
+            x,
+            y,
+            w: media + pad * 2,
+            h: fullH,
+            media,
+            pad,
+            gap: 0,
+          };
+        }
+
+        return { origin, centered, expanded };
+      }
+
+      function applyLayout(layout) {
+        setBox(layout.x, layout.y, layout.w, layout.h, layout.media, layout.pad, layout.gap);
+      }
+
+      async function openModal(tag) {
+        if (closing || phase !== 'idle') return;
+
+        const frame = tag.querySelector('.faction-tag__frame');
+        if (!frame) return;
+
+        phase = 'preparing';
+        lastFocus = tag;
+        originTag = tag;
+        titleEl.textContent = tag.dataset.title || '';
+        descEl.textContent = tag.dataset.desc || '';
+        imageEl.src = tag.dataset.image || '';
+        imageEl.alt = tag.dataset.title || '';
+
+        const tagPanel = document.getElementById('faction-tag-panel');
+        if (tagPanel) {
+          tagPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          await waitForScrollSettle();
+          await new Promise((resolve) => window.setTimeout(resolve, 40));
+        }
+
+        if (phase !== 'preparing' || originTag !== tag) return;
+
+        const rect = frame.getBoundingClientRect();
+        originRectSnapshot = {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        };
+
+        lockScroll();
+        const layouts = getLayouts(originRectSnapshot);
+
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('is-origin');
+        modal.classList.remove('is-open', 'is-centered', 'is-expanded');
+        tag.classList.add('is-origin');
+        applyLayout(layouts.origin);
+        phase = 'moving';
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (phase !== 'moving') return;
+            modal.classList.add('is-open');
+            modal.classList.remove('is-origin');
+            applyLayout(layouts.centered);
+            modal.classList.add('is-centered');
+
+            window.clearTimeout(expandTimer);
+            expandTimer = window.setTimeout(() => {
+              if (phase !== 'moving') return;
+              applyLayout(layouts.expanded);
+              modal.classList.add('is-expanded');
+              phase = 'open';
+              dialog.focus({ preventScroll: true });
+            }, MOVE_MS);
+          });
+        });
+      }
+
+      function closeModal() {
+        if ((phase !== 'open' && phase !== 'moving' && phase !== 'preparing') || closing) {
+          return;
+        }
+        if (phase === 'preparing') {
+          phase = 'idle';
+          originTag = null;
+          return;
+        }
+        if (!originTag) return;
+
+        closing = true;
+        phase = 'closing';
+        window.clearTimeout(expandTimer);
+
+        const rect = originRectSnapshot || {
+          left: window.innerWidth / 2,
+          top: window.innerHeight / 2,
+          width: 80,
+          height: 80,
+        };
+        const layouts = getLayouts(rect);
+
+        modal.classList.remove('is-expanded');
+        applyLayout(layouts.centered);
+
+        window.setTimeout(() => {
+          modal.classList.remove('is-open', 'is-centered');
+          modal.classList.add('is-origin');
+          applyLayout(layouts.origin);
+
+          window.setTimeout(() => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            modal.classList.remove('is-origin', 'is-open', 'is-centered', 'is-expanded');
+            if (originTag) originTag.classList.remove('is-origin');
+            unlockScroll();
+            closing = false;
+            phase = 'idle';
+            if (lastFocus) lastFocus.focus({ preventScroll: true });
+            originTag = null;
+            originRectSnapshot = null;
+          }, MOVE_MS);
+        }, EXPAND_MS * 0.75);
+      }
+
+      tags.forEach((tag) => {
+        tag.addEventListener('click', (event) => {
+          event.preventDefault();
+          openModal(tag);
+        });
+      });
+
+      modal.querySelectorAll('[data-close-modal]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && phase !== 'idle') {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

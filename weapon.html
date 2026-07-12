@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>武器詳情 · 蠟燭與邪神</title>
+  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--left"></div>
+  <div class="bg-glow bg-glow--right"></div>
+
+  <header class="navbar">
+    <nav class="navbar__inner">
+      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回能力區</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="weapon-detail" id="weapon-detail"></section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
+  </footer>
+
+  <script src="characters-data.js"></script>
+  <script src="weapons-data.js"></script>
+  <script>
+    (function () {
+      const container = document.getElementById('weapon-detail');
+      const id = location.hash.slice(1) || new URLSearchParams(location.search).get('id');
+      const weapon = getWeaponById(id);
+      const users = weapon ? getCharactersByWeapon(weapon.id) : [];
+      const userIds = users.map((character) => character.id);
+      const backCharacterId = resolveProfileCharacterId(userIds);
+      const backHref = backCharacterId
+        ? getCharacterProfileHref(backCharacterId, 'abilities')
+        : 'index.html#characters';
+
+      const backLinkLeft = document.querySelector('.navbar__link--left');
+      if (backLinkLeft) {
+        backLinkLeft.href = backHref;
+        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回人物設定';
+      }
+
+      if (!weapon) {
+        container.innerHTML = `
+          <h2 class="section-title">
+            <span class="section-title__icon">◈</span>
+            武器詳情
+          </h2>
+          <div class="weapon-detail__empty">
+            <p>找不到對應的武器資料。</p>
+            <a href="${backHref}" class="weapon-detail__back">${
+              backCharacterId ? '返回能力區' : '返回人物設定'
+            }</a>
+          </div>
+        `;
+        document.title = '武器詳情 · 蠟燭與邪神';
+        return;
+      }
+
+      document.title = `${weapon.name} · 武器詳情`;
+
+      const iconHref = getCharacterIcon(backCharacterId);
+      const iconLink = document.querySelector('link[rel="icon"]');
+      if (iconLink && iconHref) iconLink.href = iconHref;
+
+      const summaryHtml = renderWeaponSummary(weapon.summary);
+
+      container.innerHTML = `
+        <h2 class="section-title">
+          <span class="section-title__icon">◈</span>
+          持有武器
+        </h2>
+        <div class="weapon-detail__card">
+          <div class="weapon-detail__media">
+            <img
+              src="${weapon.image}"
+              alt="${weapon.name}"
+              class="weapon-detail__img"
+            >
+          </div>
+          <div class="weapon-detail__info">
+            <h1 class="weapon-detail__name">${weapon.name}</h1>
+            <p class="weapon-detail__caption">${weapon.hoverText}</p>
+            <div class="weapon-detail__body">
+              ${summaryHtml}
+            </div>
+          </div>
+        </div>
+      `;
+    })();
+  </script>
+</body>
+</html>

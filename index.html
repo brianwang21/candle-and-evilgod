@@ -1,0 +1,655 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>蠟燭與邪神</title>
+  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&family=Orbitron:wght@400;600;700&family=Playfair+Display:wght@600;700&family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+<body class="home-page">
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--left"></div>
+  <div class="bg-glow bg-glow--right"></div>
+
+  <header class="home-banner">
+    <img
+      src="images/HomePage/Candle_and_EvilGod.png"
+      alt="蠟燭與邪神"
+      class="home-banner__img"
+    >
+  </header>
+
+  <main class="home-main">
+    <section class="home-hero">
+      <h1 class="home-hero__title">
+        <span class="home-hero__title-cn">蠟燭與邪神</span>
+        <span class="home-hero__title-en">CANDLE AND EVILGOD</span>
+      </h1>
+      <p class="home-hero__lead">這是一個與現實社會稍微有一點差異的世界，但老實說也差不了多少——</p>
+    </section>
+
+    <section id="preface" class="home-preface" data-preface-reveal>
+      <h2 class="home-preface__title reveal-item">前言</h2>
+      <div class="home-preface__body">
+        <p class="home-preface__lead-line reveal-item">
+          《蠟燭與邪神》( Candle And Evilgod )的世界觀建立在一個以當前社會為基礎的架空世界下。
+        </p>
+        <p class="reveal-item">
+          與我們所處的世界有所不同之處在於，這個世界觀有著通稱<strong>「異常事件」</strong>的現象。
+        </p>
+        <p class="reveal-item">所以，這個世界觀會發生類似這種事情：</p>
+
+        <div
+          class="home-preface__typewriter reveal-item"
+          id="preface-typewriter"
+          aria-label="前言摘錄打字機效果"
+        >
+          <p class="home-preface__typewriter-lead">如果今天掉到地上的橡皮擦不見了怎麼辦？</p>
+          <p class="home-preface__typewriter-text" id="preface-typewriter-text"></p>
+          <p class="home-preface__cite" id="preface-typewriter-cite">
+            ————摘自《蠟燭與邪神》｜愚者 02
+          </p>
+        </div>
+
+        <p class="reveal-item">
+          為此，一系列關於異常事件所衍生的系列故事、人物角色與各種拿來棄置作者多餘腦容量的設定就這麼誕生了。
+        </p>
+        <p class="home-preface__aside reveal-item">
+          ——因為現實已經足夠瘋狂，只需要取其精華，去其糟粕……
+        </p>
+        <p class="reveal-item">
+          此網頁是一個類似資料庫的東西，你會在這裡看到設定（不然你還期待甚麼，下一季樂透頭獎號碼？）之類的東西。
+        </p>
+        <p class="reveal-item">隨便逛逛，別搞壞東西，想看什麼自己找或跟我說一聲。</p>
+        <p class="home-preface__warning reveal-item">
+          <strong>注意：本頁面含R18G內容，請斟酌觀看。</strong>
+        </p>
+      </div>
+    </section>
+
+    <section class="home-worldview-bar" aria-label="世界觀">
+      <div class="home-worldview-bar__panel" id="worldview-drawer">
+        <span class="home-worldview-bar__stripe" aria-hidden="true"></span>
+        <button
+          type="button"
+          class="home-worldview-bar__toggle"
+          id="worldview-drawer-toggle"
+          aria-expanded="false"
+          aria-controls="worldview-drawer-detail"
+        >
+          <div class="home-worldview-bar__content">
+            <span class="home-worldview-bar__label">世界觀</span>
+            <p class="home-worldview-bar__text">「如果我們現在生活的這個世界有著眾所皆知的超自然事件。」</p>
+            <span class="home-worldview-bar__hint" aria-hidden="true">點擊展開</span>
+          </div>
+        </button>
+
+        <div
+          class="home-worldview-bar__detail"
+          id="worldview-drawer-detail"
+        >
+          <div class="home-worldview-bar__detail-inner">
+            <div class="home-worldview-bar__content home-worldview-bar__content--detail">
+              <div class="home-worldview-bar__body">
+                <p>
+                  《蠟燭與邪神》的故事發生於一個與當前現實並無太大差異的世界中，其地理、氣候、生態、人文、社會結構、歷史事件與經濟都與真實世界相差不遠。
+                </p>
+                <p>
+                  唯一的區別，就是這個世界存在著通稱「異常事件」的超自然現象。
+                </p>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">異常事件是什麼？</h3>
+                <p>
+                  要知道異常事件是什麼，我們得先知道甚麼算是「正常」？
+                </p>
+                <p>
+                  畢竟，如果不好好界定何謂異常的話，任何新發現都會變成異常。
+                </p>
+                <p class="home-worldview-bar__lead-in">如《異常規定法》中所提：</p>
+                <blockquote class="home-worldview-bar__quote">
+                  <p>
+                    異常事件是指<strong>「一定時間內缺乏學術知識與人倫常識完全支持的事件」</strong>。
+                  </p>
+                  <p>
+                    當現有物理、化學、生物、心理學等已知理論無法完整解釋或預測此事件發生的原因與結果。以及此事件無法被當代社會普遍認可與接受，即能被認定為異常事件。
+                  </p>
+                </blockquote>
+                <p>
+                  這個世界觀下，異常事件雖然不能說很常發生，但也不算少見，主觀感知的頻率大概跟地震差不多。
+                </p>
+                <p>
+                  在這個世界中，擦子有時候會真的長腳跑走，總統候選人真的是外星人，奇幻生物真實存在……
+                </p>
+                <p>
+                  而人們的處裡態度也從一開始的驚慌失措，到了如今的習以為常，政府與民間單位也在努力的讓異常事件走入民眾的視野內。
+                </p>
+                <p>
+                  現今，社會大眾已經將異常事件當成天災般的存在，各國法律也明文規定了許多針對異常事件的法律條款，為的就是防止某些不肖之徒想利用這超自然、無法完全控制的力量來滿足私慾。
+                </p>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">人們如何處裡異常事件？</h3>
+                <ol class="home-worldview-bar__steps">
+                  <li>當有人發現自己身邊有發生異常事件的跡象時，他們可以直接通報當區的警察前來進行確認。</li>
+                  <li>在排除人員傷亡的可能性後，警方會通報CTA的人來進行處裡。</li>
+                  <li>CTA人員會進行現場的勘查，在確認異常可供歸檔收容後進行作業，並在離開現場時進行清理善後。</li>
+                  <li>若異常事件發生於個人財產區域內，CTA會給予一定的賠償慰問金。</li>
+                </ol>
+              </div>
+
+              <div class="home-worldview-bar__section" id="opcu-ref">
+                <p>
+                  如果想更好的了解異常事件的分級，可參考
+                  <a class="home-worldview-bar__opcu-inline" href="opcu-classification.html">O.P.C.U</a>
+                </p>
+                <a class="home-worldview-bar__opcu-card" href="opcu-classification.html">
+                  <img
+                    class="home-worldview-bar__opcu-card-icon"
+                    src="images/OPCU_ICON.png"
+                    alt=""
+                    aria-hidden="true"
+                  >
+                  <span class="home-worldview-bar__opcu-card-kicker">Classification</span>
+                  <span class="home-worldview-bar__opcu-card-title">O.P.C.U</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看異常事件分級參考頁面</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <a
+                class="home-worldview-bar__more"
+                href="html/character-profile-alaya.html#world"
+              >
+                <span class="home-worldview-bar__more-label">想了解更多請點此</span>
+                <span class="home-worldview-bar__more-arrow" aria-hidden="true">→</span>
+              </a>
+
+              <button
+                type="button"
+                class="home-worldview-bar__collapse"
+                id="worldview-drawer-collapse"
+              >
+                點擊收起
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-factions" id="factions" data-faction="morris" aria-label="勢力">
+      <div class="home-factions__wash" aria-hidden="true"></div>
+      <div class="home-factions__inner">
+        <p class="home-factions__eyebrow">Factions</p>
+        <h2 class="home-factions__heading">勢力</h2>
+        <p class="home-factions__hint">左右切換查看不同勢力</p>
+
+        <div class="home-factions__stage">
+          <button type="button" class="home-factions__nav home-factions__nav--prev" aria-label="上一個勢力">
+            <span aria-hidden="true">‹</span>
+          </button>
+
+          <div class="home-factions__viewport">
+            <article class="home-factions__slide is-active" data-faction="morris" aria-hidden="false">
+              <a class="home-factions__link" href="faction-morris.html">
+                <span class="home-factions__view">查看</span>
+                <span class="home-factions__media">
+                  <img src="images/force_morris.png" alt="莫里斯公司" class="home-factions__img" width="2511" height="1080">
+                </span>
+              </a>
+              <h3 class="home-factions__name">莫里斯公司</h3>
+              <p class="home-factions__desc">一家拿異常物品來賣錢的公司，也是故事發生的主舞台。</p>
+            </article>
+
+            <article class="home-factions__slide" data-faction="cta" aria-hidden="true">
+              <a class="home-factions__link" href="faction-cta.html">
+                <span class="home-factions__view">查看</span>
+                <span class="home-factions__media">
+                  <img src="images/force_CTA.png" alt="CTA" class="home-factions__img" width="2511" height="1080">
+                </span>
+              </a>
+              <h3 class="home-factions__name">CTA</h3>
+              <p class="home-factions__desc">自稱是異常事件的管理與執法者。</p>
+            </article>
+
+            <article class="home-factions__slide" data-faction="witch" aria-hidden="true">
+              <a class="home-factions__link" href="faction-witch.html">
+                <span class="home-factions__view">查看</span>
+                <span class="home-factions__media">
+                  <img src="images/force_witch.png" alt="魔女議會" class="home-factions__img" width="2511" height="1080">
+                </span>
+              </a>
+              <h3 class="home-factions__name">魔女議會</h3>
+              <p class="home-factions__desc">最早與人類社會接觸的異常事件組織。</p>
+            </article>
+          </div>
+
+          <button type="button" class="home-factions__nav home-factions__nav--next" aria-label="下一個勢力">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+
+        <div class="home-factions__dots" role="tablist" aria-label="勢力切換">
+          <button type="button" class="home-factions__dot is-active" data-index="0" aria-label="莫里斯公司" aria-selected="true"></button>
+          <button type="button" class="home-factions__dot" data-index="1" aria-label="CTA" aria-selected="false"></button>
+          <button type="button" class="home-factions__dot" data-index="2" aria-label="魔女議會" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-story" id="story" aria-label="劇情">
+      <div class="home-story__inner">
+        <p class="home-story__eyebrow">Storylines</p>
+        <h2 class="home-story__heading">劇情</h2>
+
+        <article class="home-story__arc" data-story-panel="open">
+          <div class="home-story__banner" aria-hidden="true">
+            <img
+              src="images/HomePage/Candle_and_EvilGod.png"
+              alt=""
+              class="home-story__banner-img"
+            >
+          </div>
+
+          <button
+            type="button"
+            class="home-story__eye"
+            id="story-panel-toggle"
+            aria-controls="story-side-panel"
+            aria-expanded="true"
+            aria-label="隱藏劇情資訊"
+            title="隱藏／顯示劇情資訊"
+          >
+            <svg class="home-story__eye-icon home-story__eye-icon--open" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 5c-5.5 0-9.7 4.1-11 7 1.3 2.9 5.5 7 11 7s9.7-4.1 11-7c-1.3-2.9-5.5-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+            </svg>
+            <svg class="home-story__eye-icon home-story__eye-icon--closed" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M2.1 3.5 3.5 2.1l18.4 18.4-1.4 1.4-3.1-3.1A12.6 12.6 0 0 1 12 19c-5.5 0-9.7-4.1-11-7 0.6-1.4 2-3.2 4.1-4.7L2.1 3.5zM12 7a5 5 0 0 1 4.9 4l-1.6-1.6A2.5 2.5 0 0 0 12 9.5c-.3 0-.5 0-.8.1L9.6 8A5 5 0 0 1 12 7zm0 10c1.1 0 2.1-.2 3-.6l-1.6-1.6c-.4.1-.9.2-1.4.2a2.5 2.5 0 0 1-2.5-2.5c0-.5.1-1 .3-1.4L8.2 9.5C6.3 10.6 4.9 12.1 4.2 13 5.5 15.5 8.5 17 12 17zm9.8-4c-.4.9-1.1 1.9-2 2.9l-1.5-1.5c.6-.6 1.1-1.3 1.5-2-1.3-2.9-5.5-5.5-9.8-5.5-.5 0-1 0-1.5.1L7.1 5.6C8.6 5.2 10.2 5 12 5c5.5 0 9.7 2.6 11 5.5.3.6.6 1.3.8 1.5z"/>
+            </svg>
+          </button>
+
+          <div class="home-story__side" id="story-side-panel">
+            <p class="home-story__kicker">Main Story</p>
+            <h3 class="home-story__title">主線《蠟燭與邪神》</h3>
+            <p class="home-story__summary">
+              CTA前員工艾萊亞遭到了自家單位的背叛，不只慘遭降職，還被公司內部派人追殺。
+              在瀕死之際，她意外的從莫里斯公司主管CAE的手中活了下來，並帶進莫里斯公司，就此開始了她那充滿異常事件的生活……
+            </p>
+
+            <div class="home-story__chapters" aria-label="章節">
+              <a class="home-story__chapter" href="Story/Main_Story/Main_Story_CandleAndEvilGod.html">
+                <span class="home-story__chapter-action home-story__chapter-action--solo">點此閱讀</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-characters" id="characters" aria-label="人物設定">
+      <div class="home-characters__inner">
+        <p class="home-characters__eyebrow">Characters</p>
+        <h2 class="home-characters__heading">人物設定</h2>
+
+        <form class="home-characters__filters" id="character-filters" role="search">
+          <label class="home-characters__select home-characters__select--wide">
+            <span>勢力</span>
+            <select id="character-faction" name="faction">
+              <option value="">全部</option>
+            </select>
+          </label>
+        </form>
+
+        <p class="home-characters__empty" id="character-empty" hidden>沒有符合條件的角色。</p>
+
+        <ul class="home-characters__grid" id="character-grid">
+          <li
+            class="home-characters__item"
+            data-name="艾萊亞"
+            data-priority="1"
+            data-faction="莫里斯公司"
+          >
+            <a class="home-characters__card" href="html/character-profile-alaya.html">
+              <span class="home-characters__avatar">
+                <img
+                  src="images/profile_icon/Alaya_profile_ICON.png"
+                  alt=""
+                  class="home-characters__img"
+                >
+              </span>
+              <span class="home-characters__name">艾萊亞</span>
+              <span class="home-characters__tags" aria-hidden="true">
+                <span class="home-characters__tag">莫里斯公司</span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="home-characters__item"
+            data-name="CAE"
+            data-priority="2"
+            data-faction="莫里斯公司"
+          >
+            <a class="home-characters__card" href="html/character-profile-CAE.html">
+              <span class="home-characters__avatar">
+                <img
+                  src="images/profile_icon/CAE_profile_ICON.png"
+                  alt=""
+                  class="home-characters__img"
+                >
+              </span>
+              <span class="home-characters__name">CAE</span>
+              <span class="home-characters__tags" aria-hidden="true">
+                <span class="home-characters__tag">莫里斯公司</span>
+              </span>
+            </a>
+          </li>
+          <li
+            class="home-characters__item"
+            data-name="潔西卡"
+            data-priority="3"
+            data-faction="莫里斯公司"
+            data-hide-faction-tag="true"
+          >
+            <a class="home-characters__card" href="html/character-profile-Jessica.html">
+              <span class="home-characters__avatar">
+                <img
+                  src="images/profile_icon/JCA_profile_ICON.png"
+                  alt=""
+                  class="home-characters__img"
+                >
+              </span>
+              <span class="home-characters__name">潔西卡</span>
+            </a>
+          </li>
+          <li
+            class="home-characters__item"
+            data-name="42"
+            data-priority="4"
+            data-faction="莫里斯公司"
+          >
+            <a class="home-characters__card" href="html/character-profile-42.html" aria-label="42">
+              <span class="home-characters__avatar">
+                <img
+                  src="images/profile_icon/42_profile_ICON.png"
+                  alt=""
+                  class="home-characters__img"
+                >
+              </span>
+              <span class="home-characters__name">42</span>
+              <span class="home-characters__tags" aria-hidden="true">
+                <span class="home-characters__tag">莫里斯公司</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
+  </footer>
+
+  <script>
+    (function () {
+      const PREFACE_TYPE_LINES = [
+        '會想去找對吧。',
+        '但如果翻遍房間都找不到呢？',
+        '有人會笑說：「搞不好擦子長腳逃跑了。」',
+        '這種說法，在幾十年前還只是笑談。',
+        '但如今——這很可能是真的。',
+        '因為在這個時代，東西「莫名消失」已經不再只是小事。',
+        '它可能是異常事件的開端。',
+        '人們不再只自顧自地翻找，他們會直接撥打專線，請警察來處理。',
+      ];
+
+      const section = document.querySelector('[data-preface-reveal]');
+      const textEl = document.getElementById('preface-typewriter-text');
+      const boxEl = document.getElementById('preface-typewriter');
+      if (!section || !textEl || !boxEl) return;
+
+      const items = Array.from(section.querySelectorAll('.reveal-item'));
+      let revealed = false;
+      let typed = false;
+      const fullText = PREFACE_TYPE_LINES.join('\n');
+      const charDelay = 18;
+
+      function runTypewriter() {
+        if (typed) return;
+        typed = true;
+        boxEl.classList.add('is-typing');
+        let index = 0;
+
+        function tick() {
+          if (index <= fullText.length) {
+            textEl.textContent = fullText.slice(0, index);
+            index += 1;
+            window.setTimeout(tick, charDelay);
+            return;
+          }
+          boxEl.classList.remove('is-typing');
+          boxEl.classList.add('is-done');
+        }
+
+        tick();
+      }
+
+      function revealPreface() {
+        if (revealed) return;
+        revealed = true;
+        section.classList.add('is-revealed');
+
+        items.forEach((item, i) => {
+          window.setTimeout(() => {
+            item.classList.add('is-visible');
+            if (item === boxEl) runTypewriter();
+          }, i * 120);
+        });
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealPreface();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      observer.observe(section);
+    })();
+
+    (function () {
+      const panel = document.getElementById('worldview-drawer');
+      const toggle = document.getElementById('worldview-drawer-toggle');
+      const collapse = document.getElementById('worldview-drawer-collapse');
+      if (!panel || !toggle) return;
+
+      function setOpen(open) {
+        panel.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      toggle.addEventListener('click', () => {
+        setOpen(!panel.classList.contains('is-open'));
+      });
+
+      if (collapse) {
+        collapse.addEventListener('click', () => {
+          setOpen(false);
+          toggle.focus();
+        });
+      }
+
+      if (window.location.hash === '#opcu-ref') {
+        setOpen(true);
+        window.setTimeout(() => {
+          const target = document.getElementById('opcu-ref');
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 120);
+      }
+    })();
+
+    (function () {
+      const section = document.getElementById('factions');
+      if (!section) return;
+
+      const slides = Array.from(section.querySelectorAll('.home-factions__slide'));
+      const dots = Array.from(section.querySelectorAll('.home-factions__dot'));
+      const prevBtn = section.querySelector('.home-factions__nav--prev');
+      const nextBtn = section.querySelector('.home-factions__nav--next');
+      if (!slides.length) return;
+
+      let index = slides.findIndex((slide) => slide.classList.contains('is-active'));
+      if (index < 0) index = 0;
+
+      function show(nextIndex, direction) {
+        const total = slides.length;
+        const next = ((nextIndex % total) + total) % total;
+        if (next === index) return;
+
+        const currentSlide = slides[index];
+        const nextSlide = slides[next];
+
+        currentSlide.classList.remove('is-active');
+        currentSlide.classList.add(direction === 'prev' ? 'is-exit-right' : 'is-exit-left');
+        currentSlide.setAttribute('aria-hidden', 'true');
+
+        nextSlide.classList.remove('is-exit-left', 'is-exit-right');
+        nextSlide.classList.add('is-active');
+        nextSlide.setAttribute('aria-hidden', 'false');
+
+        section.setAttribute('data-faction', nextSlide.getAttribute('data-faction') || '');
+
+        dots.forEach((dot, i) => {
+          const active = i === next;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+
+        window.setTimeout(() => {
+          currentSlide.classList.remove('is-exit-left', 'is-exit-right');
+        }, 400);
+
+        index = next;
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => show(index - 1, 'prev'));
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => show(index + 1, 'next'));
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const target = Number(dot.getAttribute('data-index'));
+          if (Number.isNaN(target)) return;
+          show(target, target < index ? 'prev' : 'next');
+        });
+      });
+
+      section.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          show(index - 1, 'prev');
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          show(index + 1, 'next');
+        }
+      });
+    })();
+
+    (function () {
+      const arc = document.querySelector('.home-story__arc');
+      const toggle = document.getElementById('story-panel-toggle');
+      if (!arc || !toggle) return;
+
+      function setOpen(open) {
+        arc.setAttribute('data-story-panel', open ? 'open' : 'closed');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? '隱藏劇情資訊' : '顯示劇情資訊');
+      }
+
+      toggle.addEventListener('click', () => {
+        const open = arc.getAttribute('data-story-panel') !== 'closed';
+        setOpen(!open);
+      });
+    })();
+
+    (function () {
+      const grid = document.getElementById('character-grid');
+      const factionSelect = document.getElementById('character-faction');
+      const emptyEl = document.getElementById('character-empty');
+      const form = document.getElementById('character-filters');
+      if (!grid || !factionSelect) return;
+
+      const items = Array.from(grid.querySelectorAll('.home-characters__item'));
+
+      function uniqueSorted(values) {
+        return Array.from(new Set(values.filter(Boolean))).sort((a, b) =>
+          String(a).localeCompare(String(b), 'zh-Hant')
+        );
+      }
+
+      function priorityValue(item) {
+        const value = Number(item.getAttribute('data-priority'));
+        return Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+      }
+
+      function sortByPriority(list) {
+        return list.slice().sort((a, b) => priorityValue(a) - priorityValue(b));
+      }
+
+      function fillFactionSelect() {
+        const current = factionSelect.value;
+        const factions = uniqueSorted(items.map((item) => item.getAttribute('data-faction')));
+        factionSelect.innerHTML = '<option value="">全部</option>';
+        factions.forEach((value) => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = value;
+          factionSelect.appendChild(option);
+        });
+        if (factions.includes(current)) factionSelect.value = current;
+      }
+
+      function applyFilters() {
+        const faction = factionSelect.value;
+        let visible = 0;
+
+        sortByPriority(items).forEach((item) => {
+          grid.appendChild(item);
+          const itemFaction = item.getAttribute('data-faction') || '';
+          const show = !faction || itemFaction === faction;
+          item.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        if (emptyEl) emptyEl.hidden = visible > 0;
+      }
+
+      fillFactionSelect();
+      applyFilters();
+
+      factionSelect.addEventListener('change', applyFilters);
+      if (form) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          applyFilters();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
