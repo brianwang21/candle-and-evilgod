@@ -26,22 +26,149 @@
     <h1 class="story-chapter-hub__title">命運之輪</h1>
     <p class="story-chapter-hub__en">Wheel of Fortune</p>
 
-    <section class="story-chapter-hub__sections" aria-labelledby="sections-title">
-      <h2 id="sections-title" class="story-chapter-hub__sections-title">段落</h2>
-      <ul class="story-chapter-hub__list">
-        <li>
-          <a class="story-chapter-hub__link" href="./命運之輪01.html">
-            <span class="story-chapter-hub__link-name">命運之輪01</span>
-            <span class="story-chapter-hub__link-hint">閱讀段落</span>
-          </a>
-        </li>
-      </ul>
-      <p class="story-chapter-hub__note">之後可在此資料夾新增「命運之輪02.html」等段落頁，並把連結加進本頁列表。</p>
+    <section class="story-wheel-lock" aria-labelledby="wheel-lock-title">
+      <h2 id="wheel-lock-title" class="story-wheel-lock__title">輸入密碼</h2>
+      <p class="story-wheel-lock__hint">請輸入六位數字後按下確認</p>
+
+      <div
+        class="story-wheel-lock__slots"
+        id="wheel-lock-slots"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        aria-label="已輸入 0 位，共 6 位"
+      >
+        <span class="story-wheel-lock__slot" data-slot="0"></span>
+        <span class="story-wheel-lock__slot" data-slot="1"></span>
+        <span class="story-wheel-lock__slot" data-slot="2"></span>
+        <span class="story-wheel-lock__slot" data-slot="3"></span>
+        <span class="story-wheel-lock__slot" data-slot="4"></span>
+        <span class="story-wheel-lock__slot" data-slot="5"></span>
+      </div>
+
+      <div class="story-wheel-lock__pad" role="group" aria-label="數字鍵盤">
+        <button type="button" class="story-wheel-lock__key" data-digit="1">1</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="2">2</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="3">3</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="4">4</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="5">5</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="6">6</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="7">7</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="8">8</button>
+        <button type="button" class="story-wheel-lock__key" data-digit="9">9</button>
+      </div>
+
+      <div class="story-wheel-lock__actions">
+        <button type="button" class="story-wheel-lock__clear" id="wheel-lock-clear" aria-label="刪除一位">⌫</button>
+        <button type="button" class="story-wheel-lock__submit" id="wheel-lock-submit" disabled aria-label="確認輸入">→</button>
+      </div>
+
+      <p class="story-wheel-lock__feedback" id="wheel-lock-feedback" role="status" aria-live="polite"></p>
     </section>
   </main>
 
   <footer class="footer footer--story">
     <p>© 2026 蠟燭與邪神 · 命運之輪</p>
   </footer>
+
+  <script>
+    (function () {
+      const MAX_LEN = 6;
+      // 目前尚無正確答案；之後可在此填入六位數字字串
+      const CORRECT_CODE = null;
+
+      const slotsEl = document.getElementById('wheel-lock-slots');
+      const feedbackEl = document.getElementById('wheel-lock-feedback');
+      const submitBtn = document.getElementById('wheel-lock-submit');
+      const clearBtn = document.getElementById('wheel-lock-clear');
+      const padEl = document.querySelector('.story-wheel-lock__pad');
+      const slotNodes = Array.from(slotsEl.querySelectorAll('.story-wheel-lock__slot'));
+
+      let code = '';
+
+      function render() {
+        slotNodes.forEach((slot, i) => {
+          const filled = i < code.length;
+          slot.classList.toggle('is-filled', filled);
+          slot.textContent = filled ? code[i] : '';
+        });
+        slotsEl.setAttribute('aria-label', '已輸入 ' + code.length + ' 位，共 ' + MAX_LEN + ' 位');
+        submitBtn.disabled = code.length !== MAX_LEN;
+      }
+
+      function setFeedback(message) {
+        feedbackEl.textContent = message || '';
+      }
+
+      function appendDigit(digit) {
+        if (code.length >= MAX_LEN) return;
+        code += digit;
+        setFeedback('');
+        render();
+      }
+
+      function clearOne() {
+        if (!code.length) return;
+        code = code.slice(0, -1);
+        setFeedback('');
+        render();
+      }
+
+      function reject() {
+        setFeedback('……沒有反應。');
+        code = '';
+        render();
+      }
+
+      function submit() {
+        if (code.length !== MAX_LEN) return;
+
+        if (!CORRECT_CODE) {
+          reject();
+          return;
+        }
+
+        if (code === CORRECT_CODE) {
+          setFeedback('已解鎖。');
+          // 正解通過後可導向段落頁
+          return;
+        }
+
+        reject();
+      }
+
+      padEl.addEventListener('click', (event) => {
+        const key = event.target.closest('[data-digit]');
+        if (!key || !padEl.contains(key)) return;
+        appendDigit(key.getAttribute('data-digit'));
+      });
+
+      clearBtn.addEventListener('click', clearOne);
+      submitBtn.addEventListener('click', submit);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.metaKey || event.ctrlKey || event.altKey) return;
+
+        if (event.key >= '1' && event.key <= '9') {
+          event.preventDefault();
+          appendDigit(event.key);
+          return;
+        }
+
+        if (event.key === 'Backspace') {
+          event.preventDefault();
+          clearOne();
+          return;
+        }
+
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          submit();
+        }
+      });
+
+      render();
+    })();
+  </script>
 </body>
 </html>
