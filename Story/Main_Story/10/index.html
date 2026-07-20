@@ -9,6 +9,162 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .story-wheel-lock {
+      box-sizing: border-box;
+      width: min(100%, 20rem);
+      max-width: 20rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 1.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+        rgba(8, 8, 8, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .story-wheel-lock *,
+    .story-wheel-lock *::before,
+    .story-wheel-lock *::after {
+      box-sizing: border-box;
+    }
+
+    .story-wheel-lock__title {
+      margin: 0 0 0.35rem;
+      font-family: var(--font-display, Orbitron, sans-serif);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .story-wheel-lock__hint {
+      margin: 0 0 1.35rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    .story-wheel-lock__slots {
+      display: grid !important;
+      grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+      gap: 0.45rem;
+      width: 100%;
+      margin: 0 0 1.5rem;
+    }
+
+    .story-wheel-lock__slot {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 2.6rem;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.35);
+      font-family: var(--font-display, Orbitron, sans-serif);
+      font-size: 1.15rem;
+      line-height: 1;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .story-wheel-lock__slot.is-filled {
+      border-color: rgba(229, 57, 53, 0.55);
+      background: rgba(229, 57, 53, 0.1);
+    }
+
+    .story-wheel-lock__pad {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      gap: 0.55rem;
+      width: 100%;
+      margin: 0 0 0.9rem;
+    }
+
+    .story-wheel-lock__key,
+    .story-wheel-lock__clear,
+    .story-wheel-lock__submit {
+      -webkit-appearance: none;
+      appearance: none;
+      margin: 0;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 0;
+      background: rgba(255, 255, 255, 0.04);
+      color: #f0f0f0;
+      font-family: var(--font-display, Orbitron, sans-serif);
+      cursor: pointer;
+    }
+
+    .story-wheel-lock__key {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 3.2rem;
+      aspect-ratio: 1;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .story-wheel-lock__key:hover,
+    .story-wheel-lock__key:focus-visible,
+    .story-wheel-lock__clear:hover,
+    .story-wheel-lock__clear:focus-visible,
+    .story-wheel-lock__submit:hover:not(:disabled),
+    .story-wheel-lock__submit:focus-visible:not(:disabled) {
+      border-color: rgba(229, 57, 53, 0.65);
+      background: rgba(229, 57, 53, 0.1);
+      color: #fff;
+      outline: none;
+    }
+
+    .story-wheel-lock__actions {
+      display: grid !important;
+      grid-template-columns: 3.2rem minmax(0, 1fr) !important;
+      gap: 0.55rem;
+      width: 100%;
+    }
+
+    .story-wheel-lock__clear,
+    .story-wheel-lock__submit {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.85rem;
+      width: 100%;
+    }
+
+    .story-wheel-lock__clear {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .story-wheel-lock__submit {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .story-wheel-lock__submit:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .story-wheel-lock__feedback {
+      min-height: 1.4em;
+      margin: 1rem 0 0;
+      font-family: 'Noto Serif TC', 'Songti TC', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.55);
+    }
+  </style>
 </head>
 <body class="story-page story-page--chapter">
   <div class="bg-grid"></div>
@@ -28,7 +184,7 @@
 
     <section class="story-wheel-lock" aria-labelledby="wheel-lock-title">
       <h2 id="wheel-lock-title" class="story-wheel-lock__title">輸入密碼</h2>
-      <p class="story-wheel-lock__hint">請輸入六位數字後按下確認</p>
+      <p class="story-wheel-lock__hint">請輸入六位數字後按下 →</p>
 
       <div
         class="story-wheel-lock__slots"
@@ -38,12 +194,12 @@
         aria-atomic="true"
         aria-label="已輸入 0 位，共 6 位"
       >
-        <span class="story-wheel-lock__slot" data-slot="0"></span>
-        <span class="story-wheel-lock__slot" data-slot="1"></span>
-        <span class="story-wheel-lock__slot" data-slot="2"></span>
-        <span class="story-wheel-lock__slot" data-slot="3"></span>
-        <span class="story-wheel-lock__slot" data-slot="4"></span>
-        <span class="story-wheel-lock__slot" data-slot="5"></span>
+        <div class="story-wheel-lock__slot" data-slot="0"></div>
+        <div class="story-wheel-lock__slot" data-slot="1"></div>
+        <div class="story-wheel-lock__slot" data-slot="2"></div>
+        <div class="story-wheel-lock__slot" data-slot="3"></div>
+        <div class="story-wheel-lock__slot" data-slot="4"></div>
+        <div class="story-wheel-lock__slot" data-slot="5"></div>
       </div>
 
       <div class="story-wheel-lock__pad" role="group" aria-label="數字鍵盤">
