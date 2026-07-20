@@ -198,6 +198,16 @@ const WEAPONS_DB = {
           html: '在神我們的父面前，那清潔沒有玷汙的虔誠，就是看顧在患難中的孤兒寡婦，並且保守自己不沾染世俗。<br><br><em>Pure religion and undefiled before our God and Father is this, to visit the fatherless and widows in their affliction, and to keep himself unspotted from the world.</em>',
         },
       ],
+      related: [
+        {
+          id: 'eternal-night',
+          image: 'images/weapons/weapon_comp/EternalNight.png',
+          name: '永夜重工 (Eternal Night Industry)',
+          alt: '永夜重工',
+          summary:
+            '設立於德國的軍工廠，其創辦人羅科先生曾在俄羅斯地區進行異常事件搜索長達四年之久。',
+        },
+      ],
     },
   ],
 
@@ -277,4 +287,68 @@ function renderWeaponSummary(summary) {
       return `<p>${escapeWeaponHtml(block.text || '')}</p>`;
     })
     .join('');
+}
+
+function renderWeaponRelated(related) {
+  if (!related || !related.length) return '';
+
+  const items = related
+    .map((item) => {
+      const imageSrc =
+        typeof siteUrl === 'function' ? siteUrl(item.image) : item.image;
+      return `
+        <button
+          type="button"
+          class="weapon-detail__related-item"
+          data-weapon-related-id="${escapeWeaponHtml(item.id)}"
+          aria-label="${escapeWeaponHtml(item.name)}"
+        >
+          <img
+            src="${escapeWeaponHtml(imageSrc)}"
+            alt="${escapeWeaponHtml(item.alt || item.name)}"
+            class="weapon-detail__related-img"
+          >
+        </button>
+      `;
+    })
+    .join('');
+
+  return `
+    <div class="weapon-detail__related">
+      <span class="weapon-detail__related-label">相關</span>
+      <div class="weapon-detail__related-list">
+        ${items}
+      </div>
+    </div>
+  `;
+}
+
+function getWeaponRelatedById(weapon, relatedId) {
+  if (!weapon || !Array.isArray(weapon.related)) return null;
+  return weapon.related.find((item) => item.id === relatedId) || null;
+}
+
+function renderWeaponRelatedDetail(item) {
+  if (!item) return '';
+
+  const imageSrc =
+    typeof siteUrl === 'function' ? siteUrl(item.image) : item.image;
+
+  return `
+    <div class="weapon-related-detail">
+      <div class="weapon-related-detail__media">
+        <img
+          src="${escapeWeaponHtml(imageSrc)}"
+          alt="${escapeWeaponHtml(item.alt || item.name)}"
+          class="weapon-related-detail__img"
+        >
+      </div>
+      <h2 class="weapon-related-detail__name" id="weapon-related-modal-title">
+        ${escapeWeaponHtml(item.name)}
+      </h2>
+      <p class="weapon-related-detail__summary">
+        ${escapeWeaponHtml(item.summary || '')}
+      </p>
+    </div>
+  `;
 }

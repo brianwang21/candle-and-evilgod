@@ -287,6 +287,28 @@
     </div>
   </div>
 
+  <div
+    class="weapon-related-modal"
+    id="weapon-related-modal"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="weapon-related-modal-title"
+  >
+    <div class="weapon-related-modal__backdrop" data-weapon-related-close></div>
+    <div class="weapon-related-modal__panel">
+      <button
+        type="button"
+        class="weapon-related-modal__close"
+        data-weapon-related-close
+        aria-label="關閉相關詳情"
+      >
+        ×
+      </button>
+      <div class="weapon-related-modal__body" id="weapon-related-modal-body"></div>
+    </div>
+  </div>
+
   <footer class="footer">
     <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
   </footer>
@@ -601,6 +623,7 @@
 
       function getWeaponDetailHtml(weapon) {
         const summaryHtml = renderWeaponSummary(weapon.summary);
+        const relatedHtml = renderWeaponRelated(weapon.related);
 
         return `
           <h2 class="section-title" id="weapon-modal-title">
@@ -621,6 +644,7 @@
               <div class="weapon-detail__body">
                 ${summaryHtml}
               </div>
+              ${relatedHtml}
             </div>
           </div>
         `;
@@ -628,6 +652,8 @@
 
       let weaponModalClosing = false;
       let weaponModalCloseTimer = 0;
+      let weaponRelatedModalClosing = false;
+      let weaponRelatedModalCloseTimer = 0;
 
       function lockWeaponModalScroll() {
         document.documentElement.classList.add('weapon-modal-open', 'weapon-modal-nav-exit');
@@ -644,12 +670,72 @@
         document.body.classList.remove('weapon-modal-nav-exit');
       }
 
+      function closeWeaponRelatedModal() {
+        const modal = document.getElementById('weapon-related-modal');
+        if (
+          !modal ||
+          modal.hidden ||
+          weaponRelatedModalClosing ||
+          !modal.classList.contains('is-open')
+        ) {
+          return false;
+        }
+
+        weaponRelatedModalClosing = true;
+        modal.classList.remove('is-open');
+
+        const finishClose = () => {
+          if (!weaponRelatedModalClosing) return;
+          window.clearTimeout(weaponRelatedModalCloseTimer);
+          modal.hidden = true;
+          weaponRelatedModalClosing = false;
+        };
+
+        weaponRelatedModalCloseTimer = window.setTimeout(finishClose, 280);
+        return true;
+      }
+
+      function openWeaponRelatedModal(item) {
+        const modal = document.getElementById('weapon-related-modal');
+        const body = document.getElementById('weapon-related-modal-body');
+        if (!modal || !body || !item) return;
+
+        window.clearTimeout(weaponRelatedModalCloseTimer);
+        weaponRelatedModalClosing = false;
+        body.innerHTML = renderWeaponRelatedDetail(item);
+        modal.hidden = false;
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            modal.classList.add('is-open');
+          });
+        });
+
+        const closeBtn = modal.querySelector('.weapon-related-modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function bindWeaponRelatedTriggers(weapon, root) {
+        if (!root || !weapon) return;
+
+        root.querySelectorAll('[data-weapon-related-id]').forEach((button) => {
+          button.addEventListener('click', () => {
+            const related = getWeaponRelatedById(
+              weapon,
+              button.getAttribute('data-weapon-related-id')
+            );
+            if (related) openWeaponRelatedModal(related);
+          });
+        });
+      }
+
       function closeWeaponModal() {
         const modal = document.getElementById('weapon-modal');
         if (!modal || modal.hidden || weaponModalClosing || !modal.classList.contains('is-open')) {
           return;
         }
 
+        closeWeaponRelatedModal();
         weaponModalClosing = true;
         modal.classList.remove('is-open');
         revealWeaponModalNav();
@@ -673,6 +759,7 @@
         window.clearTimeout(weaponModalCloseTimer);
         weaponModalClosing = false;
         body.innerHTML = getWeaponDetailHtml(weapon);
+        bindWeaponRelatedTriggers(weapon, body);
         modal.hidden = false;
         lockWeaponModalScroll();
 
@@ -688,14 +775,23 @@
 
       function setupWeaponModal() {
         const modal = document.getElementById('weapon-modal');
+        const relatedModal = document.getElementById('weapon-related-modal');
         if (!modal) return;
 
         modal.querySelectorAll('[data-weapon-modal-close]').forEach((el) => {
           el.addEventListener('click', closeWeaponModal);
         });
 
+        if (relatedModal) {
+          relatedModal.querySelectorAll('[data-weapon-related-close]').forEach((el) => {
+            el.addEventListener('click', closeWeaponRelatedModal);
+          });
+        }
+
         document.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape') closeWeaponModal();
+          if (event.key !== 'Escape') return;
+          if (closeWeaponRelatedModal()) return;
+          closeWeaponModal();
         });
       }
 

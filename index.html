@@ -147,9 +147,9 @@
               <div class="home-worldview-bar__section" id="opcu-ref">
                 <p>
                   如果想更好的了解異常事件的分級，可參考
-                  <a class="home-worldview-bar__opcu-inline" href="opcu-classification.html">O.P.C.U</a>
+                  <a class="home-worldview-bar__opcu-inline" href="anomaly-event.html#opcu">O.P.C.U</a>
                 </p>
-                <a class="home-worldview-bar__opcu-card" href="opcu-classification.html">
+                <a class="home-worldview-bar__opcu-card" href="anomaly-event.html#opcu">
                   <img
                     class="home-worldview-bar__opcu-card-icon"
                     src="images/OPCU_ICON.png"
@@ -158,7 +158,7 @@
                   >
                   <span class="home-worldview-bar__opcu-card-kicker">Classification</span>
                   <span class="home-worldview-bar__opcu-card-title">O.P.C.U</span>
-                  <span class="home-worldview-bar__opcu-card-desc">查看異常事件分級參考頁面</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看異常事件分級與物質標籤</span>
                   <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
                 </a>
               </div>
@@ -409,6 +409,133 @@
             </a>
           </li>
         </ul>
+      </div>
+    </section>
+
+    <section class="home-anomaly-events" id="anomaly-events" aria-label="異常事件">
+      <div class="home-anomaly-events__inner">
+        <p class="home-anomaly-events__eyebrow">Anomaly Events</p>
+        <h2 class="home-anomaly-events__heading">異常事件</h2>
+
+        <article class="home-anomaly-events__deck">
+          <div class="home-anomaly-events__stage">
+            <div class="home-anomaly-events__reel" aria-hidden="true">
+              <div class="home-anomaly-events__reel-spin home-anomaly-events__reel-spin--trail">
+                <svg class="home-anomaly-events__reel-arc" viewBox="0 0 100 100" focusable="false">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="42"
+                    fill="none"
+                    stroke="rgba(229, 57, 53, 0.28)"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-dasharray="34 22 14 40 26 30 18 80"
+                  ></circle>
+                </svg>
+              </div>
+              <div class="home-anomaly-events__reel-spin">
+                <svg class="home-anomaly-events__reel-arc" viewBox="0 0 100 100" focusable="false">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="42"
+                    fill="none"
+                    stroke="rgba(229, 57, 53, 0.92)"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-dasharray="42 18 20 32 28 24 16 84"
+                  ></circle>
+                </svg>
+                <span class="home-anomaly-events__reel-head"></span>
+              </div>
+            </div>
+
+            <img
+              class="home-anomaly-events__vhs"
+              src="images/anomaly/VHS.png"
+              alt=""
+              width="1942"
+              height="1092"
+            >
+
+            <button
+              type="button"
+              class="home-anomaly-events__rec"
+              id="anomaly-vhs-rec"
+              aria-label="點擊彈起以暫停捲帶"
+              aria-pressed="true"
+            >
+              <span class="home-anomaly-events__rec-face" aria-hidden="true"></span>
+            </button>
+
+            <div class="home-anomaly-events__ports" role="tablist" aria-label="異常事件分頁">
+              <button
+                type="button"
+                class="home-anomaly-events__port home-anomaly-events__port--class is-active"
+                id="anomaly-port-class"
+                role="tab"
+                aria-selected="true"
+                aria-controls="anomaly-panel-class"
+                data-anomaly-tab="class"
+              >
+                <span class="home-anomaly-events__port-mark" aria-hidden="true"></span>
+                <span class="home-anomaly-events__port-title">分級與物質標籤</span>
+              </button>
+              <button
+                type="button"
+                class="home-anomaly-events__port home-anomaly-events__port--list"
+                id="anomaly-port-list"
+                role="tab"
+                aria-selected="false"
+                aria-controls="anomaly-panel-list"
+                data-anomaly-tab="list"
+                tabindex="-1"
+              >
+                <span class="home-anomaly-events__port-mark" aria-hidden="true"></span>
+                <span class="home-anomaly-events__port-title">異常事件清單</span>
+              </button>
+            </div>
+
+            <div class="home-anomaly-events__copy">
+              <div
+                class="home-anomaly-events__panel is-active"
+                id="anomaly-panel-class"
+                role="tabpanel"
+                aria-labelledby="anomaly-port-class"
+                data-anomaly-panel="class"
+              >
+                <p class="home-anomaly-events__kicker home-anomaly-events__kicker--class">Classification Reference</p>
+                <p class="home-anomaly-events__lead">
+                  一個異常事件需經過「O.P.C.U」及「管理物質標籤」的分類才可進行完整歸檔。
+                  前者告知一線人員如何處置，後者告訴研究人員這類異常屬於何種類型。
+                </p>
+                <a class="home-anomaly-events__cta home-anomaly-events__cta--class" href="anomaly-event.html">
+                  <span class="home-anomaly-events__cta-label">查看分級與物質標籤</span>
+                  <span class="home-anomaly-events__cta-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              <div
+                class="home-anomaly-events__panel"
+                id="anomaly-panel-list"
+                role="tabpanel"
+                aria-labelledby="anomaly-port-list"
+                data-anomaly-panel="list"
+                hidden
+              >
+                <p class="home-anomaly-events__kicker">Recorded Phenomena</p>
+                <p class="home-anomaly-events__lead">
+                  異常事件早已不是都市傳說，而是這個世界日常運轉的一部分。有些被適應、收束成「受管束事件」；有些仍以無法解釋的姿態存在。這裡收錄目前已記錄、並與角色相關的檔案。
+                </p>
+                <a class="home-anomaly-events__cta" href="anomaly-event-list.html">
+                  <span class="home-anomaly-events__cta-label">查看異常事件清單</span>
+                  <span class="home-anomaly-events__cta-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -669,6 +796,148 @@
           applyFilters();
         });
       }
+    })();
+
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('[data-anomaly-tab]'));
+      const panels = Array.from(document.querySelectorAll('[data-anomaly-panel]'));
+      if (!tabs.length || !panels.length) return;
+
+      const FADE_MS = 300;
+      let current = 'class';
+      let switching = false;
+
+      function panelByKey(key) {
+        return panels.find((panel) => panel.getAttribute('data-anomaly-panel') === key) || null;
+      }
+
+      function syncTabs(key) {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute('data-anomaly-tab') === key;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          tab.tabIndex = active ? 0 : -1;
+        });
+      }
+
+      function showTab(key) {
+        if (!panelByKey(key) || key === current || switching) return;
+
+        const nextPanel = panelByKey(key);
+        const prevPanel = panelByKey(current);
+        switching = true;
+        syncTabs(key);
+        prevPanel.classList.remove('is-active');
+
+        window.setTimeout(() => {
+          prevPanel.hidden = true;
+          nextPanel.hidden = false;
+          nextPanel.classList.remove('is-active');
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              nextPanel.classList.add('is-active');
+              current = key;
+              switching = false;
+            });
+          });
+        }, FADE_MS);
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          showTab(tab.getAttribute('data-anomaly-tab'));
+        });
+
+        tab.addEventListener('keydown', (event) => {
+          const idx = tabs.indexOf(tab);
+          let nextIdx = -1;
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIdx = (idx + 1) % tabs.length;
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIdx = (idx - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') nextIdx = 0;
+          if (event.key === 'End') nextIdx = tabs.length - 1;
+          if (nextIdx < 0) return;
+          event.preventDefault();
+          tabs[nextIdx].focus();
+          showTab(tabs[nextIdx].getAttribute('data-anomaly-tab'));
+        });
+      });
+    })();
+
+    (function () {
+      const stage = document.querySelector('.home-anomaly-events__stage');
+      const recBtn = document.getElementById('anomaly-vhs-rec');
+      const mainSpin =
+        stage &&
+        stage.querySelector(
+          '.home-anomaly-events__reel-spin:not(.home-anomaly-events__reel-spin--trail)'
+        );
+      const trailSpin =
+        stage && stage.querySelector('.home-anomaly-events__reel-spin--trail');
+      if (!stage || !recBtn || !mainSpin || !trailSpin) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const mainSpeed = 360 / 2.8;
+      const trailSpeed = -360 / 5.2;
+      const stopEase = 0.028;
+      const startEase = 0.07;
+
+      // Start pressed/down: reel spinning
+      let raised = false;
+      let mainAngle = 0;
+      let trailAngle = 0;
+      let mainVel = reduceMotion ? 0 : mainSpeed;
+      let trailVel = reduceMotion ? 0 : trailSpeed;
+      let mainTarget = mainVel;
+      let trailTarget = trailVel;
+      let lastTime = performance.now();
+
+      function applyRaised(nextRaised) {
+        raised = nextRaised;
+        recBtn.classList.toggle('is-raised', raised);
+        recBtn.setAttribute('aria-pressed', raised ? 'false' : 'true');
+        recBtn.setAttribute(
+          'aria-label',
+          raised ? '點擊壓下以啟動捲帶' : '點擊彈起以暫停捲帶'
+        );
+        if (reduceMotion) return;
+        // pressed (down) = spin, raised (up) = stop
+        mainTarget = raised ? 0 : mainSpeed;
+        trailTarget = raised ? 0 : trailSpeed;
+      }
+
+      function tick(now) {
+        const dt = Math.min(0.05, (now - lastTime) / 1000);
+        lastTime = now;
+
+        const ease = raised ? stopEase : startEase;
+        const blend = 1 - Math.exp(-ease * 60 * dt);
+        mainVel += (mainTarget - mainVel) * blend;
+        trailVel += (trailTarget - trailVel) * blend;
+
+        if (Math.abs(mainVel) < 0.08 && mainTarget === 0) mainVel = 0;
+        if (Math.abs(trailVel) < 0.08 && trailTarget === 0) trailVel = 0;
+
+        mainAngle = (mainAngle + mainVel * dt) % 360;
+        trailAngle = (trailAngle + trailVel * dt) % 360;
+        if (mainAngle < 0) mainAngle += 360;
+        if (trailAngle < 0) trailAngle += 360;
+
+        mainSpin.style.transform = `rotate(${mainAngle}deg)`;
+        trailSpin.style.transform = `rotate(${trailAngle}deg)`;
+
+        window.requestAnimationFrame(tick);
+      }
+
+      recBtn.addEventListener('click', () => {
+        applyRaised(!raised);
+      });
+
+      applyRaised(false);
+
+      window.requestAnimationFrame((now) => {
+        lastTime = now;
+        window.requestAnimationFrame(tick);
+      });
     })();
   </script>
 </body>

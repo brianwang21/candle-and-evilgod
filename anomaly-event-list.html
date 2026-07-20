@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>異常事件清單 · 蠟燭與邪神</title>
+  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="anomaly-file-page">
+  <div class="anomaly-file-page__grain" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <nav class="navbar__inner">
+      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left">← 返回主頁</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="anomaly-file" aria-labelledby="anomaly-file-title">
+      <header class="anomaly-file__masthead">
+        <p class="anomaly-file__doc-id">DOC / AEL-INDEX · ARCHIVE</p>
+        <h1 class="anomaly-file__title" id="anomaly-file-title">異常事件清單</h1>
+        <p class="anomaly-file__lead">
+          以檔案格式歸檔之異常事件索引。可依 O.P.C.U 類型與管理物質標籤開關篩選；點擊檔案列可展開項目標號、類型與物質標籤。
+        </p>
+      </header>
+
+      <div class="anomaly-file__filters" aria-label="篩選條件">
+        <div class="anomaly-file__filter-block is-open" data-filter="opcu">
+          <div class="anomaly-file__filter-summary" role="button" tabindex="0" aria-expanded="true" aria-controls="anomaly-file-opcu-panel">
+            <span class="anomaly-file__filter-summary-text">
+              <span class="anomaly-file__filter-label">O.P.C.U 類型</span>
+              <span class="anomaly-file__filter-note">菱形開關篩選 · 可複選 · 符合任一即列出</span>
+            </span>
+            <span class="anomaly-file__filter-summary-actions">
+              <button type="button" class="anomaly-file__filter-clear" data-clear="opcu">清除</button>
+              <span class="anomaly-file__filter-chevron" aria-hidden="true"></span>
+            </span>
+          </div>
+          <div class="anomaly-file__filter-body" id="anomaly-file-opcu-panel">
+            <div class="anomaly-file__filter-body-inner">
+              <div
+                class="anomaly-file__opcu-diamond"
+                id="anomaly-file-opcu-filters"
+                role="group"
+                aria-label="O.P.C.U 類型篩選"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="anomaly-file__filter-block anomaly-file__filter-block--tags" data-filter="tags">
+          <div class="anomaly-file__filter-summary" role="button" tabindex="0" aria-expanded="false" aria-controls="anomaly-file-tag-panel">
+            <span class="anomaly-file__filter-summary-text">
+              <span class="anomaly-file__filter-label">管理物質標籤</span>
+              <span class="anomaly-file__filter-note">點選圖示開關篩選 · 符合任一即列出 · 對照見 <a href="anomaly-event.html#substance-tags">分類頁</a></span>
+            </span>
+            <span class="anomaly-file__filter-summary-actions">
+              <button type="button" class="anomaly-file__filter-clear" data-clear="tags">清除</button>
+              <span class="anomaly-file__filter-chevron" aria-hidden="true"></span>
+            </span>
+          </div>
+          <div class="anomaly-file__filter-body" id="anomaly-file-tag-panel">
+            <div class="anomaly-file__filter-body-inner">
+              <div class="anomaly-file__tag-grid" id="anomaly-file-tag-filters" role="group" aria-label="管理物質標籤篩選"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="anomaly-file__results" aria-label="篩選結果">
+        <p class="anomaly-file__count" id="anomaly-file-count" aria-live="polite"></p>
+        <p class="anomaly-file__empty" id="anomaly-file-empty" hidden>目前沒有符合條件的檔案。</p>
+        <div class="anomaly-file__list" id="anomaly-file-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 蠟燭與邪神 · 異常事件清單</p>
+  </footer>
+
+  <script src="site-path.js"></script>
+  <script src="anomaly-file-data.js"></script>
+  <script>
+    (function () {
+      const listEl = document.getElementById('anomaly-file-list');
+      const emptyEl = document.getElementById('anomaly-file-empty');
+      const countEl = document.getElementById('anomaly-file-count');
+      const opcuFiltersEl = document.getElementById('anomaly-file-opcu-filters');
+      const tagFiltersEl = document.getElementById('anomaly-file-tag-filters');
+      if (!listEl || !opcuFiltersEl || !tagFiltersEl) return;
+
+      const selectedOpcu = new Set();
+      const selectedTags = new Set();
+
+      function assetUrl(path) {
+        return typeof siteUrl === 'function' ? siteUrl(path) : path;
+      }
+
+      function makeOpcuDiamond(item) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `anomaly-file__opcu-cell anomaly-file__opcu-cell--${item.id.toLowerCase()}`;
+        btn.dataset.kind = 'opcu';
+        btn.dataset.id = item.id;
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-label', `篩選 ${item.zh} ${item.en}`);
+        btn.title = `${item.zh} · ${item.en}`;
+        btn.innerHTML = `
+          <span class="anomaly-file__opcu-face">
+            <span class="anomaly-file__opcu-letter">${item.id}</span>
+            <span class="anomaly-file__opcu-tip">${item.zh}</span>
+          </span>
+        `;
+        btn.addEventListener('click', () => {
+          if (selectedOpcu.has(item.id)) selectedOpcu.delete(item.id);
+          else selectedOpcu.add(item.id);
+          const on = selectedOpcu.has(item.id);
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          btn.classList.toggle('is-on', on);
+          applyFilters();
+        });
+        return btn;
+      }
+
+      function makeTagToggle(item) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'anomaly-file__tag';
+        btn.dataset.kind = 'tag';
+        btn.dataset.id = item.id;
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-label', `${item.zh} ${item.en} ${item.id}`);
+        btn.title = `${item.zh} · ${item.en} · ${item.id}`;
+        btn.innerHTML = `
+          <span class="anomaly-file__tag-frame">
+            <img src="${assetUrl(item.image)}" alt="" width="512" height="512" loading="lazy">
+          </span>
+          <span class="anomaly-file__tag-caption">${item.zh}</span>
+          <span class="anomaly-file__tag-meta">
+            <span class="anomaly-file__tag-code">${item.id}</span>
+            <span class="anomaly-file__tag-en">${item.en}</span>
+          </span>
+        `;
+        btn.addEventListener('click', () => {
+          if (selectedTags.has(item.id)) selectedTags.delete(item.id);
+          else selectedTags.add(item.id);
+          const on = selectedTags.has(item.id);
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          btn.classList.toggle('is-on', on);
+          applyFilters();
+        });
+        return btn;
+      }
+
+      function renderOpcuMarks(opcuIds) {
+        return `
+          <span class="anomaly-file__opcu-marks" aria-label="O.P.C.U ${opcuIds.join('/')}">
+            ${opcuIds.map((id) => `
+              <span class="anomaly-file__opcu-mark anomaly-file__opcu-mark--${id.toLowerCase()}" title="${formatAnomalyFileOpcu([id])}">
+                <span class="anomaly-file__opcu-mark-face">${id}</span>
+              </span>
+            `).join('')}
+          </span>
+        `;
+      }
+
+      function renderTagIcons(tagIds) {
+        return tagIds.map((id) => {
+          const tag = getAnomalyFileTag(id);
+          if (!tag) return '';
+          return `
+            <div class="anomaly-file__tag-entry">
+              <span class="anomaly-file__tag-chip" title="${tag.zh} · ${tag.en} · ${tag.id}">
+                <img src="${assetUrl(tag.image)}" alt="${tag.zh}" width="48" height="48" loading="lazy">
+                <span>${tag.zh}<small>${tag.id}</small></span>
+              </span>
+              <p class="anomaly-file__tag-desc">${tag.desc || ''}</p>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function renderFilters() {
+        ANOMALY_FILE_OPCU.forEach((item) => opcuFiltersEl.appendChild(makeOpcuDiamond(item)));
+        ANOMALY_FILE_TAGS.forEach((item) => tagFiltersEl.appendChild(makeTagToggle(item)));
+      }
+
+      /** OPCU／標籤皆為聯集：選中多個時，符合其中任一即顯示 */
+      function matchesFilters(event) {
+        const opcuOk = selectedOpcu.size === 0
+          || event.opcu.some((id) => selectedOpcu.has(id));
+        const tagOk = selectedTags.size === 0
+          || event.tags.some((id) => selectedTags.has(id));
+        return opcuOk && tagOk;
+      }
+
+      function buildList() {
+        const resultsEl = document.querySelector('.anomaly-file__results');
+        listEl.innerHTML = '';
+
+        ANOMALY_FILE_EVENTS.forEach((event) => {
+          const details = document.createElement('details');
+          details.className = 'anomaly-file__entry';
+          details.dataset.code = event.code;
+          details.dataset.opcu = event.opcu.join(',');
+          details.dataset.tags = event.tags.join(',');
+
+          const pageHref = getAnomalyFilePage(event);
+
+          details.innerHTML = `
+            <summary class="anomaly-file__summary">
+              ${renderOpcuMarks(event.opcu)}
+              <span class="anomaly-file__summary-body">
+                <span class="anomaly-file__summary-code">${event.displayCode}</span>
+                <span class="anomaly-file__summary-name">「${event.name}」<span class="anomaly-file__summary-en">(${event.nameEn})</span></span>
+              </span>
+              <span class="anomaly-file__summary-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="anomaly-file__panel">
+              <dl class="anomaly-file__index">
+                <div class="anomaly-file__index-row">
+                  <dt>項目標號</dt>
+                  <dd>
+                    <span class="anomaly-file__index-code">${event.displayCode}</span>
+                    <span class="anomaly-file__index-title">「${event.name}」</span>
+                    <span class="anomaly-file__index-en">(${event.nameEn})</span>
+                  </dd>
+                </div>
+                <div class="anomaly-file__index-row">
+                  <dt>O.P.C.U類型</dt>
+                  <dd>
+                    <div class="anomaly-file__index-opcu">
+                      ${event.opcu.map((id) => {
+                        const item = getAnomalyFileOpcu(id);
+                        if (!item) return '';
+                        return `
+                          <span class="anomaly-file__index-opcu-item" title="${item.zh} · ${item.en}">
+                            <span class="anomaly-file__opcu-mark anomaly-file__opcu-mark--${id.toLowerCase()}">
+                              <span class="anomaly-file__opcu-mark-face">${id}</span>
+                            </span>
+                            <span class="anomaly-file__index-opcu-text">
+                              <strong>${item.zh}</strong>
+                              <small>${item.en}</small>
+                            </span>
+                          </span>
+                        `;
+                      }).join('')}
+                    </div>
+                  </dd>
+                </div>
+                <div class="anomaly-file__index-row">
+                  <dt>管理物質標籤</dt>
+                  <dd>
+                    <div class="anomaly-file__tag-chips">${renderTagIcons(event.tags)}</div>
+                  </dd>
+                </div>
+              </dl>
+              <a class="anomaly-file__link" href="${pageHref}">開啟專屬檔案 →</a>
+            </div>
+          `;
+
+          listEl.appendChild(details);
+        });
+
+        applyFilters();
+
+        if (resultsEl && !resultsEl.dataset.heightLocked) {
+          requestAnimationFrame(() => {
+            resultsEl.style.minHeight = `${resultsEl.offsetHeight}px`;
+            resultsEl.dataset.heightLocked = '1';
+          });
+        }
+      }
+
+      function applyFilters() {
+        let visible = 0;
+
+        listEl.querySelectorAll('.anomaly-file__entry').forEach((entry) => {
+          const event = ANOMALY_FILE_EVENTS.find((item) => item.code === entry.dataset.code);
+          if (!event) return;
+          const show = matchesFilters(event);
+          entry.classList.toggle('is-filtered-out', !show);
+          entry.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        emptyEl.hidden = visible > 0;
+        countEl.textContent = `顯示 ${visible}／${ANOMALY_FILE_EVENTS.length} 份檔案`;
+      }
+
+      function clearFilter(kind) {
+        if (kind === 'opcu') {
+          selectedOpcu.clear();
+          opcuFiltersEl.querySelectorAll('.anomaly-file__opcu-cell').forEach((el) => {
+            el.classList.remove('is-on');
+            el.setAttribute('aria-pressed', 'false');
+          });
+        } else {
+          selectedTags.clear();
+          tagFiltersEl.querySelectorAll('.anomaly-file__tag').forEach((el) => {
+            el.classList.remove('is-on');
+            el.setAttribute('aria-pressed', 'false');
+          });
+        }
+        applyFilters();
+      }
+
+      document.querySelectorAll('[data-clear]').forEach((btn) => {
+        btn.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          clearFilter(btn.dataset.clear);
+        });
+      });
+
+      function toggleFilterBlock(summary) {
+        const block = summary.closest('.anomaly-file__filter-block');
+        if (!block) return;
+        const open = !block.classList.contains('is-open');
+        block.classList.toggle('is-open', open);
+        summary.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      document.querySelectorAll('.anomaly-file__filter-summary').forEach((summary) => {
+        summary.addEventListener('click', (event) => {
+          if (event.target.closest('[data-clear], a')) return;
+          toggleFilterBlock(summary);
+        });
+        summary.addEventListener('keydown', (event) => {
+          if (event.target.closest('[data-clear], a')) return;
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleFilterBlock(summary);
+          }
+        });
+      });
+
+      document.querySelectorAll('.anomaly-file__filter-summary a').forEach((link) => {
+        link.addEventListener('click', (event) => event.stopPropagation());
+      });
+
+      renderFilters();
+      buildList();
+    })();
+  </script>
+</body>
+</html>

@@ -3,105 +3,851 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>異常事件詳情 · 蠟燭與邪神</title>
+  <title>異常事件 · 蠟燭與邪神</title>
   <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="anomaly-ref-page">
   <div class="bg-grid"></div>
   <div class="bg-glow bg-glow--left"></div>
   <div class="bg-glow bg-glow--right"></div>
 
   <header class="navbar">
     <nav class="navbar__inner">
-      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回能力區</a>
+      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left" id="anomaly-event-back">← 返回主頁</a>
     </nav>
   </header>
 
   <main>
-    <section class="anomaly-event-detail" id="anomaly-event-detail"></section>
+    <div class="anomaly-ref" id="anomaly-ref">
+      <header class="anomaly-ref__header">
+        <p class="anomaly-ref__eyebrow">Anomaly Classification</p>
+        <h1 class="anomaly-ref__title">異常事件</h1>
+        <p class="anomaly-ref__lead">
+          在《蠟燭與邪神》中，一個異常事件需經過「O.P.C.U」及「管理物質標籤」的分類才可進行完整的歸檔。
+          前者告知一線人員如何處置，後者告訴研究人員這類異常屬於何種類型。
+        </p>
+        <div class="anomaly-ref__axes" role="tablist" aria-label="雙軸對照">
+          <button
+            type="button"
+            class="anomaly-ref__axis anomaly-ref__axis--opcu is-active"
+            id="anomaly-ref-tab-opcu"
+            role="tab"
+            aria-selected="true"
+            aria-controls="opcu"
+            data-axis="opcu"
+          >
+            <span class="anomaly-ref__axis-kicker">Axis A · Frontline</span>
+            <span class="anomaly-ref__axis-name">O.P.C.U</span>
+            <span class="anomaly-ref__axis-desc">處置相容性</span>
+          </button>
+          <button
+            type="button"
+            class="anomaly-ref__axis anomaly-ref__axis--tags"
+            id="anomaly-ref-tab-tags"
+            role="tab"
+            aria-selected="false"
+            aria-controls="substance-tags"
+            data-axis="substance-tags"
+          >
+            <span class="anomaly-ref__axis-kicker">Axis B · Research</span>
+            <span class="anomaly-ref__axis-name">管理物質標籤</span>
+            <span class="anomaly-ref__axis-desc">類型歸檔</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="anomaly-ref__panels">
+      <section
+        class="anomaly-ref__section anomaly-ref__panel opcu-main is-active"
+        id="opcu"
+        role="tabpanel"
+        aria-labelledby="opcu-title"
+        data-panel="opcu"
+      >
+        <p class="opcu-hero__eyebrow">Classification Reference</p>
+        <h2 class="opcu-hero__title" id="opcu-title">O.P.C.U</h2>
+        <div class="opcu-hero__lead">
+          <p>
+            O.P.C.U 是當前社會廣泛使用的異常事件分級法之一，代表面對各類型異常時的適切應對方式。
+            可拆成「觀測型（Observation）」、「規範型（Protocol）」、「協議型（Contractual）」及「無解型（Uncontainable）」四種適用分級。
+          </p>
+        </div>
+        <p class="opcu-hero__hint">將游標移至菱形上，點擊即可查看內容</p>
+
+        <div class="opcu-diamond" role="list" aria-label="O.P.C.U 分級">
+          <button
+            type="button"
+            class="opcu-diamond__cell opcu-diamond__cell--o is-active"
+            data-opcu="o"
+            role="listitem"
+            aria-expanded="true"
+            aria-controls="opcu-panel"
+          >
+            <span class="opcu-diamond__face">
+              <span class="opcu-diamond__letter">O</span>
+              <span class="opcu-diamond__tip">點擊查看</span>
+            </span>
+          </button>
+          <button
+            type="button"
+            class="opcu-diamond__cell opcu-diamond__cell--p"
+            data-opcu="p"
+            role="listitem"
+            aria-expanded="false"
+            aria-controls="opcu-panel"
+          >
+            <span class="opcu-diamond__face">
+              <span class="opcu-diamond__letter">P</span>
+              <span class="opcu-diamond__tip">點擊查看</span>
+            </span>
+          </button>
+          <button
+            type="button"
+            class="opcu-diamond__cell opcu-diamond__cell--c"
+            data-opcu="c"
+            role="listitem"
+            aria-expanded="false"
+            aria-controls="opcu-panel"
+          >
+            <span class="opcu-diamond__face">
+              <span class="opcu-diamond__letter">C</span>
+              <span class="opcu-diamond__tip">點擊查看</span>
+            </span>
+          </button>
+          <button
+            type="button"
+            class="opcu-diamond__cell opcu-diamond__cell--u"
+            data-opcu="u"
+            role="listitem"
+            aria-expanded="false"
+            aria-controls="opcu-panel"
+          >
+            <span class="opcu-diamond__face">
+              <span class="opcu-diamond__letter">U</span>
+              <span class="opcu-diamond__tip">點擊查看</span>
+            </span>
+          </button>
+        </div>
+
+        <section class="opcu-panel" id="opcu-panel" aria-live="polite">
+          <article class="opcu-panel__card is-visible" data-opcu-panel="o">
+            <h3 class="opcu-panel__title"><span class="opcu-panel__code">O</span> - 觀測型</h3>
+            <p class="opcu-panel__en">Observation</p>
+            <p class="opcu-panel__text">僅能觀測與紀錄，不允許接觸與干涉；任何干預皆可能導致災難性後果。</p>
+            <p class="opcu-panel__hook">「我們啥都不能做，只能看著它鬧事。」</p>
+            <p class="opcu-panel__text">這種異常就像是你家的貓，會突然打翻水杯、半夜亂跑，但你不能碰牠、不能罵牠，連靠近都不行。只能架監視器盯著、天天寫報告，期待牠哪天自己放棄搞破壞。</p>
+            <p class="opcu-panel__quote">「你不要動它、不要對話、不要靠近。只要你觀察得夠久，就知道它什麼時候會發飆……大概啦。」</p>
+          </article>
+          <article class="opcu-panel__card" data-opcu-panel="p" hidden>
+            <h3 class="opcu-panel__title"><span class="opcu-panel__code">P</span> - 規範型</h3>
+            <p class="opcu-panel__en">Protocol</p>
+            <p class="opcu-panel__text">可透過既定程序與防範機制進行有限使用或收容；需要嚴格執行SOP與設備維護。</p>
+            <p class="opcu-panel__hook">「你不能控制它，但可以用一套規則讓它乖一點。」</p>
+            <p class="opcu-panel__text">像是在玩一個Bug超多的遊戲──你知道不能在某張地圖跳三下，不然會閃退。所以你立了個方法，只要照著流程走，它通常不會炸。</p>
+            <p class="opcu-panel__quote">「進入區域要穿三層手套、不能說『風車』這個詞、移動只能逆時針……對，就是這麼莫名其妙，但它有用。」</p>
+          </article>
+          <article class="opcu-panel__card" data-opcu-panel="c" hidden>
+            <h3 class="opcu-panel__title"><span class="opcu-panel__code">C</span> - 協議型</h3>
+            <p class="opcu-panel__en">Contractual</p>
+            <p class="opcu-panel__text">與異常建立協議或交換條件，維持合作關係；違約可能導致該異常脫控或懲罰。</p>
+            <p class="opcu-panel__hook">「我們跟它簽了約，它幫我們做事，我們不能惹它。」</p>
+            <p class="opcu-panel__text">這種異常有點像雇傭兵或惡魔，你可以合作、交換東西，但它會記住，每一次。比你請的律師還認真。要是敢違約一次，就等著整個人被燒成灰吧。</p>
+            <p class="opcu-panel__quote">「你可以請它幫忙，但你要給得起代價──而且不能反悔，它會記得每個字。」</p>
+          </article>
+          <article class="opcu-panel__card" data-opcu-panel="u" hidden>
+            <h3 class="opcu-panel__title"><span class="opcu-panel__code">U</span> - 無解型</h3>
+            <p class="opcu-panel__en">Uncontainable</p>
+            <p class="opcu-panel__text">完全無法收容或控制，只能持續隔離觀察或定期調整世界應對結構；本質不可控、不可知。</p>
+            <p class="opcu-panel__hook">「它就是個不能碰的麻煩，我們只能把它丟到最深的洞裡，然後祈禱它永遠別醒來。」</p>
+            <p class="opcu-panel__text">這種東西……你根本沒辦法對付。不能對話、不能封印、不能殺死，只能隔離它、偷看它、希望它別變更糟。</p>
+            <p class="opcu-panel__quote">「基本上，那東西是公司高層也會作惡夢的存在。別靠近，也別問太多。」</p>
+          </article>
+        </section>
+
+        <section class="opcu-notes" aria-label="補充說明">
+          <article class="opcu-notes__block">
+            <h3 class="opcu-notes__heading">特性說明</h3>
+            <ul class="opcu-notes__list">
+              <li>OPCU並非等級，而是「相容性」分類。某些異常可能同時符合多個條款特性，但僅以最主要機制記錄。</li>
+              <li>部分狀況會以「交錯條款」形式呈現（如：P/U型 → 有限規範但無法完全控制）</li>
+            </ul>
+          </article>
+
+          <article class="opcu-notes__block">
+            <h3 class="opcu-notes__heading">「受管束事件」之定義</h3>
+            <div class="opcu-notes__body">
+              <p>某些特殊的異常事件會出現於人類或靈長類物種身上，被稱為「附著」。</p>
+              <p>大部分被附著的對象都會因此現象死亡，少數存活下來的對象視作該異常現象的產出物。</p>
+              <p>然而，極少數對象能夠與附著於身上的異常事件<strong>共存</strong>，甚至一定程度的控制、操弄該異常事件。</p>
+              <p>這類型的異常事件被稱為「<strong>受管束事件</strong>」。</p>
+            </div>
+          </article>
+
+          <article class="opcu-notes__block opcu-notes__block--memo">
+            <h3 class="opcu-notes__heading">總結</h3>
+            <div class="opcu-notes__body">
+              <p class="opcu-notes__quote">「O.P.C.U條款的重點不在於如何收容，而是『怎麼撐下去』。我們不是在管理什麼，我們是在跟災難簽停戰協議，然後想辦法撐到下一次例行檢查為止。」</p>
+              <p class="opcu-notes__attribution">——莫里斯公司執行長　莉莉．莫里斯　筆</p>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <section
+        class="anomaly-ref__section anomaly-ref__panel anomaly-ref__section--tags"
+        id="substance-tags"
+        role="tabpanel"
+        aria-labelledby="substance-tags-title"
+        data-panel="substance-tags"
+        hidden
+      >
+        <p class="anomaly-ref__section-eyebrow">Archive Taxonomy</p>
+        <h2 class="anomaly-ref__section-title" id="substance-tags-title">管理物質標籤</h2>
+        <div class="anomaly-ref__section-lead">
+          <p>管理物質標籤負責傳達該異常事件具有何種類型的特質，或以何種方式存在。</p>
+          <p>一個異常事件具有存在複數管理物質標籤的可能。</p>
+        </div>
+
+        <div class="faction-tag-panel" id="faction-tag-panel">
+          <h3 class="faction-tag-grid__heading">十二項標籤</h3>
+          <div class="faction-tag-grid" role="list" aria-label="十二項管理物質標籤">
+            <button type="button" class="faction-tag" role="listitem" data-tag="1-1" data-title="段訊讀數" data-en="Fragmented Signal" data-code="FRS" data-image="images/Morris/1-1.png" data-desc="異常的電波、數據流、無法解析的亂碼或殘缺的通訊信號。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/1-1.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">段訊讀數</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="1-2" data-title="密儀標號" data-en="Esoteric Designation" data-code="ESD" data-image="images/Morris/1-2.png" data-desc="涉及神祕學、儀式、神話學或具備未知宗教屬性的異常。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/1-2.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">密儀標號</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="2" data-title="反應餘料" data-en="Reaction Residue" data-code="RER" data-image="images/Morris/2.png" data-desc="異常事件發生後的殘留物、化學／鍊金副產品或廢棄物。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/2.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">反應餘料</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="3" data-title="活態樣本" data-en="Animate Specimen" data-code="ANS" data-image="images/Morris/3.png" data-desc="具備生命體徵、有機結構或生物繁衍特性的異常。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/3.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">活態樣本</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="4" data-title="異常實質" data-en="Anomalous Matter" data-code="ANM" data-image="images/Morris/4.png" data-desc="不符合常規物理法則的固體／液體材質，或純粹的異常物品。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/4.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">異常實質</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="5" data-title="未明意識" data-en="Unknown Sentience" data-code="UKS" data-image="images/Morris/5.png" data-desc="表現出思考能力、自主意志或精神控制，但無法理解其運作機制的實體及心理學相關異常。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/5.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">未明意識</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="6" data-title="逾期變量" data-en="Temporal Variable" data-code="TMV" data-image="images/Morris/6.png" data-desc="涉及時間悖論、時間流速異常、或預言／延遲發生的事件。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/6.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">逾期變量</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="7" data-title="界外矩陣" data-en="Extradimensional Matrix" data-code="EXM" data-image="images/Morris/7.png" data-desc="空間異常、傳送門、亞空間或折疊維度。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/7.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">界外矩陣</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="8" data-title="勢能痕跡" data-en="Energy Signature" data-code="EGS" data-image="images/Morris/8.png" data-desc="非物質的能量場、異常輻射、或是某種潛在破壞力的物理遺留。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/8.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">勢能痕跡</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="8-2" data-title="解裂轟波" data-en="Rupture Wave" data-code="RPW" data-image="images/Morris/8-2.png" data-desc="具備高度物理破壞性、會引發空間撕裂或物質解體的波動／爆破現象。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/8-2.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">解裂轟波</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="9" data-title="知無條例" data-en="Info hazard" data-code="IFH" data-image="images/Morris/9.png" data-desc="逆模因、認知危害，或「只要知道就會引發危險／無法被記住」的資訊黑洞。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/9.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">知無條例</span>
+            </button>
+            <button type="button" class="faction-tag" role="listitem" data-tag="10" data-title="未協定概念" data-en="Unbound Concept" data-code="UBC" data-image="images/Morris/010.png" data-desc="形而上學的異常。打破現實概念、無法用常理定義或尚未被物理法則「約束」的抽象現象。">
+              <span class="faction-tag__frame">
+                <img src="images/Morris/010.png" alt="" width="512" height="512">
+              </span>
+              <span class="faction-tag__caption">未協定概念</span>
+            </button>
+          </div>
+        </div>
+      </section>
+      </div>
+    </div>
+
+    <section class="anomaly-event-detail" id="anomaly-event-detail" hidden></section>
   </main>
 
+  <div class="faction-tag-modal" id="faction-tag-modal" hidden aria-hidden="true">
+    <div class="faction-tag-modal__backdrop" data-close-modal></div>
+    <div
+      class="faction-tag-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="faction-tag-modal-title"
+      tabindex="-1"
+    >
+      <button type="button" class="faction-tag-modal__close" data-close-modal aria-label="關閉">×</button>
+      <div class="faction-tag-modal__media">
+        <img id="faction-tag-modal-image" src="" alt="" width="512" height="512">
+      </div>
+      <div class="faction-tag-modal__content">
+        <p class="faction-tag-modal__label">管理物質標籤</p>
+        <div class="faction-tag-modal__heading">
+          <h3 class="faction-tag-modal__title" id="faction-tag-modal-title"></h3>
+          <span class="faction-tag-modal__code" id="faction-tag-modal-code"></span>
+        </div>
+        <p class="faction-tag-modal__en" id="faction-tag-modal-en"></p>
+        <p class="faction-tag-modal__desc" id="faction-tag-modal-desc" hidden></p>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer">
-    <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
+    <p>© 2026 蠟燭與邪神 · 異常事件分類</p>
   </footer>
 
+  <script src="site-path.js"></script>
   <script src="characters-data.js"></script>
   <script src="anomaly-events-data.js"></script>
   <script>
     (function () {
-      const container = document.getElementById('anomaly-event-detail');
-      const id = location.hash.slice(1) || new URLSearchParams(location.search).get('id');
-      const event = getAnomalyEventById(id);
-      const subjects = event ? getCharactersByAnomalyEvent(event.id) : [];
-      const subjectIds = subjects.map((character) => character.id);
-      const backCharacterId = resolveProfileCharacterId(subjectIds);
-      const backHref = backCharacterId
-        ? getCharacterProfileHref(backCharacterId, 'abilities')
-        : 'index.html#characters';
+      const cells = Array.from(document.querySelectorAll('[data-opcu]'));
+      const panels = Array.from(document.querySelectorAll('[data-opcu-panel]'));
+      if (!cells.length || !panels.length) return;
 
-      const backLinkLeft = document.querySelector('.navbar__link--left');
-      if (backLinkLeft) {
-        backLinkLeft.href = backHref;
-        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回人物設定';
+      function show(key) {
+        cells.forEach((cell) => {
+          const active = cell.getAttribute('data-opcu') === key;
+          cell.classList.toggle('is-active', active);
+          cell.setAttribute('aria-expanded', active ? 'true' : 'false');
+        });
+
+        panels.forEach((panel) => {
+          const active = panel.getAttribute('data-opcu-panel') === key;
+          panel.hidden = !active;
+          panel.classList.toggle('is-visible', active);
+        });
       }
 
-      if (!event) {
-        container.innerHTML = `
+      cells.forEach((cell) => {
+        cell.addEventListener('click', () => {
+          show(cell.getAttribute('data-opcu'));
+        });
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('.anomaly-ref__axis[data-axis]'));
+      const panels = Array.from(document.querySelectorAll('.anomaly-ref__panel[data-panel]'));
+      if (!tabs.length || !panels.length) return;
+
+      const FADE_MS = 320;
+      let current = 'opcu';
+      let switching = false;
+
+      function panelByKey(key) {
+        return panels.find((panel) => panel.getAttribute('data-panel') === key) || null;
+      }
+
+      function syncTabs(key) {
+        tabs.forEach((tab) => {
+          const active = tab.getAttribute('data-axis') === key;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          tab.tabIndex = active ? 0 : -1;
+        });
+      }
+
+      function setHash(key) {
+        const next = `#${key}`;
+        if (location.hash === next) return;
+        history.replaceState(null, '', next);
+      }
+
+      function showAxis(key, { updateHash = true, instant = false } = {}) {
+        if (!panelByKey(key)) return;
+        if (key === current && !instant) return;
+        if (switching) return;
+
+        const nextPanel = panelByKey(key);
+        const prevPanel = panelByKey(current);
+
+        syncTabs(key);
+        if (updateHash) setHash(key);
+
+        if (instant || !prevPanel || prevPanel === nextPanel) {
+          panels.forEach((panel) => {
+            const active = panel === nextPanel;
+            panel.hidden = !active;
+            panel.classList.toggle('is-active', active);
+          });
+          current = key;
+          return;
+        }
+
+        switching = true;
+        prevPanel.classList.remove('is-active');
+
+        window.setTimeout(() => {
+          prevPanel.hidden = true;
+          nextPanel.hidden = false;
+          nextPanel.classList.remove('is-active');
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+              nextPanel.classList.add('is-active');
+              current = key;
+              switching = false;
+            });
+          });
+        }, FADE_MS);
+      }
+
+      window.__anomalyRefShowAxis = showAxis;
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          showAxis(tab.getAttribute('data-axis'));
+        });
+
+        tab.addEventListener('keydown', (event) => {
+          const idx = tabs.indexOf(tab);
+          let nextIdx = -1;
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIdx = (idx + 1) % tabs.length;
+          if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIdx = (idx - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') nextIdx = 0;
+          if (event.key === 'End') nextIdx = tabs.length - 1;
+          if (nextIdx < 0) return;
+          event.preventDefault();
+          tabs[nextIdx].focus();
+          showAxis(tabs[nextIdx].getAttribute('data-axis'));
+        });
+      });
+
+      const initial =
+        location.hash === '#substance-tags' ? 'substance-tags' : 'opcu';
+      showAxis(initial, { updateHash: false, instant: true });
+    })();
+  </script>
+  <script>
+    (function () {
+      const modal = document.getElementById('faction-tag-modal');
+      if (!modal) return;
+
+      const dialog = modal.querySelector('.faction-tag-modal__dialog');
+      const titleEl = document.getElementById('faction-tag-modal-title');
+      const enEl = document.getElementById('faction-tag-modal-en');
+      const codeEl = document.getElementById('faction-tag-modal-code');
+      const descEl = document.getElementById('faction-tag-modal-desc');
+      const imageEl = document.getElementById('faction-tag-modal-image');
+      const tags = document.querySelectorAll('.faction-tag');
+      let lastFocus = null;
+      let originTag = null;
+      let originRectSnapshot = null;
+      let closing = false;
+      let expandTimer = 0;
+      let phase = 'idle';
+
+      const MOVE_MS = 380;
+      const EXPAND_MS = 360;
+
+      function lockScroll() {
+        document.documentElement.classList.add('is-tag-modal-open');
+        document.body.classList.add('is-tag-modal-open');
+      }
+
+      function unlockScroll() {
+        document.documentElement.classList.remove('is-tag-modal-open');
+        document.body.classList.remove('is-tag-modal-open');
+      }
+
+      function waitForScrollSettle(maxMs = 700) {
+        return new Promise((resolve) => {
+          let settled = 0;
+          let lastY = window.scrollY;
+          let done = false;
+          let idleTimer = 0;
+
+          const finish = () => {
+            if (done) return;
+            done = true;
+            window.removeEventListener('scroll', onScroll);
+            window.clearTimeout(failSafe);
+            window.clearTimeout(idleTimer);
+            resolve();
+          };
+
+          const bumpIdle = () => {
+            window.clearTimeout(idleTimer);
+            idleTimer = window.setTimeout(finish, 140);
+          };
+
+          const onScroll = () => {
+            const y = window.scrollY;
+            settled = Math.abs(y - lastY) < 0.5 ? settled + 1 : 0;
+            lastY = y;
+            if (settled >= 4) {
+              finish();
+              return;
+            }
+            bumpIdle();
+          };
+
+          idleTimer = window.setTimeout(finish, 140);
+          const failSafe = window.setTimeout(finish, maxMs);
+          window.addEventListener('scroll', onScroll, { passive: true });
+        });
+      }
+
+      function setBox(x, y, w, h, media, pad, gap) {
+        dialog.style.setProperty('--tag-x', `${x}px`);
+        dialog.style.setProperty('--tag-y', `${y}px`);
+        dialog.style.setProperty('--tag-w', `${w}px`);
+        dialog.style.setProperty('--tag-h', `${h}px`);
+        dialog.style.setProperty('--tag-media', `${media}px`);
+        dialog.style.setProperty('--tag-pad', `${pad}px`);
+        dialog.style.setProperty('--tag-gap', `${gap}px`);
+      }
+
+      function isNarrow() {
+        return window.matchMedia('(max-width: 560px)').matches;
+      }
+
+      function getLayouts(originRect) {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const narrow = isNarrow();
+        const media = narrow
+          ? Math.min(8.5 * 16, Math.max(5.5 * 16, originRect.width * 1.15))
+          : Math.min(10 * 16, Math.max(7 * 16, originRect.width * 1.2));
+        const pad = narrow ? 18 : 22;
+        const gap = narrow ? 14 : 22;
+        const contentW = narrow
+          ? Math.min(vw - 48, media + pad * 2) - pad * 2
+          : Math.min(34 * 16, Math.max(24 * 16, vw * 0.56));
+        const contentH = narrow
+          ? Math.min(14.5 * 16, vh * 0.38)
+          : Math.min(12.5 * 16, vh * 0.42);
+
+        const origin = {
+          x: originRect.left,
+          y: originRect.top,
+          w: originRect.width,
+          h: originRect.height,
+          media: originRect.width,
+          pad: 0,
+          gap: 0,
+        };
+
+        let expanded;
+        let centered;
+
+        if (narrow) {
+          const fullW = media + pad * 2;
+          const fullH = media + gap + contentH + pad * 2;
+          const x = (vw - fullW) / 2;
+          const y = Math.max(24, (vh - fullH) / 2);
+          expanded = { x, y, w: fullW, h: fullH, media, pad, gap };
+          centered = {
+            x,
+            y,
+            w: fullW,
+            h: media + pad * 2,
+            media,
+            pad,
+            gap: 0,
+          };
+        } else {
+          const fullW = media + gap + contentW + pad * 2;
+          const fullH = Math.max(media, contentH) + pad * 2;
+          const x = Math.max(24, (vw - fullW) / 2);
+          const y = Math.max(24, (vh - fullH) / 2);
+          expanded = { x, y, w: fullW, h: fullH, media, pad, gap };
+          centered = {
+            x,
+            y,
+            w: media + pad * 2,
+            h: media + pad * 2,
+            media,
+            pad,
+            gap: 0,
+          };
+        }
+
+        return { origin, centered, expanded };
+      }
+
+      function applyLayout(layout) {
+        setBox(layout.x, layout.y, layout.w, layout.h, layout.media, layout.pad, layout.gap);
+      }
+
+      async function openModal(tag) {
+        if (closing || phase !== 'idle') return;
+
+        const frame = tag.querySelector('.faction-tag__frame');
+        if (!frame) return;
+
+        phase = 'preparing';
+        lastFocus = tag;
+        originTag = tag;
+        titleEl.textContent = tag.dataset.title || '';
+        if (enEl) enEl.textContent = tag.dataset.en || '';
+        if (codeEl) codeEl.textContent = tag.dataset.code || '';
+        const desc = tag.dataset.desc || '';
+        descEl.textContent = desc;
+        descEl.hidden = !desc;
+        imageEl.src = tag.dataset.image || '';
+        imageEl.alt = tag.dataset.title || '';
+
+        const tagPanel = document.getElementById('faction-tag-panel');
+        if (tagPanel) {
+          tagPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          await waitForScrollSettle();
+          await new Promise((resolve) => window.setTimeout(resolve, 40));
+        }
+
+        if (phase !== 'preparing' || originTag !== tag) return;
+
+        const rect = frame.getBoundingClientRect();
+        originRectSnapshot = {
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+        };
+
+        lockScroll();
+        const layouts = getLayouts(originRectSnapshot);
+
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.classList.add('is-origin');
+        modal.classList.remove('is-open', 'is-centered', 'is-expanded');
+        tag.classList.add('is-origin');
+        applyLayout(layouts.origin);
+        phase = 'moving';
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (phase !== 'moving') return;
+            modal.classList.add('is-open');
+            modal.classList.remove('is-origin');
+            applyLayout(layouts.centered);
+            modal.classList.add('is-centered');
+
+            window.clearTimeout(expandTimer);
+            expandTimer = window.setTimeout(() => {
+              if (phase !== 'moving') return;
+              applyLayout(layouts.expanded);
+              modal.classList.add('is-expanded');
+              phase = 'open';
+              dialog.focus({ preventScroll: true });
+            }, MOVE_MS);
+          });
+        });
+      }
+
+      function closeModal() {
+        if ((phase !== 'open' && phase !== 'moving' && phase !== 'preparing') || closing) {
+          return;
+        }
+        if (phase === 'preparing') {
+          phase = 'idle';
+          originTag = null;
+          return;
+        }
+        if (!originTag) return;
+
+        closing = true;
+        phase = 'closing';
+        window.clearTimeout(expandTimer);
+
+        const rect = originRectSnapshot || {
+          left: window.innerWidth / 2,
+          top: window.innerHeight / 2,
+          width: 80,
+          height: 80,
+        };
+        const layouts = getLayouts(rect);
+
+        modal.classList.remove('is-expanded');
+        applyLayout(layouts.centered);
+
+        window.setTimeout(() => {
+          modal.classList.remove('is-open', 'is-centered');
+          modal.classList.add('is-origin');
+          applyLayout(layouts.origin);
+
+          window.setTimeout(() => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            modal.classList.remove('is-origin', 'is-open', 'is-centered', 'is-expanded');
+            if (originTag) originTag.classList.remove('is-origin');
+            unlockScroll();
+            closing = false;
+            phase = 'idle';
+            if (lastFocus) lastFocus.focus({ preventScroll: true });
+            originTag = null;
+            originRectSnapshot = null;
+          }, MOVE_MS);
+        }, EXPAND_MS * 0.75);
+      }
+
+      tags.forEach((tag) => {
+        tag.addEventListener('click', (event) => {
+          event.preventDefault();
+          openModal(tag);
+        });
+      });
+
+      modal.querySelectorAll('[data-close-modal]').forEach((el) => {
+        el.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && phase !== 'idle') {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      const refEl = document.getElementById('anomaly-ref');
+      const detailEl = document.getElementById('anomaly-event-detail');
+      const backLink = document.getElementById('anomaly-event-back');
+      if (!refEl || !detailEl) return;
+
+      const REF_HASHES = new Set(['', 'opcu', 'substance-tags']);
+
+      function showRef() {
+        document.title = '異常事件 · 蠟燭與邪神';
+        document.body.classList.add('anomaly-ref-page');
+        if (backLink) {
+          backLink.href = 'index.html#anomaly-events';
+          backLink.textContent = '← 返回主頁';
+        }
+        refEl.hidden = false;
+        detailEl.hidden = true;
+        detailEl.innerHTML = '';
+
+        const hash = location.hash.slice(1);
+        if (hash === 'opcu' || hash === 'substance-tags') {
+          if (typeof window.__anomalyRefShowAxis === 'function') {
+            window.__anomalyRefShowAxis(hash, { updateHash: false, instant: true });
+          }
+        }
+      }
+
+      function renderDetail(event) {
+        const subjects = getCharactersByAnomalyEvent(event.id);
+        const subjectIds = subjects.map((character) => character.id);
+        const backCharacterId = resolveProfileCharacterId(subjectIds);
+        const backHref = backCharacterId
+          ? getCharacterProfileHref(backCharacterId, 'abilities')
+          : 'anomaly-event-list.html';
+        const typeLabel = getAnomalyEventTypeLabel(event.type);
+        const typeClass = event.type === 'controlled' ? 'controlled' : 'anomaly';
+        const subjectsHtml = subjects.length
+          ? `<div class="anomaly-event-detail__subjects">
+              <span class="anomaly-event-detail__subjects-label">相關角色</span>
+              <span class="anomaly-event-detail__subjects-list">${subjects.map((c) => c.name).join('、')}</span>
+            </div>`
+          : '';
+
+        document.title = `${event.name} · 異常事件詳情`;
+        document.body.classList.remove('anomaly-ref-page');
+        if (backLink) {
+          backLink.href = backHref;
+          backLink.textContent = backCharacterId ? '← 返回能力區' : '← 返回事件清單';
+        }
+
+        const iconHref = getCharacterIcon(backCharacterId);
+        const iconLink = document.querySelector('link[rel="icon"]');
+        if (iconLink && iconHref) iconLink.href = iconHref;
+
+        refEl.hidden = true;
+        detailEl.hidden = false;
+        detailEl.innerHTML = `
+          <h2 class="section-title">
+            <span class="section-title__icon">◈</span>
+            異常事件
+          </h2>
+          <div class="anomaly-event-detail__card anomaly-event-detail__card--${typeClass}">
+            <div class="anomaly-event-detail__header">
+              <span class="anomaly-event-detail__type">${typeLabel}</span>
+              <h1 class="anomaly-event-detail__name">${event.name}</h1>
+              <p class="anomaly-event-detail__brief">${getAnomalyEventDetailBrief(event)}</p>
+            </div>
+            ${subjectsHtml}
+            <div class="anomaly-event-detail__body">
+              ${renderAnomalyEventDetail(event)}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderMissing() {
+        document.title = '異常事件詳情 · 蠟燭與邪神';
+        document.body.classList.remove('anomaly-ref-page');
+        if (backLink) {
+          backLink.href = 'anomaly-event-list.html';
+          backLink.textContent = '← 返回事件清單';
+        }
+
+        refEl.hidden = true;
+        detailEl.hidden = false;
+        detailEl.innerHTML = `
           <h2 class="section-title">
             <span class="section-title__icon">◈</span>
             異常事件詳情
           </h2>
           <div class="anomaly-event-detail__empty">
             <p>找不到對應的事件資料。</p>
-            <a href="${backHref}" class="anomaly-event-detail__back">${
-              backCharacterId ? '返回能力區' : '返回人物設定'
-            }</a>
+            <a href="anomaly-event-list.html" class="anomaly-event-detail__back">返回事件清單</a>
           </div>
         `;
-        document.title = '異常事件詳情 · 蠟燭與邪神';
-        return;
       }
 
-      const typeLabel = getAnomalyEventTypeLabel(event.type);
-      const typeClass = event.type === 'controlled' ? 'controlled' : 'anomaly';
+      function render() {
+        const currentId =
+          location.hash.slice(1) || new URLSearchParams(location.search).get('id') || '';
 
-      document.title = `${event.name} · 異常事件詳情`;
+        if (REF_HASHES.has(currentId)) {
+          showRef();
+          return;
+        }
 
-      const iconHref = getCharacterIcon(backCharacterId);
-      const iconLink = document.querySelector('link[rel="icon"]');
-      if (iconLink && iconHref) iconLink.href = iconHref;
+        const event = getAnomalyEventById(currentId);
+        if (!event) {
+          renderMissing();
+          return;
+        }
 
-      const subjectsHtml = subjects.length
-        ? `<div class="anomaly-event-detail__subjects">
-            <span class="anomaly-event-detail__subjects-label">相關角色</span>
-            <span class="anomaly-event-detail__subjects-list">${subjects.map((c) => c.name).join('、')}</span>
-          </div>`
-        : '';
+        renderDetail(event);
+      }
 
-      const detailBrief = getAnomalyEventDetailBrief(event);
-      const bodyHtml = renderAnomalyEventDetail(event);
-
-      container.innerHTML = `
-        <h2 class="section-title">
-          <span class="section-title__icon">◈</span>
-          異常事件
-        </h2>
-        <div class="anomaly-event-detail__card anomaly-event-detail__card--${typeClass}">
-          <div class="anomaly-event-detail__header">
-            <span class="anomaly-event-detail__type">${typeLabel}</span>
-            <h1 class="anomaly-event-detail__name">${event.name}</h1>
-            <p class="anomaly-event-detail__brief">${detailBrief}</p>
-          </div>
-          ${subjectsHtml}
-          <div class="anomaly-event-detail__body">
-            ${bodyHtml}
-          </div>
-        </div>
-      `;
+      render();
+      window.addEventListener('hashchange', render);
     })();
   </script>
 </body>

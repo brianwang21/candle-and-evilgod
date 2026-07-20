@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    【使用方式】
+    1. 依命名規則決定 code，例如 P-ANM-112
+    2. 另存為 anomaly_html/{code}.html（本檔勿改名覆寫）
+    3. 全域搜尋 【】 並替換成實際內容
+    4. 在 anomaly-file-data.js 的 ANOMALY_FILE_EVENTS 追加對應一筆
+    5. 有圖時：images/anomaly/{code}.png，並取消下方 img 註解
+  -->
+  <title>【CODE】「【中文名】」· 異常事件檔案</title>
+  <link rel="icon" href="../images/Alaya_Icon.png" type="image/png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="anomaly-file-page">
+  <div class="anomaly-file-page__grain" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <nav class="navbar__inner">
+      <a href="../anomaly-event-list.html" class="navbar__link navbar__link--left">← 返回異常事件清單</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="anomaly-file anomaly-file--detail" aria-labelledby="anomaly-detail-title">
+      <header class="anomaly-file__masthead">
+        <!-- DOC-ID 建議：FILE / {CODE} · {主標籤英文大寫} -->
+        <p class="anomaly-file__doc-id">FILE / 【CODE】 · 【TAG_EN_UPPER】</p>
+        <h1 class="anomaly-file__title" id="anomaly-detail-title">【CODE】「【中文名】」</h1>
+        <p class="anomaly-file__lead">
+          <span class="anomaly-file__name-en">【English name】</span>
+          · 【OPCU中文】（【OPCU英文】）· 【標籤中文】（【Tag English】 / 【TAG】）
+        </p>
+      </header>
+
+      <div class="anomaly-file__sheet">
+        <div class="anomaly-file__sheet-meta">
+          <span>CASE FILE</span>
+        </div>
+        <!-- 複數 OPCU 時複製多個 mark；class 尾碼用小寫 o/p/c/u -->
+        <div class="anomaly-file__stamp" aria-hidden="true">
+          <span class="anomaly-file__opcu-mark anomaly-file__opcu-mark--【o|p|c|u】">
+            <span class="anomaly-file__opcu-mark-face">【O|P|C|U】</span>
+          </span>
+        </div>
+
+        <h2 class="anomaly-file__code">
+          項目標號：
+          <span class="anomaly-file__code-value">【displayCode】「【中文名】」(【English name】)</span>
+        </h2>
+
+        <hr class="anomaly-file__rule">
+
+        <div class="anomaly-file__sheet-main">
+          <figure class="anomaly-file__media">
+            <div class="anomaly-file__media-frame">
+              <span class="anomaly-file__media-empty">1:1<br>SAMPLE IMAGE</span>
+              <!-- <img src="../images/anomaly/【CODE】.png" alt="【CODE】「【中文名】」樣本影像" width="1024" height="1024"> -->
+            </div>
+            <figcaption class="anomaly-file__media-caption">附圖／樣本影像</figcaption>
+          </figure>
+
+          <dl class="anomaly-file__fields">
+            <div class="anomaly-file__row">
+              <dt>O.P.C.U類型</dt>
+              <dd>
+                <span class="anomaly-file__placeholder">【OPCU中文】（【O|P|C|U】）· 【OPCU英文】</span>
+              </dd>
+            </div>
+            <div class="anomaly-file__row">
+              <dt>管理物質標籤</dt>
+              <dd>
+                <span class="anomaly-file__placeholder">【標籤中文】（【TAG】）· 【Tag English】</span>
+              </dd>
+            </div>
+            <div class="anomaly-file__row">
+              <dt>管理措施</dt>
+              <dd>
+                <span class="anomaly-file__placeholder">【管理措施全文】</span>
+              </dd>
+            </div>
+            <div class="anomaly-file__row">
+              <dt>項目描述</dt>
+              <dd>
+                <span class="anomaly-file__placeholder">【項目描述全文】</span>
+              </dd>
+            </div>
+            <div class="anomaly-file__row">
+              <dt>是否為受管束事件</dt>
+              <dd>
+                <span class="anomaly-file__placeholder">【是|否】</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+        <footer class="anomaly-file__sheet-foot">
+          <span>END OF FILE</span>
+          <span>【CODE】</span>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 蠟燭與邪神 · 【CODE】</p>
+  </footer>
+
+  <script src="../site-path.js"></script>
+</body>
+</html>

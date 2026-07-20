@@ -25,10 +25,33 @@
     <section class="weapon-detail" id="weapon-detail"></section>
   </main>
 
+  <div
+    class="weapon-related-modal"
+    id="weapon-related-modal"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="weapon-related-modal-title"
+  >
+    <div class="weapon-related-modal__backdrop" data-weapon-related-close></div>
+    <div class="weapon-related-modal__panel">
+      <button
+        type="button"
+        class="weapon-related-modal__close"
+        data-weapon-related-close
+        aria-label="關閉相關詳情"
+      >
+        ×
+      </button>
+      <div class="weapon-related-modal__body" id="weapon-related-modal-body"></div>
+    </div>
+  </div>
+
   <footer class="footer">
     <p>© 2026 蠟燭與邪神 · Candle and EvilGod</p>
   </footer>
 
+  <script src="site-path.js"></script>
   <script src="characters-data.js"></script>
   <script src="weapons-data.js"></script>
   <script>
@@ -73,6 +96,42 @@
       if (iconLink && iconHref) iconLink.href = iconHref;
 
       const summaryHtml = renderWeaponSummary(weapon.summary);
+      const relatedHtml = renderWeaponRelated(weapon.related);
+      const relatedModal = document.getElementById('weapon-related-modal');
+      const relatedBody = document.getElementById('weapon-related-modal-body');
+      let relatedClosing = false;
+      let relatedCloseTimer = 0;
+
+      function closeRelatedModal() {
+        if (
+          !relatedModal ||
+          relatedModal.hidden ||
+          relatedClosing ||
+          !relatedModal.classList.contains('is-open')
+        ) {
+          return;
+        }
+
+        relatedClosing = true;
+        relatedModal.classList.remove('is-open');
+        relatedCloseTimer = window.setTimeout(() => {
+          relatedModal.hidden = true;
+          relatedClosing = false;
+        }, 280);
+      }
+
+      function openRelatedModal(item) {
+        if (!relatedModal || !relatedBody || !item) return;
+        window.clearTimeout(relatedCloseTimer);
+        relatedClosing = false;
+        relatedBody.innerHTML = renderWeaponRelatedDetail(item);
+        relatedModal.hidden = false;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            relatedModal.classList.add('is-open');
+          });
+        });
+      }
 
       container.innerHTML = `
         <h2 class="section-title">
@@ -93,9 +152,29 @@
             <div class="weapon-detail__body">
               ${summaryHtml}
             </div>
+            ${relatedHtml}
           </div>
         </div>
       `;
+
+      container.querySelectorAll('[data-weapon-related-id]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const related = getWeaponRelatedById(
+            weapon,
+            button.getAttribute('data-weapon-related-id')
+          );
+          if (related) openRelatedModal(related);
+        });
+      });
+
+      if (relatedModal) {
+        relatedModal.querySelectorAll('[data-weapon-related-close]').forEach((el) => {
+          el.addEventListener('click', closeRelatedModal);
+        });
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') closeRelatedModal();
+        });
+      }
     })();
   </script>
 </body>

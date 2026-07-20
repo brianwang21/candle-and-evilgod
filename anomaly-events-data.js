@@ -312,6 +312,10 @@ function getAnomalyEventById(id) {
   return ANOMALY_EVENTS_DB.events.find((event) => event.id === id) || null;
 }
 
+function getAllAnomalyEvents() {
+  return ANOMALY_EVENTS_DB.events.slice();
+}
+
 function getAnomalyEventPage(event) {
   const href = `anomaly-event.html#${event.id}`;
   return typeof siteUrl === 'function' ? siteUrl(href) : href;
