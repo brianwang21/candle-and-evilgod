@@ -9978,6 +9978,35 @@ body.is-chapter-modal-open {
   color: rgba(255, 255, 255, 0.55);
 }
 
+.story-segment__sunset {
+  display: flex;
+  justify-content: center;
+  margin: 0.9rem 0 0;
+  color: #e8a86a;
+}
+
+.story-segment__sunset svg {
+  display: block;
+  width: 4rem;
+  height: auto;
+}
+
+.story-segment__sunset--new-moon {
+  color: #9aa3b5;
+}
+
+.story-segment__sunset--umbra {
+  color: #6a6478;
+}
+
+.story-chapter-hub__link-hint--icon.story-chapter-hub__link-hint--new-moon {
+  color: #9aa3b5;
+}
+
+.story-chapter-hub__link-hint--icon.story-chapter-hub__link-hint--umbra {
+  color: #6a6478;
+}
+
 .story-chapter-hub__en {
   margin: 0 0 2.25rem;
   font-family: var(--font-display);
@@ -10036,6 +10065,17 @@ body.is-chapter-modal-open {
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.4);
+}
+
+.story-chapter-hub__link-hint--icon {
+  display: inline-flex;
+  align-items: center;
+  color: #e8a86a;
+  opacity: 0.75;
+}
+
+.story-chapter-hub__link-hint--icon svg {
+  display: block;
 }
 
 .story-chapter-hub__note {
@@ -10209,6 +10249,91 @@ body.is-chapter-modal-open {
   margin-top: 1.2rem;
 }
 
+.story-segment__body em {
+  font-style: italic;
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  letter-spacing: 0.05em;
+  color: rgba(220, 210, 205, 0.72);
+}
+
+.story-segment__scrawl {
+  --scrawl-line: 1.7rem;
+  position: relative;
+  margin: 1.6rem auto 1.85rem;
+  width: min(96%, 34rem);
+  height: clamp(15rem, 48vw, 22rem);
+  border: none;
+  box-shadow: none;
+  filter: drop-shadow(2px 5px 8px rgba(0, 0, 0, 0.45));
+  background-color: #f4efe6;
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 2.35rem,
+      rgba(200, 72, 72, 0.42) 2.35rem,
+      rgba(200, 72, 72, 0.42) calc(2.35rem + 1.5px),
+      transparent calc(2.35rem + 1.5px)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(var(--scrawl-line) - 1px),
+      rgba(115, 150, 190, 0.42) calc(var(--scrawl-line) - 1px),
+      rgba(115, 150, 190, 0.42) var(--scrawl-line)
+    );
+  overflow: hidden;
+  transform: rotate(-1.1deg);
+  /* 撕紙邊緣：對應真實撕紙剪影 */
+  -webkit-mask-image: url('images/story/torn-paper-mask.png');
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-source-type: luminance;
+  mask-image: url('images/story/torn-paper-mask.png');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-mode: luminance;
+}
+
+.story-segment__scrawl::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(90, 70, 40, 0.08), transparent 42%),
+    radial-gradient(ellipse at 88% 78%, rgba(70, 55, 35, 0.07), transparent 40%);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+}
+
+.story-segment__scrawl-item {
+  position: absolute;
+  left: var(--x, 0%);
+  top: var(--y, 0%);
+  display: block;
+  margin: 0;
+  line-height: 0.8;
+  letter-spacing: var(--ls, 0.02em);
+  color: #000 !important;
+  font-family: 'Mistral', 'Freestyle Script', 'Segoe Script', cursive;
+  font-size: calc(2.35rem * var(--s, 1));
+  font-weight: 400;
+  transform:
+    rotate(var(--r, 0deg))
+    skewX(var(--sk, 0deg))
+    skewY(var(--sky, 0deg))
+    scaleX(var(--sx, 1))
+    scaleY(var(--sy, 1));
+  transform-origin: center center;
+  text-shadow: none;
+  -webkit-text-fill-color: #000;
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 .story-sfx {
   display: inline;
   margin: 0;
@@ -10354,6 +10479,53 @@ body.is-chapter-modal-open {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.35);
+}
+
+.story-segment__forget {
+  position: relative;
+  margin: 1.75rem 0 1.35rem !important;
+  text-align: center;
+  isolation: isolate;
+}
+
+.story-segment__forget-text {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-family: 'Noto Serif TC', 'Songti TC', serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  color: rgba(255, 236, 220, 0.92);
+  text-shadow:
+    0 0 18px rgba(232, 168, 106, 0.35),
+    0 0 42px rgba(180, 90, 50, 0.22);
+}
+
+.story-segment__forget-text::before,
+.story-segment__forget-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  font: inherit;
+  letter-spacing: inherit;
+  white-space: nowrap;
+}
+
+.story-segment__forget-text::before {
+  color: rgba(232, 168, 106, 0.4);
+  filter: blur(1.2px);
+  transform: translate(-0.14em, 0.04em);
+  opacity: 0.55;
+}
+
+.story-segment__forget-text::after {
+  color: rgba(160, 120, 150, 0.36);
+  filter: blur(2.4px);
+  transform: translate(0.18em, -0.06em) scale(1.02);
+  opacity: 0.4;
+  z-index: -1;
 }
 
 .story-segment__note {
