@@ -258,6 +258,37 @@ const RELATIONSHIPS_DB = {
         { from: 'lily', to: 'morris', label: 'CEO／董事長', feeling: '責任' },
       ],
     },
+    miriam: {
+      centerId: 'miriam',
+      nodes: [
+        {
+          id: 'miriam',
+          name: '米利暗',
+          role: '本頁角色',
+          x: 0,
+          y: 0,
+        },
+        {
+          id: 'michael',
+          name: '聖彌迦勒',
+          role: '大姐',
+          x: -420,
+          y: -40,
+        },
+        {
+          id: 'cta',
+          name: '中央技術局',
+          role: '所屬勢力',
+          image: 'images/force_CTA.png',
+          x: 420,
+          y: 40,
+        },
+      ],
+      edges: [
+        { from: 'miriam', to: 'michael', label: '大姐', feeling: '敬重／依靠' },
+        { from: 'miriam', to: 'cta', label: '所屬' },
+      ],
+    },
   },
 };
 

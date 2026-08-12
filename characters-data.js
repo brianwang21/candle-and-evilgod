@@ -37,6 +37,12 @@ const CHARACTERS_DB = {
       profilePage: 'html/character-profile-lily.html',
       icon: 'images/Lily_Head.jpg',
     },
+    {
+      id: 'miriam',
+      name: '米利暗',
+      profilePage: 'html/character-profile-miriam.html',
+      icon: 'images/force_CTA.png',
+    },
     // 新增角色時在此加入一筆
   ],
 };

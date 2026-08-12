@@ -10528,6 +10528,24 @@ body.is-chapter-modal-open {
   z-index: -1;
 }
 
+.story-segment__forget--blood .story-segment__forget-text {
+  color: rgba(255, 72, 72, 0.96);
+  text-shadow:
+    0 0 14px rgba(220, 28, 28, 0.55),
+    0 0 36px rgba(140, 0, 0, 0.38),
+    0 0 2px rgba(90, 0, 0, 0.65);
+}
+
+.story-segment__forget--blood .story-segment__forget-text::before {
+  color: rgba(255, 40, 40, 0.55);
+  opacity: 0.7;
+}
+
+.story-segment__forget--blood .story-segment__forget-text::after {
+  color: rgba(120, 0, 0, 0.5);
+  opacity: 0.55;
+}
+
 .story-segment__note {
   text-decoration: none;
   border-bottom: 1px dotted rgba(255, 255, 255, 0.45);
