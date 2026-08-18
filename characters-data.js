@@ -11,19 +11,19 @@ const CHARACTERS_DB = {
       id: 'alaya',
       name: '艾萊亞',
       profilePage: 'html/character-profile-alaya.html',
-      icon: 'images/Alaya_Icon.png',
+      icon: 'images/Alaya/Alaya_Icon.png',
     },
     {
       id: 'cae',
       name: 'CAE',
       profilePage: 'html/character-profile-CAE.html',
-      icon: 'images/CAE_ICON.png',
+      icon: 'images/CAE/CAE_ICON.png',
     },
     {
       id: 'jessica',
       name: '潔西卡',
       profilePage: 'html/character-profile-Jessica.html',
-      icon: 'images/Jessica_ICON.png',
+      icon: 'images/Jessica/Jessica_ICON.png',
     },
     {
       id: '42',
@@ -35,13 +35,13 @@ const CHARACTERS_DB = {
       id: 'lily',
       name: '莉莉．莫里斯',
       profilePage: 'html/character-profile-lily.html',
-      icon: 'images/Lily_Head.jpg',
+      icon: 'images/Lily/Lily_Head.jpg',
     },
     {
       id: 'miriam',
       name: '米利暗',
       profilePage: 'html/character-profile-miriam.html',
-      icon: 'images/force_CTA.png',
+      icon: 'images/profile_icon/MIRIAM_profile_ICON.png',
     },
     // 新增角色時在此加入一筆
   ],

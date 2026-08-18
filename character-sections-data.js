@@ -49,7 +49,7 @@ const CHARACTER_SECTIONS_DB = {
         { type: 'rule' },
         {
           type: 'p',
-          text: 'CAE出生於一個普通的家庭中。',
+          text: '凱伊．派瑞許出生於一個普通的家庭中。',
         },
         {
           type: 'p',
@@ -61,15 +61,15 @@ const CHARACTER_SECTIONS_DB = {
         },
         {
           type: 'p',
-          text: '在高中畢業後，CAE 考進了加州理工學院的物理學學院。並以碩士的身分畢業，那年，他25歲。',
+          text: '在高中畢業後，凱伊考進了加州理工學院的物理學學院。並以碩士的身分畢業，那年他25歲。',
         },
         {
           type: 'p',
-          text: '之後，CAE 的能力被莫里斯公司招納，進入了當時還由傑克森．莫里斯(莉莉父親)掌控的莫里斯公司，擔任研究員的職位。',
+          text: '之後，凱伊的能力被莫里斯公司招納，進入了當時還由傑克森．莫里斯(莉莉父親)掌控的莫里斯公司，擔任研究員的職位。',
         },
         {
           type: 'p',
-          text: '在職期間，CAE 與當時年紀尚幼的莉莉．莫里斯相識，其幽默的性格很快就與當時較為嚴肅的公司形成反差，也是兩人成為好友的契機。',
+          text: '在職期間，凱伊與當時年紀尚幼的莉莉．莫里斯相識，其幽默的性格很快就與當時較為嚴肅的公司形成反差，也是兩人成為好友的契機。',
         },
         {
           type: 'drawer',
@@ -80,82 +80,72 @@ const CHARACTER_SECTIONS_DB = {
             { type: 'heading', text: '“W.W.W”' },
             {
               type: 'p',
-              text: '2008年八月的一個下午，CAE 正在進行異常事件「不語世界」的觀測，那次只是個例行的數據觀察。',
+              text: '2008年八月的一個下午，凱伊正在進行異常事件「不語世界」的觀測，那次只是個例行的數據觀察。',
             },
             {
               type: 'p',
-              text: '當時他正與莉莉一邊閒聊、一邊記錄波動頻率，而莉莉僅僅只是轉頭確認時間，再次回頭時， CAE 已經從這個世界上消失不見。',
+              text: '當時他正與莉莉一邊閒聊、一邊記錄波動頻率，而莉莉僅僅只是轉頭確認時間，再次回頭時，凱伊已經從這個世界上消失不見。',
             },
             {
               type: 'p',
-              text: '當 CAE 再次醒來時，她已經來到了自己所觀察的異常事件中。',
+              text: '當凱伊再次醒來時，她已經來到了自己所觀察的異常事件中。',
             },
             {
               type: 'p',
-              text: '「不語世界 ( World Without Words，簡稱W.W.W )」是一個 OU 型的異常，在這個異次元的空間中，不存在任何的活人與文字，在其中的 CAE 也無法飢餓與死亡，此外，這裡的時間並不如外界那樣正常流動。',
+              text: '「不語世界（World Without Words，簡稱 W.W.W）」是一個 OU 型的異常，在這個異次元的空間中，不存在任何的活人與文字，在其中的凱伊也無法飢餓與死亡，此外，這裡的時間並不如外界那樣正常流動。',
             },
             {
               type: 'p',
-              text: '種種的異常，導致 CAE 在這裡完全的迷失，在長久的折磨下，他喪失了語言能力，性格也在長久的孤寂下被改變。',
+              text: '種種的異常，導致凱伊在這裡完全的迷失，在長久的折磨下，他喪失了語言能力，性格也在長久的孤寂下被改變。',
             },
             {
               type: 'p',
-              text: '等到他終於從W.W.W回來後，已經是2014年。',
+              text: '等到他終於從不語世界中回來後，已經是2014年。',
             },
             {
               type: 'p',
-              text: '他的外表雖然毫無改變，但在認知及心理層面上產生了很大的問題。',
-            },
-            {
-              type: 'collapse',
-              summary: '認知及心理層面的影響',
-              blocks: [
-                {
-                  type: 'list',
-                  ordered: true,
-                  items: [
-                    '完全喪失時間的概念，生理時鐘紊亂',
-                    '失語症，連要理解他人說的話都難',
-                    '慢性解離、幻覺',
-                    '情緒淡化、麻木',
-                    '記憶衰退',
-                    '社交恐懼',
-                  ],
-                },
-              ],
+              text: '他的外表雖然毫無改變，但在認知及心理層面上產生了很大的問題。好比他完全喪失對於時間的概念，生理時鐘紊亂。也因失語症而無法理解他人說的話。',
             },
             {
               type: 'p',
-              text: '這時的莫里斯公司已經由莉莉掌權，她盡全力協助 CAE 進行復健，也成功緩和了一些他的情況，但在公司內資源須進行分配的情況下，這些幫助仍然有限。',
+              text: '這時的莫里斯公司已經由莉莉掌權，剛上任的她雖盡全力協助凱伊進行復健，也成功緩和一些情況，但在公司內資源不足、甚至還有一些反對派殘黨的威脅下，這些幫助仍然有限。',
             },
             { type: 'heading', text: '吞噬邪神的少女' },
             {
               type: 'p',
-              text: 'CAE 在緩慢復健時，他的幻覺問題卻愈發嚴重。',
+              text: '凱伊在緩慢復健時，他卻開始產生了幻覺。',
             },
             {
               type: 'p',
-              text: '起初，他只是偶爾聽見陌生的聲音，或在鏡子中看見模糊的人影。很快，這些幻聽和幻覺越來越頻繁，聲音在他耳邊低語，教唆他去傷害別人；他開始看見地上倒著的屍體，以及由不知名人類殘骸組成的怪物，時而張口慘叫，時而撕裂自己。',
+              text: '起初只是偶爾聽見陌生的聲音，或在鏡子中看見模糊的人影。',
             },
             {
               type: 'p',
-              text: '潔西卡——異常事件<strong>「吞噬邪神的少女」</strong>——透過某種方式進入了 CAE 體內。更準確地說，是進入了那個依舊存在於 CAE 體內的「不語世界」。',
+              text: '很快，這些幻聽和幻覺越來越頻繁，聲音在他耳邊低語，教唆他去傷害別人；他開始看見地上倒著的屍體，以及由不知名人類殘骸組成的怪物，時而張口慘叫，時而撕裂自己。',
             },
             {
               type: 'p',
-              text: '她利用幻聽和幻覺不斷侵蝕他的意識，讓他的精神狀況每況愈下。隨著時間過去，他逐漸失去對自己身體的控制。他會在沒有意識的時候突然攻擊周遭的人，甚至在清醒時，也會從口中說出並非自己想法、且聲音與自己完全不同的句子。',
+              text: '潔西卡——異常事件<strong>「吞噬邪神的少女」</strong>——透過某種方式進入了凱伊的體內。更準確地說，是進入了那個依舊存在於凱伊體內的「不語世界」。',
             },
             {
               type: 'p',
-              text: '他的飲食習慣也開始改變。一開始，他只是覺得食物需要更多鹽味；後來，他開始無法吞嚥正常食物，反而對活體生物——尤其是人類——產生異樣的食慾。',
+              text: '她利用幻聽和幻覺不斷侵蝕他的意識，讓他的精神狀況每況愈下。',
             },
             {
               type: 'p',
-              text: '甚至有好幾次，潔西卡在現實與夢境中，嘗試把 CAE 再次拖入那個自己無意識打開的通道中，雖然最後都以失敗告終，但也讓 CAE 無法正常入眠。',
+              text: '隨著時間過去，他逐漸失去對自己身體的控制。他會在沒有意識的時候突然攻擊周遭的人，甚至在清醒時，也會從口中說出並非自己想法、且聲音與自己完全不同的句子。',
             },
             {
               type: 'p',
-              text: '一切直到某天，莉莉在一次平常的談話中，聽見 CAE 低聲說出：',
+              text: '飲食習慣也發生變化。一開始，他只是覺得食物需要更多調味；後來，他開始無法吞嚥正常食物，反而對活體生物——尤其是人類——產生異樣的食慾。',
+            },
+            {
+              type: 'p',
+              text: '甚至有好幾次，潔西卡在現實與夢境中，嘗試把凱伊再次拖入那個自己無意識打開的通道中，雖然最後都以失敗告終，但也讓凱伊無法正常入眠，時時刻刻擔心著邪神的攻擊。',
+            },
+            {
+              type: 'p',
+              text: '一切直到某天，莉莉在一次平常的談話中，聽見凱伊低聲說出：',
             },
             {
               type: 'quote',
@@ -169,15 +159,15 @@ const CHARACTER_SECTIONS_DB = {
             },
             {
               type: 'p',
-              text: '潔西卡開始以自己的方式「重做」 CAE 的身體。',
+              text: '潔西卡開始以自己的方式「重做」凱伊的身體。',
             },
             {
               type: 'p',
-              text: '幻覺幻聽只是開始。 CAE 的頭髮被變長變白、外貌變成女性、人體骨架與性別被完全轉換。',
+              text: '幻覺幻聽只是開始。凱伊的頭髮被變長變白、外貌變成女性、人體骨架與性別被完全轉換。',
             },
             {
               type: 'p',
-              text: 'CAE 無法忍受這種日復一日被操控的折磨，他開始萌生死亡的念頭，並付諸行動。',
+              text: '凱伊無法忍受這種日復一日被操控的折磨與罪惡感，他開始萌生死亡的念頭，並付諸行動。',
             },
             {
               type: 'p',
@@ -195,18 +185,30 @@ const CHARACTER_SECTIONS_DB = {
               type: 'p',
               text: '當他意識到自己即將攻擊莉莉時，他也毫不猶豫地折斷、拔下自己的手臂。',
             },
-            { type: 'heading', text: '自焚' },
+            { type: 'heading', text: '決心' },
             {
               type: 'p',
-              text: '最後，在一次嘗試自殺的行動中，他將整桶的汽油倒入自己房間的浴缸內，並點火燃燒，那是 CAE 受到最嚴重的致命傷，等到莉莉趕往他的房間時，他早已被燒成一具焦屍，莉莉也以自己身為總執行長的身分命令二號部門主管布萊克將 CAE 給救活。',
+              text: '莉莉的處境相當不妙。她需要一邊抵禦上一任 CEO 留下的心腹，一邊照顧自己失常的好友，一邊嘗試運作整個公司。',
             },
             {
               type: 'p',
-              text: '在又一次的急救後，布萊克對著仍處於半醒狀態的 CAE 說明，表示潔西卡的意識正開始奪走自己的身體，身上任何受傷的部位都會被潔西卡的細胞給替換並修復，而那個部位將會被潔西卡給奪去控制權，這正好解釋了那些不尋常的問題。',
+              text: '凱伊打死也不願成為她的阻礙，想要保護莉莉卻因對不語世界和潔西卡的恐懼而力不從心。但莉莉仍毫不猶豫地將他帶在身邊、陪伴著他，哪怕三番兩次都快死在敵人的攻擊中，好幾次與死神擦肩而過，卻還是依舊關心著凱伊。',
             },
             {
               type: 'p',
-              text: '此外，就算 CAE 什麼都不做，自己老化的細胞也會被潔西卡的細胞替換。',
+              text: '這一切都被看在眼中的潔西卡從中作梗，甚至好幾次凱伊都差點傷害到莉莉，甚至換來莉莉的左右手「鳩」和「布萊克」的不解與質疑。',
+            },
+            {
+              type: 'p',
+              text: '最後，在一次差點成功的刺殺行動中，凱伊因自己的緣故，使跟隨莉莉的異常事件編隊「龐南加蘭」全數陣亡，莉莉甚至差點葬身於自己掌權的公司內。',
+            },
+            {
+              type: 'p',
+              text: '就當一切急轉直下時，布萊克對著剛受傷、仍處於半醒狀態的凱伊說明，表示潔西卡的意識正開始奪走自己的身體，身上任何受傷的部位都會被潔西卡的細胞給替換並修復，而那個部位將會被潔西卡給奪去控制權，這正好解釋了那些不尋常的問題。',
+            },
+            {
+              type: 'p',
+              text: '此外，就算凱伊什麼都不做，自己老化的細胞也會被潔西卡的細胞替換。',
             },
             {
               type: 'p',
@@ -215,11 +217,23 @@ const CHARACTER_SECTIONS_DB = {
             { type: 'heading', text: '結合' },
             {
               type: 'p',
-              text: '聽完布萊克的話後，CAE 不打算坐以待斃。',
+              text: '聽完布萊克的話後，凱伊不再打算坐以待斃。',
             },
             {
               type: 'p',
-              text: '他再次踏入不語世界中，這一次，他決定直面潔西卡，解決這場無休止的侵蝕。',
+              text: '在反對派全面的進攻中，莉莉的左右手都為了阻止大部隊的進攻而殿後，留下仍護著凱伊的莉莉撤離到公司的一處死路，但追兵仍未停下腳步，還是來到了他們兩人的面前。',
+            },
+            {
+              type: 'p',
+              text: '這些人是前任 CEO 留下的菁英，對不語世界有一定的認知，他們也沒打算留凱伊與莉莉活路。',
+            },
+            {
+              type: 'p',
+              text: '臨死之際，凱伊下定了決心。她要保護自己的朋友，哪怕代價是他一輩子都無法負擔的孤獨。',
+            },
+            {
+              type: 'p',
+              text: '他再次進入不語世界中，這一次，他直面潔西卡，解決這場無休止的侵蝕。',
             },
             {
               type: 'p',
@@ -231,11 +245,11 @@ const CHARACTER_SECTIONS_DB = {
             },
             {
               type: 'p',
-              text: '然而，就在扭打至精疲力竭的一個片刻，潔西卡卻出乎意料地提出與 CAE 交媾的要求，並且以某種方式逼迫 CAE 接受。',
+              text: '然而，就在扭打至精疲力竭的一個片刻，潔西卡卻出乎意料地提出與凱伊交媾的要求，並且以某種方式逼迫凱伊接受。',
             },
             {
               type: 'p',
-              text: '在那個沒有時間概念的空間裡，他們在無數次的殺戮與性愛之間不斷輪迴。血與汗、撕裂的肌膚與瘋狂的喘息交織在一起，直到最後， CAE 從潔西卡體內拔出那把插著的刀，兩人終於在筋疲力竭後稍微停下。',
+              text: '在那個沒有時間概念的空間裡，他們在無數次的殺戮與性愛之間不斷輪迴。血與汗、撕裂的肌膚與瘋狂的喘息交織在一起，直到最後，凱伊從潔西卡體內拔出那把插著的刀，兩人終於在筋疲力竭後稍微停下。',
             },
             {
               type: 'p',
@@ -247,7 +261,7 @@ const CHARACTER_SECTIONS_DB = {
             },
             {
               type: 'p',
-              text: 'CAE 看著她，平靜地回答：',
+              text: '凱伊看著她，平靜地回答：',
             },
             {
               type: 'quote',
@@ -259,20 +273,41 @@ const CHARACTER_SECTIONS_DB = {
             },
             {
               type: 'p',
-              text: '潔西卡咬下 CAE 身上的血肉，CAE 也吞下潔西卡的一部分身體。他們用這種方式，接納了彼此的存在。',
+              text: '潔西卡咬下凱伊身上的血肉，凱伊也吞下潔西卡的一部分身體。他們用這種方式，接納了彼此的存在。',
             },
             {
               type: 'p',
-              text: '這場血腥的契約交換後，潔西卡答應減緩對 CAE 的侵蝕與精神控制，作為交換，CAE必須定期進食人肉，以維持潔西卡在他體內的安穩。',
+              text: '這場血腥的契約交換後，潔西卡答應減緩對凱伊的侵蝕與精神控制，作為交換，凱伊必須定期進食人肉，以維持潔西卡在他體內的安穩。',
             },
             {
               type: 'p',
-              text: '自此， CAE 誕生了。',
+              text: '自此，CAE 誕生了。',
+            },
+            { type: 'heading', text: '變化' },
+            {
+              type: 'p',
+              text: '以外人的視角來看，在凱伊的身影完全沒入不語世界的通道後，僅一瞬間，那通道便迅速擴散，將除了莉莉之外的所有反對派勢力都拖入了不語世界內。',
+            },
+            {
+              type: 'p',
+              text: '在那裏，他們並沒有找到凱伊的身影，取而代之的，是另一個披頭散髮、面露血光的女子。',
+            },
+            {
+              type: 'p',
+              text: '她持著刀刃與手斧，將眼前的一切，以最純粹、最原始的憤恨與暴力，殘忍的殺害。',
+            },
+            {
+              type: 'p',
+              text: '血漿與組織液在雪地上匯集成水塘，碎裂的骨片、四散的肉塊各自飛濺，替周遭的植被增添不少顏色。',
+            },
+            {
+              type: 'p',
+              text: '那一天，被黑色的平面拖入異空間的人，一個都沒有回來。',
             },
             { type: 'heading', text: '在那之後……' },
             {
               type: 'p',
-              text: '在那次事件後， CAE 重新回到了莉莉的視野中，並主動要求進行特訓。',
+              text: '在那次事件後，反對派的勢力被徹底消滅，莉莉完全掌控了公司，CAE 也出現在莉莉的視野中，並主動要求進行特訓。',
             },
             {
               type: 'p',
@@ -1919,6 +1954,19 @@ const CHARACTER_SECTIONS_DB = {
           type: 'p',
           text: '雙方的生存依賴這種病態的共生關係上，只要其中一方離去，雙方都會死亡。',
         },
+        { type: 'heading', text: '撕裂' },
+        {
+          type: 'p',
+          text: '與 CAE 的短兵相接總是讓人恐懼，她會把你撕成兩半——字面意義上的。',
+        },
+        {
+          type: 'p',
+          text: '由於在把控力度上覺得沒有必要，因此她每次揮動手中的武器都能扯下目標一大塊肉，其自身蘊含的怪力更是能讓她直接把手伸進人的嘴巴裡，靠蠻力把一個人的下顎至腹部的部分連帶撕開。',
+        },
+        {
+          type: 'p',
+          text: '與其說她是令人浮想聯翩的銀白幻影，她更像是骯髒的灰雪沾滿了血跡。',
+        },
       ],
     },
     jessica: {
@@ -2015,7 +2063,7 @@ const CHARACTER_SECTIONS_DB = {
         },
         {
           type: 'figure',
-          src: 'images/Jessica_EatingSoul.jpg',
+          src: 'images/Jessica/Jessica_EatingSoul.jpg',
           alt: '潔西卡・食魂',
           artist: '繪里奈',
         },
@@ -2509,7 +2557,46 @@ function renderCharacterBlocks(blocks, options = {}) {
 
 document.addEventListener('click', (event) => {
   const closeBtn = event.target.closest('[data-drawer-close]');
-  if (!closeBtn) return;
-  const drawer = closeBtn.closest('details.character-section__drawer');
-  if (drawer) drawer.open = false;
+  if (closeBtn) {
+    const drawer = closeBtn.closest('details.character-section__drawer');
+    if (drawer) drawer.open = false;
+    return;
+  }
+
+  const opened = document.querySelectorAll('.character-intro__media.is-artist-open');
+  const swapped = document.querySelectorAll('.character-intro__avatar-frame--swap.is-swapped');
+  const media = event.target.closest('.character-intro__media');
+  const useTapToggle =
+    window.matchMedia('(hover: none)').matches ||
+    window.matchMedia('(pointer: coarse)').matches;
+
+  if (!useTapToggle) return;
+
+  if (media && media.querySelector('.artist-drawer')) {
+    if (event.target.closest('a')) return;
+    const nextOpen = !media.classList.contains('is-artist-open');
+    opened.forEach((el) => {
+      if (el !== media) el.classList.remove('is-artist-open');
+    });
+    media.classList.toggle('is-artist-open', nextOpen);
+    if (media.classList.contains('character-intro__avatar-frame--swap')) {
+      swapped.forEach((el) => {
+        if (el !== media) el.classList.remove('is-swapped');
+      });
+      media.classList.toggle('is-swapped', nextOpen);
+    }
+    return;
+  }
+
+  if (media && media.classList.contains('character-intro__avatar-frame--swap')) {
+    const nextSwapped = !media.classList.contains('is-swapped');
+    swapped.forEach((el) => {
+      if (el !== media) el.classList.remove('is-swapped');
+    });
+    media.classList.toggle('is-swapped', nextSwapped);
+    return;
+  }
+
+  opened.forEach((el) => el.classList.remove('is-artist-open'));
+  swapped.forEach((el) => el.classList.remove('is-swapped'));
 });

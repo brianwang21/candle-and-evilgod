@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>命運之輪 · 主線《蠟燭與邪神》</title>
-  <link rel="icon" href="../../../images/Alaya_Icon.png" type="image/png">
+  <link rel="icon" href="../../../images/Alaya/Alaya_Icon.png" type="image/png">
   <link rel="stylesheet" href="../../../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,6 +163,21 @@
       letter-spacing: 0.08em;
       text-align: center;
       color: rgba(255, 255, 255, 0.55);
+    }
+
+    @media (max-width: 480px) {
+      .story-wheel-lock {
+        width: 100%;
+        max-width: 20rem;
+        padding: 1.15rem 0.85rem 1.35rem;
+      }
+
+      .story-wheel-lock__slot,
+      .story-wheel-lock__key,
+      .story-wheel-lock__clear,
+      .story-wheel-lock__submit {
+        min-height: 2.75rem;
+      }
     }
   </style>
 </head>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>蠟燭與邪神</title>
-  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="icon" href="images/Alaya/Alaya_Icon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,11 +48,24 @@
           id="preface-typewriter"
           aria-label="前言摘錄打字機效果"
         >
-          <p class="home-preface__typewriter-lead">如果今天掉到地上的橡皮擦不見了怎麼辦？</p>
-          <p class="home-preface__typewriter-text" id="preface-typewriter-text"></p>
-          <p class="home-preface__cite" id="preface-typewriter-cite">
-            ————摘自《蠟燭與邪神》｜愚者 02
-          </p>
+          <button
+            type="button"
+            class="home-preface__typewriter-toggle"
+            id="preface-typewriter-toggle"
+            aria-expanded="true"
+            aria-controls="preface-typewriter-panel"
+          >
+            <span class="home-preface__typewriter-lead">如果今天掉到地上的橡皮擦不見了怎麼辦？</span>
+            <span class="home-preface__typewriter-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="home-preface__typewriter-panel" id="preface-typewriter-panel">
+            <div class="home-preface__typewriter-panel-inner">
+              <p class="home-preface__typewriter-text" id="preface-typewriter-text"></p>
+              <p class="home-preface__cite" id="preface-typewriter-cite">
+                ————摘自《蠟燭與邪神》｜愚者 02
+              </p>
+            </div>
+          </div>
         </div>
 
         <p class="reveal-item">
@@ -400,7 +413,6 @@
               </span>
             </a>
           </li>
-          <!-- 暫時隱藏：米利暗人物頁
           <li
             class="home-characters__item"
             data-name="米利暗"
@@ -410,7 +422,7 @@
             <a class="home-characters__card" href="html/character-profile-miriam.html">
               <span class="home-characters__avatar">
                 <img
-                  src="images/force_CTA.png"
+                  src="images/profile_icon/MIRIAM_profile_ICON.png"
                   alt=""
                   class="home-characters__img"
                 >
@@ -421,7 +433,6 @@
               </span>
             </a>
           </li>
-          -->
         </ul>
       </div>
     </section>
@@ -432,7 +443,6 @@
         <h2 class="home-anomaly-events__heading">異常事件</h2>
 
         <article class="home-anomaly-events__deck">
-          <div class="home-anomaly-events__stage">
             <div class="home-anomaly-events__reel" aria-hidden="true">
               <div class="home-anomaly-events__reel-spin home-anomaly-events__reel-spin--trail">
                 <svg class="home-anomaly-events__reel-arc" viewBox="0 0 100 100" focusable="false">
@@ -465,13 +475,17 @@
               </div>
             </div>
 
-            <img
-              class="home-anomaly-events__vhs"
-              src="images/anomaly/VHS.png"
-              alt=""
-              width="1942"
-              height="1092"
-            >
+          <div class="home-anomaly-events__stage">
+            <picture>
+              <source media="(min-width: 761px)" srcset="images/anomaly/VHS.png">
+              <img
+                class="home-anomaly-events__vhs"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                alt=""
+                width="1942"
+                height="1092"
+              >
+            </picture>
 
             <button
               type="button"
@@ -518,6 +532,7 @@
                 role="tabpanel"
                 aria-labelledby="anomaly-port-class"
                 data-anomaly-panel="class"
+                aria-hidden="false"
               >
                 <p class="home-anomaly-events__kicker home-anomaly-events__kicker--class">Classification Reference</p>
                 <p class="home-anomaly-events__lead">
@@ -536,7 +551,8 @@
                 role="tabpanel"
                 aria-labelledby="anomaly-port-list"
                 data-anomaly-panel="list"
-                hidden
+                aria-hidden="true"
+                inert
               >
                 <p class="home-anomaly-events__kicker">Recorded Phenomena</p>
                 <p class="home-anomaly-events__lead">
@@ -575,13 +591,21 @@
       const section = document.querySelector('[data-preface-reveal]');
       const textEl = document.getElementById('preface-typewriter-text');
       const boxEl = document.getElementById('preface-typewriter');
+      const toggleEl = document.getElementById('preface-typewriter-toggle');
       if (!section || !textEl || !boxEl) return;
 
       const items = Array.from(section.querySelectorAll('.reveal-item'));
+      const drawerMq = window.matchMedia('(max-width: 768px)');
       let revealed = false;
       let typed = false;
       const fullText = PREFACE_TYPE_LINES.join('\n');
       const charDelay = 18;
+
+      function setTypewriterOpen(open) {
+        boxEl.classList.toggle('is-open', open);
+        if (toggleEl) toggleEl.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) runTypewriter();
+      }
 
       function runTypewriter() {
         if (typed) return;
@@ -611,7 +635,13 @@
         items.forEach((item, i) => {
           window.setTimeout(() => {
             item.classList.add('is-visible');
-            if (item === boxEl) runTypewriter();
+            if (item === boxEl) {
+              if (drawerMq.matches) {
+                setTypewriterOpen(false);
+              } else {
+                setTypewriterOpen(true);
+              }
+            }
           }, i * 120);
         });
       }
@@ -629,6 +659,19 @@
       );
 
       observer.observe(section);
+
+      if (toggleEl) {
+        toggleEl.addEventListener('click', () => {
+          if (!drawerMq.matches) return;
+          setTypewriterOpen(!boxEl.classList.contains('is-open'));
+        });
+      }
+
+      if (typeof drawerMq.addEventListener === 'function') {
+        drawerMq.addEventListener('change', (event) => {
+          if (!event.matches) setTypewriterOpen(true);
+        });
+      }
     })();
 
     (function () {
@@ -720,6 +763,50 @@
           show(target, target < index ? 'prev' : 'next');
         });
       });
+
+      const viewport = section.querySelector('.home-factions__viewport');
+      if (viewport) {
+        let pointerId = null;
+        let startX = 0;
+        let startY = 0;
+        let swiped = false;
+
+        viewport.addEventListener('pointerdown', (event) => {
+          if (event.pointerType === 'mouse' && event.button !== 0) return;
+          pointerId = event.pointerId;
+          startX = event.clientX;
+          startY = event.clientY;
+          swiped = false;
+          if (viewport.setPointerCapture) {
+            viewport.setPointerCapture(event.pointerId);
+          }
+        });
+
+        viewport.addEventListener('pointerup', (event) => {
+          if (pointerId !== event.pointerId) return;
+          pointerId = null;
+          const dx = event.clientX - startX;
+          const dy = event.clientY - startY;
+          if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+          swiped = true;
+          show(dx < 0 ? index + 1 : index - 1, dx < 0 ? 'next' : 'prev');
+        });
+
+        viewport.addEventListener('pointercancel', () => {
+          pointerId = null;
+        });
+
+        viewport.addEventListener(
+          'click',
+          (event) => {
+            if (!swiped) return;
+            event.preventDefault();
+            event.stopPropagation();
+            swiped = false;
+          },
+          true
+        );
+      }
 
       section.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowLeft') {
@@ -843,18 +930,15 @@
         switching = true;
         syncTabs(key);
         prevPanel.classList.remove('is-active');
+        prevPanel.setAttribute('aria-hidden', 'true');
+        prevPanel.inert = true;
 
         window.setTimeout(() => {
-          prevPanel.hidden = true;
-          nextPanel.hidden = false;
-          nextPanel.classList.remove('is-active');
-          window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
-              nextPanel.classList.add('is-active');
-              current = key;
-              switching = false;
-            });
-          });
+          nextPanel.classList.add('is-active');
+          nextPanel.setAttribute('aria-hidden', 'false');
+          nextPanel.inert = false;
+          current = key;
+          switching = false;
         }, FADE_MS);
       }
 
@@ -879,16 +963,16 @@
     })();
 
     (function () {
-      const stage = document.querySelector('.home-anomaly-events__stage');
+      const section = document.querySelector('.home-anomaly-events');
       const recBtn = document.getElementById('anomaly-vhs-rec');
       const mainSpin =
-        stage &&
-        stage.querySelector(
+        section &&
+        section.querySelector(
           '.home-anomaly-events__reel-spin:not(.home-anomaly-events__reel-spin--trail)'
         );
       const trailSpin =
-        stage && stage.querySelector('.home-anomaly-events__reel-spin--trail');
-      if (!stage || !recBtn || !mainSpin || !trailSpin) return;
+        section && section.querySelector('.home-anomaly-events__reel-spin--trail');
+      if (!section || !mainSpin || !trailSpin) return;
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const mainSpeed = 360 / 2.8;
@@ -908,12 +992,14 @@
 
       function applyRaised(nextRaised) {
         raised = nextRaised;
-        recBtn.classList.toggle('is-raised', raised);
-        recBtn.setAttribute('aria-pressed', raised ? 'false' : 'true');
-        recBtn.setAttribute(
-          'aria-label',
-          raised ? '點擊壓下以啟動捲帶' : '點擊彈起以暫停捲帶'
-        );
+        if (recBtn) {
+          recBtn.classList.toggle('is-raised', raised);
+          recBtn.setAttribute('aria-pressed', raised ? 'false' : 'true');
+          recBtn.setAttribute(
+            'aria-label',
+            raised ? '點擊壓下以啟動捲帶' : '點擊彈起以暫停捲帶'
+          );
+        }
         if (reduceMotion) return;
         // pressed (down) = spin, raised (up) = stop
         mainTarget = raised ? 0 : mainSpeed;
@@ -943,9 +1029,11 @@
         window.requestAnimationFrame(tick);
       }
 
-      recBtn.addEventListener('click', () => {
-        applyRaised(!raised);
-      });
+      if (recBtn) {
+        recBtn.addEventListener('click', () => {
+          applyRaised(!raised);
+        });
+      }
 
       applyRaised(false);
 

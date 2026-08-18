@@ -1,8 +1,8 @@
 /**
  * 能力評分資料庫
  * ─────────────────────────────────────────
- * definitions : 各能力項目的評估定義（滑鼠移至能力名稱時顯示）
- * ratings     : 各能力 × 等級的具體描述（滑鼠移至清單等級標籤時顯示）
+ * definitions : 各能力項目的評估定義（電腦：滑鼠移至能力名稱；手機：清單內直接顯示）
+ * ratings     : 各能力 × 等級的具體描述（電腦：滑鼠移至清單等級標籤；手機：清單內直接顯示）
  * levelScale  : 底部等級標尺的通用說明（各能力細節請見 ratings）
  *
  * 新增／修改文案時，只需編輯此檔案。
@@ -133,11 +133,11 @@ const ABILITY_DB = {
   anomalyDetailLabel: '點此以查看詳情',
 
   levelScale: {
-    缺陷: '最低評級。各能力項目在此標準下的具體定義不同，請將滑鼠移至右側清單的等級標籤查看。',
-    劣勢: '低於平均水準。各能力項目在此標準下的具體定義不同，請將滑鼠移至右側清單的等級標籤查看。',
-    普通: '大眾平均水準。各能力項目在此標準下的具體定義不同，請將滑鼠移至右側清單的等級標籤查看。',
-    優秀: '高於平均水準。各能力項目在此標準下的具體定義不同，請將滑鼠移至右側清單的等級標籤查看。',
-    卓越: '最高評級。各能力項目在此標準下的具體定義不同，請將滑鼠移至右側清單的等級標籤查看。',
+    缺陷: '最低評級。',
+    劣勢: '低於平均水準。',
+    普通: '大眾平均水準。',
+    優秀: '高於平均水準。',
+    卓越: '最高評級。',
   },
 };
 
@@ -176,3 +176,85 @@ function getAbilityRating(abilityName, level) {
 function getLevelScale(level) {
   return ABILITY_DB.levelScale[level] || `（${level} 說明待填入）`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMq = window.matchMedia('(max-width: 768px)');
+
+  function injectAbilityScaleHints() {
+    document.querySelectorAll('.abilities__list > li').forEach((item) => {
+      const levelTrigger = item.querySelector('.abilities__item-level');
+      if (!levelTrigger) return;
+      const label = levelTrigger.querySelector('.ability-hud-trigger__label');
+      const hud = levelTrigger.querySelector('.ability-hud');
+      if (!label || !hud || hud.querySelector('.abilities__item-scale')) return;
+
+      const scaleEl = document.createElement('span');
+      scaleEl.className = 'abilities__item-scale';
+      scaleEl.textContent = getLevelScale(label.textContent.trim());
+      const hudText = hud.querySelector('.ability-hud__text');
+      hud.insertBefore(scaleEl, hudText || null);
+    });
+  }
+
+  function syncAbilityHudMode(isMobile) {
+    document.querySelectorAll('.abilities__label-trigger').forEach((el) => {
+      if (isMobile) {
+        el.removeAttribute('tabindex');
+      } else {
+        el.setAttribute('tabindex', '0');
+      }
+    });
+
+    document
+      .querySelectorAll('.abilities__list .ability-hud-trigger, .abilities__scale .ability-hud-trigger')
+      .forEach((el) => {
+        if (isMobile) {
+          el.removeAttribute('tabindex');
+        } else {
+          el.setAttribute('tabindex', '0');
+        }
+      });
+
+    document.querySelectorAll('.abilities__list > li').forEach((item) => {
+      if (isMobile) {
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-expanded', item.classList.contains('is-open') ? 'true' : 'false');
+      } else {
+        item.classList.remove('is-open');
+        item.removeAttribute('role');
+        item.removeAttribute('tabindex');
+        item.removeAttribute('aria-expanded');
+      }
+    });
+  }
+
+  function toggleAbilityItem(item) {
+    const open = !item.classList.contains('is-open');
+    item.classList.toggle('is-open', open);
+    item.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!mobileMq.matches) return;
+    const item = event.target.closest('.abilities__list > li');
+    if (!item) return;
+    if (event.target.closest('a')) return;
+    toggleAbilityItem(item);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!mobileMq.matches) return;
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const item = event.target.closest('.abilities__list > li');
+    if (!item || event.target !== item) return;
+    event.preventDefault();
+    toggleAbilityItem(item);
+  });
+
+  injectAbilityScaleHints();
+  syncAbilityHudMode(mobileMq.matches);
+  if (typeof mobileMq.addEventListener === 'function') {
+    mobileMq.addEventListener('change', (event) => syncAbilityHudMode(event.matches));
+  }
+});

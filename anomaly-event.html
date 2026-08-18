@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>異常事件 · 蠟燭與邪神</title>
-  <link rel="icon" href="images/Alaya_Icon.png" type="image/png">
+  <link rel="icon" href="images/Alaya/Alaya_Icon.png" type="image/png">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -529,7 +529,7 @@
       }
 
       function isNarrow() {
-        return window.matchMedia('(max-width: 560px)').matches;
+        return window.matchMedia('(max-width: 768px)').matches;
       }
 
       function getLayouts(originRect) {
@@ -537,15 +537,15 @@
         const vh = window.innerHeight;
         const narrow = isNarrow();
         const media = narrow
-          ? Math.min(8.5 * 16, Math.max(5.5 * 16, originRect.width * 1.15))
+          ? Math.min(6.75 * 16, Math.max(4.75 * 16, originRect.width * 1.35))
           : Math.min(10 * 16, Math.max(7 * 16, originRect.width * 1.2));
-        const pad = narrow ? 18 : 22;
-        const gap = narrow ? 14 : 22;
+        const pad = narrow ? 16 : 22;
+        const gap = narrow ? 12 : 22;
         const contentW = narrow
-          ? Math.min(vw - 48, media + pad * 2) - pad * 2
+          ? Math.min(vw - 32, 22 * 16) - pad * 2
           : Math.min(34 * 16, Math.max(24 * 16, vw * 0.56));
         const contentH = narrow
-          ? Math.min(14.5 * 16, vh * 0.38)
+          ? Math.min(16 * 16, vh * 0.42)
           : Math.min(12.5 * 16, vh * 0.42);
 
         const origin = {
@@ -562,10 +562,11 @@
         let centered;
 
         if (narrow) {
-          const fullW = media + pad * 2;
-          const fullH = media + gap + contentH + pad * 2;
+          const fullW = Math.min(vw - 24, Math.max(contentW + pad * 2, media + pad * 2));
+          const maxH = vh - 24 - 16;
+          const fullH = Math.min(maxH, media + gap + contentH + pad * 2);
           const x = (vw - fullW) / 2;
-          const y = Math.max(24, (vh - fullH) / 2);
+          const y = Math.max(12, (vh - fullH) / 2);
           expanded = { x, y, w: fullW, h: fullH, media, pad, gap };
           centered = {
             x,

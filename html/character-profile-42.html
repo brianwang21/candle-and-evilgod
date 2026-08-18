@@ -51,7 +51,7 @@
                 </p>
               </div>
               <img
-                src="../images/42_Head.png"
+                src="../images/42/42_Head.png"
                 alt="42 角色頭像"
                 class="character-intro__avatar-img"
               >
@@ -97,7 +97,7 @@
                   繪師：<span class="artist-drawer__name">藍焰Lazer</span>
                 </p>
               </div><img
-                src="../images/42_FullSize_.png"
+                src="../images/42/42_FullSize_.png"
                 alt="42 全身／半身立繪"
                 class="character-intro__figure-img"
               >
@@ -1067,22 +1067,19 @@
       }
 
       function updateExpandState() {
+        if (CHART.isExpanded) return;
+
         const rect = panel.getBoundingClientRect();
         const vh = window.innerHeight;
         const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
         const visibleRatio = visibleHeight / rect.height;
         const inView = visibleRatio > 0.3 && rect.bottom > 60;
         const nearUpper = rect.top < vh * 0.8;
-        const shouldExpand = inView && nearUpper;
 
-        if (shouldExpand && !CHART.isExpanded) {
+        if (inView && nearUpper) {
           panel.classList.add('is-expanded');
           CHART.isExpanded = true;
           runRadarReveal();
-        } else if (!shouldExpand && CHART.isExpanded) {
-          panel.classList.remove('is-expanded');
-          CHART.isExpanded = false;
-          resetRadarAnimation();
         }
       }
 

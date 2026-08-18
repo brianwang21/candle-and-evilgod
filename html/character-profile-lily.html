@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>人物設定 · 莉莉．莫里斯</title>
-  <link rel="icon" href="../images/Lily_Head.jpg" type="image/jpeg">
+  <link rel="icon" href="../images/Lily/Lily_Head.jpg" type="image/jpeg">
   <link rel="stylesheet" href="../style.css?v=20260712b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,7 @@
                 </p>
               </div>
               <img
-                src="../images/Lily_Head.jpg"
+                src="../images/Lily/Lily_Head.jpg"
                 alt="莉莉．莫里斯 角色頭像"
                 class="character-intro__avatar-img"
               >
@@ -1057,22 +1057,19 @@
       }
 
       function updateExpandState() {
+        if (CHART.isExpanded) return;
+
         const rect = panel.getBoundingClientRect();
         const vh = window.innerHeight;
         const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
         const visibleRatio = visibleHeight / rect.height;
         const inView = visibleRatio > 0.3 && rect.bottom > 60;
         const nearUpper = rect.top < vh * 0.8;
-        const shouldExpand = inView && nearUpper;
 
-        if (shouldExpand && !CHART.isExpanded) {
+        if (inView && nearUpper) {
           panel.classList.add('is-expanded');
           CHART.isExpanded = true;
           runRadarReveal();
-        } else if (!shouldExpand && CHART.isExpanded) {
-          panel.classList.remove('is-expanded');
-          CHART.isExpanded = false;
-          resetRadarAnimation();
         }
       }
 

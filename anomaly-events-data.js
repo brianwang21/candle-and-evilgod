@@ -118,7 +118,7 @@ const ANOMALY_EVENTS_DB = {
         },
         {
           type: 'figure',
-          src: 'images/CAE_ability_WWW_01.png',
+          src: 'images/CAE/CAE_ability_WWW_01.png',
           alt: '不語世界的入口示意圖',
           caption: '不語世界的入口（示意圖）',
         },

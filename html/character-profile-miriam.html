@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>人物設定 · 米利暗</title>
-  <link rel="icon" href="../images/force_CTA.png" type="image/png">
+  <link rel="icon" href="../images/profile_icon/MIRIAM_profile_ICON.png" type="image/png">
   <link rel="stylesheet" href="../style.css?v=20260712b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,11 +43,13 @@
         <div class="character-intro__top">
           <!-- 左側：角色頭像 -->
           <div class="character-intro__avatar">
+            <!-- 繪師連結：有網址時將 <span class="artist-drawer__name"> 改為 <a href="網址" class="artist-drawer__link" target="_blank" rel="noopener noreferrer"> -->
             <div class="character-intro__avatar-frame character-intro__media">
-              <div class="character-intro__figure-placeholder">
-                <span class="character-intro__figure-placeholder-icon">✦</span>
-                <span class="character-intro__figure-placeholder-text">角色頭像</span>
-              </div>
+              <img
+                src="../images/Miriam/Miriam_Head_.png"
+                alt="米利暗 角色頭像"
+                class="character-intro__avatar-img"
+              >
             </div>
           </div>
 
@@ -79,11 +81,17 @@
           </ul>
 
           <div class="character-intro__figure">
+            <!-- 繪師連結：有網址時將 <span class="artist-drawer__name"> 改為 <a href="網址" class="artist-drawer__link" target="_blank" rel="noopener noreferrer"> -->
             <div class="character-intro__figure-frame character-intro__media">
               <div class="character-intro__figure-placeholder">
                 <span class="character-intro__figure-placeholder-icon">✦</span>
                 <span class="character-intro__figure-placeholder-text">全身／半身立繪</span>
               </div>
+              <img
+                src="../images/Miriam/Miriam_FullSize.png"
+                alt="米利暗 全身／半身立繪"
+                class="character-intro__figure-img"
+              >
             </div>
           </div>
         </div>
@@ -1053,22 +1061,19 @@
       }
 
       function updateExpandState() {
+        if (CHART.isExpanded) return;
+
         const rect = panel.getBoundingClientRect();
         const vh = window.innerHeight;
         const visibleHeight = Math.min(rect.bottom, vh) - Math.max(rect.top, 0);
         const visibleRatio = visibleHeight / rect.height;
         const inView = visibleRatio > 0.3 && rect.bottom > 60;
         const nearUpper = rect.top < vh * 0.8;
-        const shouldExpand = inView && nearUpper;
 
-        if (shouldExpand && !CHART.isExpanded) {
+        if (inView && nearUpper) {
           panel.classList.add('is-expanded');
           CHART.isExpanded = true;
           runRadarReveal();
-        } else if (!shouldExpand && CHART.isExpanded) {
-          panel.classList.remove('is-expanded');
-          CHART.isExpanded = false;
-          resetRadarAnimation();
         }
       }
 
