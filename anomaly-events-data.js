@@ -217,11 +217,6 @@ const ANOMALY_EVENTS_DB = {
       detailBrief: '這是讚揚著愛之歌的詛咒。',
       detail: [
         { type: 'doc-title', text: '邪神的鍾愛之物_能力詳解' },
-        {
-          type: 'quote',
-          text: '這是讚揚著愛之歌的詛咒。',
-          html: '<em>這是讚揚著愛之歌的詛咒。</em>',
-        },
         { type: 'rule' },
         {
           type: 'p',
@@ -297,6 +292,160 @@ const ANOMALY_EVENTS_DB = {
         },
       ],
     },
+    {
+      id: 'covenant',
+      name: '約',
+      type: 'anomaly',
+      brief: '千年所立的約，如今在這新天新地實現。',
+      detailBrief: '「律法既是將來美事的影，不是本物的真像」——《希伯來書》10:1',
+      detail: [
+        { type: 'doc-title', text: '約_能力詳解' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '「約」是由預表所延伸出的一系列異常事件中的其中一項。',
+        },
+        {
+          type: 'p',
+          text: '這項異常事件造就了米利暗與其他天使的存在，並給予了他們不同的能力。',
+        },
+        {
+          type: 'p',
+          text: '關於「天使」的詳細設定，請見：',
+        },
+        {
+          type: 'link-card',
+          href: 'glossary-angel.html',
+          image: 'images/wing.png',
+          label: '天使 (釋義頁)',
+        },
+        {
+          type: 'p',
+          text: '作為數千件與「天使」相關的異常事件的其中一件，約在米利暗身上呈現的外貌較為不同。',
+        },
+        {
+          type: 'p',
+          text: '本欄目以米利暗為例，講述約在她身上行使的奇蹟。',
+        },
+        { type: 'h3', text: '翅膀' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '除了頭上的光環外，在米利暗的身後有著六片多邊形的片狀透明物體，類似於翅膀的存在。',
+        },
+        {
+          type: 'p',
+          text: '這些翅膀堅硬無比，重量卻極為輕盈。觸摸上去時感覺不到其質量，卻能夠輕易地切開鍛鋼，米利暗能夠控制這些翅膀是否切開物體。',
+        },
+        {
+          type: 'p',
+          text: '每一片翅膀似乎都對應著七號的一把槍，至於少的那一把，米利暗並不是那麼在意。',
+        },
+        {
+          type: 'p',
+          text: '米利暗可以自由地控制這些翅膀獨立的快速移動，並達成各種用處：',
+        },
+        {
+          type: 'list',
+          items: [
+            '當成僚機，作為飛刀從各個角度進行襲擊。',
+            '組合成盾牌，擋下各種攻擊。',
+            '藉由與物體接觸來固定。',
+            '直接當成刀具使用。',
+          ],
+        },
+        { type: 'h3', text: '飛行' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '約給了所有天使飛行的能力，與其說是飛行，實際上是能夠以自己為中心施加各方位的力，從而達到飛行、浮空的效果。',
+        },
+        {
+          type: 'p',
+          text: '如果夠純熟，甚至可以從多方向施力，來做出各種動作，比如滑壘、高速移動、空中轉向等。',
+        },
+        {
+          type: 'p',
+          text: '米利暗將這種能力鍛鍊到了極致，是所有天使中數一數二的佼佼者。能夠自由自在地做出各類特技、也能完善的利用這一技巧在戰鬥中取得優勢。',
+        },
+        { type: 'h3', text: '感知邪惡' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '在天使原先的「能夠感知到邪惡」之上，米利暗自身額外具有「能夠感知敵意、殺意」的能力，在她眼中以直線條連線至殺意放出者心臟為表現手法。',
+        },
+        {
+          type: 'p',
+          text: '在充分進入戰鬥的狀態下，米利暗的反應力能提升至媲美光速的等級，且意識幾乎不會中斷。',
+        },
+        { type: 'h3', text: '光環' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '米利暗的光環具有未知的潛能。',
+        },
+        {
+          type: 'p',
+          text: '在過往的事件中，她使用光環的方式，超出了天使們的認知，原本作為對等溝通的渠道，在米利暗的爆發之下竟成了能「指使、命令」其他天使的訊號，甚至能控制住他們的行動。',
+        },
+        {
+          type: 'p',
+          text: '雖然在那之後，透過米利暗自身的協調，此事件未再發生過，但仍舊在 CTA 內留下了紀錄，說不定有朝一日能做為某種手段來使用……',
+        },
+        { type: 'h3', text: '各類模式' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '米利暗經由長時間的高強度練習，充分的習得了關於翅膀的各種使用方式，她使用不同的「模式」來記住這些狀態。模式的變化可以從翅膀看出。',
+        },
+        {
+          type: 'list',
+          items: [
+            '<strong>恆常</strong>——米利暗最常以這種方式進行作戰，各項能力都較為全面，也能更好的操控翅膀的個體移動。',
+            '<strong>強襲</strong>——此模式下，米利暗會將全數的翅膀擺置身體兩側，並指向前方，這樣能夠在前進時擋住兩側的致命火力，更可以在需要時直接控制翅膀撕裂敵人。',
+            '<strong>磐石</strong>——偏向防守的模式，米利暗能將翅膀聚集成一塊盾牌，常用於掩護中彈的隊友，用身上的救援鉤與繩索實行救護，並同時以短武器進行火力掩護，將隊友送至安全的地方。',
+            '<strong>遷躍</strong>——米利暗將翅膀至後，重疊翅膀且翅膀長度增加，此舉是為了讓她可以更好的「飛行」。在此模式下，米利暗的機動性會達到最高水平。能夠輕易地控制移動方位，且最高速可達到 200km/h。',
+          ],
+        },
+      ],
+    },
+    {
+      id: 'seven-trumpets',
+      name: '七支號',
+      type: 'controlled',
+      brief: '可以投影出七把功能不同的強力光銃進行作戰。',
+      detailBrief: '第七位天使吹號，天上就有聲音說：世上的國成了我主和主基督的國；他要作王，直到永永遠遠。——啟示錄 11:15',
+      detail: [
+        { type: 'doc-title', text: '七支號_能力詳解' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '七號是米利暗由「約」而取得的受管束事件。由於米利暗本身為異常事件「約」的產物，此異常事件被歸類於受管束事件中。',
+        },
+        {
+          type: 'p',
+          text: '七號為米利暗能隨時從任意地方取出的七把武器，這七把武器皆為現代熱兵器，約為1990年後的各式槍枝，其大部分槍枝外型都接近以色列國防軍服役槍枝。',
+        },
+        {
+          type: 'p',
+          text: '其取出方式接近她以光線「投影」出這些武器。經異常事件產出物標準測試之結果可得出，這七把武器由光的波長構成。',
+        },
+        {
+          type: 'p',
+          text: '這些武器並不需要換彈，且只要米利暗仍有體力，便可無限制的發射。',
+        },
+        { type: 'h3', text: '模式與變化' },
+        { type: 'rule' },
+        {
+          type: 'p',
+          text: '在米利暗處於不同的「模式」時，這些武器將出現不同的變化，以此契合該模式的長處。',
+        },
+        {
+          type: 'p',
+          text: '以「苦艾星」為例。這把衝鋒槍在米利暗處於「遷躍」模式時能夠一次性地取出兩把，使她在高速飛行的狀態下仍能以輕武器的火力覆蓋達到最有效的殺傷範圍。',
+        },
+      ],
+    },
   ],
 
   ownership: [
@@ -305,6 +454,8 @@ const ANOMALY_EVENTS_DB = {
     { characterId: 'cae', eventId: 'beloved-of-evilgod' },
     { characterId: 'jessica', eventId: 'devourer-of-evilgod' },
     { characterId: '42', eventId: 'soul-of-all-truth' },
+    { characterId: 'miriam', eventId: 'seven-trumpets' },
+    { characterId: 'miriam', eventId: 'covenant' },
   ],
 };
 
@@ -377,6 +528,16 @@ function renderAnomalyEventDetail(event) {
                 <blockquote class="quote-card__text">${textHtml}</blockquote>
                 <span class="quote-card__close" aria-hidden="true">」</span>
               </figure>
+            `;
+          }
+          case 'link-card': {
+            const imgSrc = typeof siteUrl === 'function' ? siteUrl(block.image) : block.image;
+            return `
+              <a class="anomaly-event-detail__link-card" href="${block.href || '#'}">
+                <img src="${imgSrc}" alt="" class="anomaly-event-detail__link-card-img">
+                <span class="anomaly-event-detail__link-card-label">${block.label}</span>
+                <span class="anomaly-event-detail__link-card-arrow">→</span>
+              </a>
             `;
           }
           case 'note':

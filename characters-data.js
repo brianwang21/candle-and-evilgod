@@ -41,7 +41,7 @@ const CHARACTERS_DB = {
       id: 'miriam',
       name: '米利暗',
       profilePage: 'html/character-profile-miriam.html',
-      icon: 'images/profile_icon/MIRIAM_profile_ICON.png',
+      icon: 'images/Miriam/Miriam_icon.png',
     },
     // 新增角色時在此加入一筆
   ],

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>人物設定 · 米利暗</title>
-  <link rel="icon" href="../images/profile_icon/MIRIAM_profile_ICON.png" type="image/png">
+  <link rel="icon" href="../images/Miriam/Miriam_icon.png" type="image/png">
   <link rel="stylesheet" href="../style.css?v=20260712b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,6 +45,11 @@
           <div class="character-intro__avatar">
             <!-- 繪師連結：有網址時將 <span class="artist-drawer__name"> 改為 <a href="網址" class="artist-drawer__link" target="_blank" rel="noopener noreferrer"> -->
             <div class="character-intro__avatar-frame character-intro__media">
+              <div class="artist-drawer">
+                <p class="artist-drawer__text">
+                  繪師：<span class="artist-drawer__name">匿名人物</span>
+                </p>
+              </div>
               <img
                 src="../images/Miriam/Miriam_Head_.png"
                 alt="米利暗 角色頭像"
@@ -56,7 +61,11 @@
           <!-- 右側：名稱與簡介 -->
           <div class="character-intro__text">
             <div class="character-intro__title-row">
-              <span class="character-intro__icon character-intro__icon--empty" aria-hidden="true" title="ICON 待補"></span>
+              <img
+                src="../images/Miriam/Miriam_icon.png"
+                alt="米利暗角色 Icon"
+                class="character-intro__icon"
+              >
               <h1 class="character-intro__title">米利暗</h1>
             </div>
             <p class="character-intro__bio">
@@ -77,7 +86,6 @@
             <li><span class="character-intro__label">種族/血統</span>不適用</li>
             <li><span class="character-intro__label">身高</span>169</li>
             <li><span class="character-intro__label">外觀特徵</span>褐肉金髮，頭上頂著個光環，背後有類似發光多邊形玻璃的翅膀。</li>
-            <li><span class="character-intro__label">當前居住地</span>CTA 總部</li>
           </ul>
 
           <div class="character-intro__figure">
@@ -86,6 +94,11 @@
               <div class="character-intro__figure-placeholder">
                 <span class="character-intro__figure-placeholder-icon">✦</span>
                 <span class="character-intro__figure-placeholder-text">全身／半身立繪</span>
+              </div>
+              <div class="artist-drawer">
+                <p class="artist-drawer__text">
+                  繪師：<span class="artist-drawer__name">匿名人物</span>
+                </p>
               </div>
               <img
                 src="../images/Miriam/Miriam_FullSize.png"
@@ -109,7 +122,7 @@
           <div class="world__logo-slot">
             <div class="world__logo-placeholder">
               <img
-                src="../images/force_CTA.png"
+                src="../images/ICON_CTA.png"
                 alt="中央技術局 Logo"
                 class="world__logo-image"
               >
@@ -117,8 +130,9 @@
           </div>
           <ul class="world__list">
             <li><span class="world__label">所屬勢力</span>中央技術局</li>
-            <li><span class="world__label">身分</span>示劍單位_伯利恆小隊長</li>
+            <li><span class="world__label">身分</span>示劍單位</li>
             <li><span class="world__label">地位</span>無可取代</li>
+            <li><span class="world__label">當前居住地</span>CTA 總部</li>
           </ul>
         </div>
       </div>
@@ -134,9 +148,9 @@
         <ul class="traits__list">
           <li><span class="traits__label">性格特質</span>易怒、好戰、心地善良。</li>
           <li><span class="traits__label">習慣</span>碎念、把玩槍枝。</li>
-          <li><span class="traits__label">喜好</span>甜甜圈、幫助別人、抽菸。</li>
+          <li><span class="traits__label">喜好</span>高速飛行、幫助別人、抽菸。</li>
           <li><span class="traits__label">厭惡</span>趨炎附勢、一切與惡魔相關的事情。</li>
-          <li><span class="traits__label">常說的話</span>「我要把你宰了。」</li>
+          <li><span class="traits__label">常說的話</span>「啊，抱歉。」</li>
         </ul>
       </div>
     </section>
@@ -593,7 +607,7 @@
             </div>
             <div class="weapon-detail__info">
               <h1 class="weapon-detail__name">${weapon.name}</h1>
-              <p class="weapon-detail__caption">${weapon.hoverText}</p>
+              ${getWeaponCaptionHtml(weapon)}
               <div class="weapon-detail__body">
                 ${summaryHtml}
               </div>

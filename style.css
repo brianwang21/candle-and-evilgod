@@ -615,6 +615,13 @@ a {
   );
 }
 
+.home-worldview-bar__stripe--corner {
+  top: auto;
+  left: auto;
+  right: calc((100% - min(1100px, 100% - 2.5rem)) / 2 + 2.8rem);
+  bottom: -9px;
+}
+
 .home-worldview-bar__text {
   margin: 0;
   max-width: none;
@@ -674,10 +681,29 @@ a {
 }
 
 .home-worldview-bar__section {
+  position: relative;
   margin-top: 2.25rem;
   max-width: 42em;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 1.5rem 1.6rem 1.6rem;
+  border: 1px solid rgba(20, 20, 20, 0.14);
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow:
+    6px 6px 14px rgba(0, 0, 0, 0.18),
+    10px 10px 0 #ff4444,
+    0 18px 30px rgba(0, 0, 0, 0.16),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-worldview-bar__section:hover,
+.home-worldview-bar__section:focus-within {
+  transform: translate(-2px, -2px);
+  box-shadow:
+    9px 9px 18px rgba(0, 0, 0, 0.2),
+    16px 16px 0 #ff4444,
+    0 22px 36px rgba(0, 0, 0, 0.2),
+    0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .home-worldview-bar__heading {
@@ -921,6 +947,42 @@ a {
   outline: none;
 }
 
+.home-worldview-bar__opcu-card--green {
+  border-color: rgba(92, 211, 160, 0.85);
+  background:
+    linear-gradient(135deg, rgba(92, 211, 160, 0.38) 0%, rgba(92, 211, 160, 0.1) 55%, transparent 100%),
+    #1a1a1a;
+}
+
+.home-worldview-bar__opcu-card--green .home-worldview-bar__opcu-card-kicker,
+.home-worldview-bar__opcu-card--green .home-worldview-bar__opcu-card-action {
+  color: #6ef0ba;
+}
+
+.home-worldview-bar__opcu-card--green:hover,
+.home-worldview-bar__opcu-card--green:focus-visible {
+  border-color: #6ef0ba;
+  box-shadow: 0 0 0 1px rgba(110, 240, 186, 0.45), 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.home-worldview-bar__opcu-card--red {
+  border-color: rgba(229, 57, 53, 0.9);
+  background:
+    linear-gradient(135deg, rgba(229, 57, 53, 0.42) 0%, rgba(229, 57, 53, 0.12) 55%, transparent 100%),
+    #1a1a1a;
+}
+
+.home-worldview-bar__opcu-card--red .home-worldview-bar__opcu-card-kicker,
+.home-worldview-bar__opcu-card--red .home-worldview-bar__opcu-card-action {
+  color: #ff7b72;
+}
+
+.home-worldview-bar__opcu-card--red:hover,
+.home-worldview-bar__opcu-card--red:focus-visible {
+  border-color: #ff7b72;
+  box-shadow: 0 0 0 1px rgba(255, 123, 114, 0.45), 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
 .home-worldview-bar__hint {
   margin-top: 0.35rem;
   font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
@@ -928,6 +990,26 @@ a {
   font-weight: 500;
   letter-spacing: 0.12em;
   color: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .home-worldview-bar__section {
+    padding: 1.2rem 1.1rem 1.25rem;
+    box-shadow:
+      4px 4px 10px rgba(0, 0, 0, 0.16),
+      7px 7px 0 #ff4444,
+      0 14px 24px rgba(0, 0, 0, 0.14),
+      0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .home-worldview-bar__section:hover,
+  .home-worldview-bar__section:focus-within {
+    box-shadow:
+      6px 6px 12px rgba(0, 0, 0, 0.18),
+      10px 10px 0 #ff4444,
+      0 18px 28px rgba(0, 0, 0, 0.18),
+      0 5px 10px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .home-worldview-bar__panel.is-open .home-worldview-bar__hint {
@@ -4545,25 +4627,25 @@ html.is-tag-modal-open {
   padding-top: 0.15em;
 }
 
-/* 全身／半身立繪區 */
+/* 全身／半身立繪區：固定 3:4 視窗，不足處裁切以統一各角色比例 */
 .character-intro__figure {
   flex-shrink: 0;
-  width: 260px;
+  width: 280px;
   padding-bottom: 3.5rem;
 }
 
 .character-intro__figure-frame {
   position: relative;
   width: 100%;
-  min-height: 420px;
+  aspect-ratio: 3 / 4;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px dashed rgba(229, 57, 53, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background: var(--bg-secondary);
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(229, 57, 53, 0.12),
-    inset 0 0 40px rgba(0, 0, 0, 0.25);
+    0 0 0 1px rgba(229, 57, 53, 0.15),
+    inset 0 0 40px rgba(0, 0, 0, 0.3);
   isolation: isolate;
 }
 
@@ -4596,10 +4678,10 @@ html.is-tag-modal-open {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 420px;
-  object-fit: contain;
-  object-position: center bottom;
-  position: relative;
+  object-fit: cover;
+  object-position: center 12%;
+  position: absolute;
+  inset: 0;
   z-index: 2;
   border-radius: calc(var(--radius-md) - 1px);
   background: var(--bg-secondary);
@@ -8169,6 +8251,47 @@ html.is-tag-modal-open {
   text-align: center;
 }
 
+.anomaly-event-detail__link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0;
+  padding: 0.85rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.anomaly-event-detail__link-card:hover,
+.anomaly-event-detail__link-card:focus-visible {
+  border-color: var(--accent-red-bright);
+  background: var(--bg-card-hover);
+}
+
+.anomaly-event-detail__link-card-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: brightness(0.9);
+}
+
+.anomaly-event-detail__link-card-label {
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.anomaly-event-detail__link-card-arrow {
+  font-size: 1.1rem;
+  color: var(--accent-red-bright);
+  flex-shrink: 0;
+}
+
 .anomaly-event-detail__quote {
   margin: 1.15rem 0 1.35rem;
 }
@@ -8406,8 +8529,14 @@ body.weapon-modal-nav-exit .navbar {
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.04em;
+  line-height: 1.75;
   color: var(--accent-red-bright);
   margin-bottom: 1rem;
+  white-space: pre-line;
+}
+
+.weapon-detail__caption--gold {
+  color: #e8c84a;
 }
 
 .weapon-detail__users {
@@ -11202,14 +11331,8 @@ a.story-segment__nav-item:focus-visible {
   }
 
   .character-intro__figure {
-    width: 100%;
-    max-width: 280px;
+    width: min(100%, 280px);
     margin: 0 auto;
-  }
-
-  .character-intro__figure-frame,
-  .character-intro__figure-img {
-    min-height: 360px;
   }
 
   .character-intro__details {
@@ -11652,11 +11775,6 @@ a.story-segment__nav-item:focus-visible {
 
   .character-intro__inner {
     padding: 1.15rem;
-  }
-
-  .character-intro__figure-frame,
-  .character-intro__figure-img {
-    min-height: 240px;
   }
 
   .home-hero__title-cn {

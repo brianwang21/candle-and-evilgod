@@ -87,6 +87,7 @@
     <section class="home-worldview-bar" aria-label="世界觀">
       <div class="home-worldview-bar__panel" id="worldview-drawer">
         <span class="home-worldview-bar__stripe" aria-hidden="true"></span>
+        <span class="home-worldview-bar__stripe home-worldview-bar__stripe--corner" aria-hidden="true"></span>
         <button
           type="button"
           class="home-worldview-bar__toggle"
@@ -180,6 +181,107 @@
                 type="button"
                 class="home-worldview-bar__collapse"
                 id="worldview-drawer-collapse"
+              >
+                點擊收起
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-worldview-bar" aria-label="設定釋義">
+      <div class="home-worldview-bar__panel" id="glossary-drawer">
+        <span class="home-worldview-bar__stripe" aria-hidden="true"></span>
+        <span class="home-worldview-bar__stripe home-worldview-bar__stripe--corner" aria-hidden="true"></span>
+        <button
+          type="button"
+          class="home-worldview-bar__toggle"
+          id="glossary-drawer-toggle"
+          aria-expanded="false"
+          aria-controls="glossary-drawer-detail"
+        >
+          <div class="home-worldview-bar__content">
+            <span class="home-worldview-bar__label">設定釋義</span>
+            <p class="home-worldview-bar__text">「更加詳細的瞭解這一切」</p>
+            <span class="home-worldview-bar__hint" aria-hidden="true">點擊展開</span>
+          </div>
+        </button>
+
+        <div
+          class="home-worldview-bar__detail"
+          id="glossary-drawer-detail"
+        >
+          <div class="home-worldview-bar__detail-inner">
+            <div class="home-worldview-bar__content home-worldview-bar__content--detail">
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">生體改造科技</h3>
+                <p>
+                  某方面來說，由於異常事件的頻發，導致許多公司行號、甚至國家政府也開始了生體改造科技的研發，但與異常事件不同之處在於，生體改造科技並沒有廣泛的宣傳給普羅大眾。
+                </p>
+                <a class="home-worldview-bar__opcu-card home-worldview-bar__opcu-card--green" href="glossary-biomod.html">
+                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
+                  <span class="home-worldview-bar__opcu-card-title">生體改造科技</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看生體改造科技的詳細釋義與案例</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">異常武裝力量</h3>
+                <p>
+                  「異常武裝化」一直以來都是媒體版面最好拿來炒作的話題之一。
+                </p>
+                <p>
+                  將異常事件結合國家正規武力的概念，讓各個有實力的國家想入非非，在不顧CTA的反對下暗自成立了各自的異常武裝力量，並搜刮著各類異常事件進行研究。
+                </p>
+                <p>
+                  此詞直到CTA被爆料出內部也有雇用受管束者進行任務後才公布在大眾之下，成為人盡皆知的秘密。
+                </p>
+                <p>
+                  目前，全球最有名的異常武裝力量是來自中國的「干支」部隊。
+                </p>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">生活中隨處可見</h3>
+                <p>
+                  並不是說你今天出個門買晚餐就一定會撞到。
+                </p>
+                <p>
+                  異常事件多種多樣，大部分人遇到的異常都是有預兆、能預防甚至可以逃離或與之對抗的——雖然公部門並不建議與異常事件發生衝突。
+                </p>
+                <p>
+                  以美國而言，平均一百人每年只會有約莫五人遭遇異常事件。
+                </p>
+                <p>
+                  主觀而言，遇到異常事件的機率跟自身的「異常適性」有關。
+                </p>
+                <a class="home-worldview-bar__opcu-card home-worldview-bar__opcu-card--red" href="anomaly-adaptability.html">
+                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
+                  <span class="home-worldview-bar__opcu-card-title">異常適性</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看異常適性的評級與子項目詳情</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">天使</h3>
+                <p>
+                  CTA 透過某個異常事件，與名為「天使」的生物進行名面上的合作。
+                </p>
+                <a class="home-worldview-bar__opcu-card" href="glossary-angel.html">
+                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
+                  <span class="home-worldview-bar__opcu-card-title">天使</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看「天使」在本世界觀中的定義與設定</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <button
+                type="button"
+                class="home-worldview-bar__collapse"
+                id="glossary-drawer-collapse"
               >
                 點擊收起
               </button>
@@ -706,6 +808,29 @@
     })();
 
     (function () {
+      const panel = document.getElementById('glossary-drawer');
+      const toggle = document.getElementById('glossary-drawer-toggle');
+      const collapse = document.getElementById('glossary-drawer-collapse');
+      if (!panel || !toggle) return;
+
+      function setOpen(open) {
+        panel.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+
+      toggle.addEventListener('click', () => {
+        setOpen(!panel.classList.contains('is-open'));
+      });
+
+      if (collapse) {
+        collapse.addEventListener('click', () => {
+          setOpen(false);
+          toggle.focus();
+        });
+      }
+    })();
+
+    (function () {
       const section = document.getElementById('factions');
       if (!section) return;
 
@@ -770,6 +895,7 @@
         let startX = 0;
         let startY = 0;
         let swiped = false;
+        let pressedLink = null;
 
         viewport.addEventListener('pointerdown', (event) => {
           if (event.pointerType === 'mouse' && event.button !== 0) return;
@@ -777,9 +903,7 @@
           startX = event.clientX;
           startY = event.clientY;
           swiped = false;
-          if (viewport.setPointerCapture) {
-            viewport.setPointerCapture(event.pointerId);
-          }
+          pressedLink = event.target.closest('.home-factions__link');
         });
 
         viewport.addEventListener('pointerup', (event) => {
@@ -787,13 +911,22 @@
           pointerId = null;
           const dx = event.clientX - startX;
           const dy = event.clientY - startY;
-          if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) return;
+          if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy)) {
+            const releasedLink = event.target.closest('.home-factions__link');
+            if (pressedLink && releasedLink === pressedLink) {
+              window.location.href = pressedLink.href;
+            }
+            pressedLink = null;
+            return;
+          }
           swiped = true;
+          pressedLink = null;
           show(dx < 0 ? index + 1 : index - 1, dx < 0 ? 'next' : 'prev');
         });
 
         viewport.addEventListener('pointercancel', () => {
           pointerId = null;
+          pressedLink = null;
         });
 
         viewport.addEventListener(

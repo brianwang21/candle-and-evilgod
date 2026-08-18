@@ -209,6 +209,53 @@ const WEAPONS_DB = {
         },
       ],
     },
+    {
+      id: 'hail-and-fire',
+      name: '手槍「雹、火與血」',
+      image: 'images/weapons/MIRIAM_ARM_Hail and fire mingled with blood.png',
+      hoverText:
+        '第一位天使吹號，就有雹子與火攙著血丟在地上；地的三分之一和樹的三分之一被燒了，一切的青草也被燒了。\n—— 《啟示錄》 8:7',
+      captionTone: 'gold',
+      summary: [
+        '由七支號所映射出的武器之一，是米利暗所持有的武器。',
+        '有著最快的取出速度，開火時能看到上方的碎片狀滑套張開、震動。中間的白色部分並非槍管，而是一種材質類似陶瓷的柱狀結晶體。',
+        '她通常會在敵火下照護（Care Under Fire, CUF）中使用這把武器，並用自己的翅膀組成盾牌進行掩護。',
+        '解剖報告指出，這把武器在擊中人體時的瞬間會產生類似於凝固汽油彈（Napalm）的特性，著彈點會產生一種膠狀物質並釋放高達1200℃的高溫，但由於僅有一瞬間，因此體感上與被開槍擊中是極為類似的。',
+        '目前仍不確定這種性質是因何種原因而導致。',
+      ],
+    },
+    {
+      id: 'wormwood',
+      name: '緊湊型衝鋒槍「苦艾星」',
+      image: 'images/weapons/MIRIAM_ARM_Wromwood.png',
+      hoverText:
+        '第三位天使吹號，就有燒著的大星好像火把從天上落下來，落在江河的三分之一和眾水的泉源上。\n—— 《啟示錄》 8:10',
+      captionTone: 'gold',
+      summary: [
+        '由七支號所映射出的武器之一，是米利暗所持有的武器。',
+        '其特色在於極高的射擊速度。開火時，後方的環狀部位會開始高速旋轉。',
+        '在米利暗處於「遷躍」時能同時映射出兩把，且射速進一步提升，可說是最能發揮這一強調機動性狀態之長處的武器。',
+        '根據戰鬥資料來看，這把武器所射出的彈藥具有某種程度的高爆性質，會在空氣中殘留一種微量氣體。',
+        '經採檢，這些氣體含有微量一氧化碳和氯氣，並透過七支號的命中痕跡反應成碳醯氯——也就是光氣。倘若反應更加完全，將達到致死劑量，僅是吸入一些就足以致命。',
+        '目前仍不確定這種性質是因何種原因而導致。',
+      ],
+    },
+    {
+      id: 'woe',
+      name: '突擊步槍「禍哉」',
+      image: 'images/weapons/MIRIAM_ARM_Woe.png',
+      hoverText:
+        '我又看見一個鷹飛在空中，並聽見牠大聲說：「三位天使要吹那其餘的號，你們住在地上的民禍哉！禍哉！禍哉！」\n—— 《啟示錄》 8:13',
+      captionTone: 'gold',
+      summary: [
+        '由七支號所映射出的武器之一，是米利暗所持有的武器。',
+        '擁有極強的穩定性、殺傷力與穿透力，其發射的彈藥甚至能把IV級的陶瓷防彈板如同紙板般撕開。',
+        '在米利暗處於「強襲」時，武器的終點彈道效能將大幅提升，能在500~1000米的射程內輕易擊穿任何個人防彈衣、15–25 mm 均質鋼裝甲及各類磚石掩體。',
+        '令人驚豔的是，這把武器可在米利暗的意志驅使下展現出不同的射擊模式，靈活運作於半自動單發、全自動連發、三點發乃至五點發之間。',
+        '經由傷檢報告可看出，受擊目標的創口組織內皆檢出微量放射線殘留。經成分分析，確認為類似衰變鈾的重金屬物質，這也為其極高的動能穿透力提供了物理學依據。',
+        '目前仍不確定這種性質是因何種原因而導致。',
+      ],
+    },
   ],
 
   ownership: [
@@ -219,6 +266,9 @@ const WEAPONS_DB = {
     { characterId: 'cae', weaponId: 'detest' },
     { characterId: 'cae', weaponId: 'duck' },
     { characterId: 'cae', weaponId: 'akovou-127' },
+    { characterId: 'miriam', weaponId: 'hail-and-fire' },
+    { characterId: 'miriam', weaponId: 'wormwood' },
+    { characterId: 'miriam', weaponId: 'woe' },
     // 艾萊亞持有更多武器：再追加 { characterId: 'alaya', weaponId: '...' }
     // 其他角色共用同一把：追加 { characterId: '其他角色id', weaponId: 'weapon-01' }
   ],
@@ -255,6 +305,15 @@ function escapeWeaponHtml(value) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function getWeaponCaptionHtml(weapon) {
+  if (!weapon || !weapon.hoverText) return '';
+  const toneClass =
+    weapon.captionTone === 'gold' ? ' weapon-detail__caption--gold' : '';
+  return `<p class="weapon-detail__caption${toneClass}">${escapeWeaponHtml(
+    weapon.hoverText
+  )}</p>`;
 }
 
 function renderWeaponSummary(summary) {

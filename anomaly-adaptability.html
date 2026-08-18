@@ -10,18 +10,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="faction-page">
   <div class="bg-grid"></div>
   <div class="bg-glow bg-glow--left"></div>
   <div class="bg-glow bg-glow--right"></div>
 
-  <header class="navbar">
+  <header class="navbar navbar--faction">
     <nav class="navbar__inner">
-      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回能力區</a>
+      <a href="index.html" class="navbar__link navbar__link--left">← 返回首頁</a>
     </nav>
   </header>
 
-  <main>
+  <main class="faction-detail">
+    <p class="faction-detail__eyebrow">Glossary</p>
+    <h1 class="faction-detail__title">異常適性</h1>
+    <p class="faction-detail__aka">Anomaly Adaptability · 釋義頁</p>
+
     <section class="anomaly-detail">
       <h2 class="section-title">
         <span class="section-title__icon">◈</span>
@@ -221,12 +225,12 @@
         : resolveProfileCharacterId([]);
       const backHref = backCharacterId
         ? getCharacterProfileHref(backCharacterId, 'abilities')
-        : 'index.html#characters';
+        : 'index.html';
 
       const backLinkLeft = document.querySelector('.navbar__link--left');
       if (backLinkLeft) {
         backLinkLeft.href = backHref;
-        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回人物設定';
+        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回首頁';
       }
 
       const iconHref = getCharacterIcon(backCharacterId);
