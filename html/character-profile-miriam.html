@@ -2,6 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>人物設定 · 米利暗</title>
   <link rel="icon" href="../images/Miriam/Miriam_icon.png" type="image/png">
@@ -69,7 +73,7 @@
               <h1 class="character-intro__title">米利暗</h1>
             </div>
             <p class="character-intro__bio">
-              CTA 示劍單位的伯利恆小隊長，來到人類世界的天使之一。
+              <a href="../faction-cta.html">CTA</a> 示劍單位的伯利恆小隊長，來到人類世界的<a href="../glossary-angel.html">天使</a>之一。
             </p>
             <p class="character-intro__bio">
               有別於其他的同事，整天一副苦大深仇的樣子。
@@ -120,16 +124,18 @@
       <div class="world__content">
         <div class="world__layout">
           <div class="world__logo-slot">
-            <div class="world__logo-placeholder">
-              <img
-                src="../images/ICON_CTA.png"
-                alt="中央技術局 Logo"
-                class="world__logo-image"
-              >
-            </div>
+            <a class="world__logo-link" href="../faction-cta.html">
+              <div class="world__logo-placeholder">
+                <img
+                  src="../images/ICON_CTA.png"
+                  alt="中央技術局 Logo"
+                  class="world__logo-image"
+                >
+              </div>
+            </a>
           </div>
           <ul class="world__list">
-            <li><span class="world__label">所屬勢力</span>中央技術局</li>
+            <li><span class="world__label">所屬勢力</span><a class="world__link" href="../faction-cta.html">中央技術局</a></li>
             <li><span class="world__label">身分</span>示劍單位</li>
             <li><span class="world__label">地位</span>無可取代</li>
             <li><span class="world__label">當前居住地</span>CTA 總部</li>
@@ -1138,5 +1144,6 @@
       }
     })();
   </script>
+  <script src="../site-nav.js"></script>
 </body>
 </html>

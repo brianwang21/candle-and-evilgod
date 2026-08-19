@@ -2,6 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>人物設定 · 莉莉．莫里斯</title>
   <link rel="icon" href="../images/Lily/Lily_Head.jpg" type="image/jpeg">
@@ -65,7 +69,7 @@
               <h1 class="character-intro__title">莉莉．莫里斯</h1>
             </div>
             <p class="character-intro__bio">
-              莫里斯公司現任CEO。
+              <a href="../faction-morris.html">莫里斯公司</a>現任CEO。
             </p>
             <p class="character-intro__bio">
               用自己的才智證實了即使是個普通人也能領導整個由異常事件組成的公司。
@@ -106,16 +110,18 @@
       <div class="world__content">
         <div class="world__layout">
           <div class="world__logo-slot">
-            <div class="world__logo-placeholder">
-              <img
-                src="../images/MORRIS_LOGO.png"
-                alt="莫里斯公司 Logo"
-                class="world__logo-image"
-              >
-            </div>
+            <a class="world__logo-link" href="../faction-morris.html">
+              <div class="world__logo-placeholder">
+                <img
+                  src="../images/MORRIS_LOGO.png"
+                  alt="莫里斯公司 Logo"
+                  class="world__logo-image"
+                >
+              </div>
+            </a>
           </div>
           <ul class="world__list">
-            <li><span class="world__label">所屬勢力</span>莫里斯公司</li>
+            <li><span class="world__label">所屬勢力</span><a class="world__link" href="../faction-morris.html">莫里斯公司</a></li>
             <li><span class="world__label">身分</span>CEO</li>
             <li><span class="world__label">地位</span>難以取代</li>
           </ul>
@@ -1120,5 +1126,6 @@
       }
     })();
   </script>
+  <script src="../site-nav.js"></script>
 </body>
 </html>

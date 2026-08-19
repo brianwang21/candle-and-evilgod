@@ -2,6 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>異常事件 · 蠟燭與邪神</title>
   <link rel="icon" href="images/Alaya/Alaya_Icon.png" type="image/png">
@@ -17,7 +21,7 @@
 
   <header class="navbar">
     <nav class="navbar__inner">
-      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left" id="anomaly-event-back">← 返回主頁</a>
+      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left" id="anomaly-event-back">← 返回異常事件</a>
     </nav>
   </header>
 
@@ -29,6 +33,8 @@
         <p class="anomaly-ref__lead">
           在《蠟燭與邪神》中，一個異常事件需經過「O.P.C.U」及「管理物質標籤」的分類才可進行完整的歸檔。
           前者告知一線人員如何處置，後者告訴研究人員這類異常屬於何種類型。
+          若要查看已公開歸檔的案例，請前往
+          <a href="anomaly-event-list.html">異常事件清單</a>。
         </p>
         <div class="anomaly-ref__axes" role="tablist" aria-label="雙軸對照">
           <button
@@ -745,7 +751,7 @@
         document.body.classList.add('anomaly-ref-page');
         if (backLink) {
           backLink.href = 'index.html#anomaly-events';
-          backLink.textContent = '← 返回主頁';
+          backLink.textContent = '← 返回異常事件';
         }
         refEl.hidden = false;
         detailEl.hidden = true;
@@ -851,5 +857,6 @@
       window.addEventListener('hashchange', render);
     })();
   </script>
+  <script src="site-nav.js"></script>
 </body>
 </html>

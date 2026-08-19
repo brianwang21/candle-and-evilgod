@@ -2,6 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>人物設定 · CAE</title>
   <link rel="icon" href="../images/CAE/CAE_ICON.png" type="image/png">
@@ -78,7 +82,7 @@
               故事的主角。
             </p>
             <p class="character-intro__bio">
-              莫里斯公司十號部門主管。專職負責部門內的各種委任處理。
+              <a href="../faction-morris.html">莫里斯公司</a>十號部門主管。專職負責部門內的各種委任處理。
             </p>
             <p class="character-intro__bio">
               別期待跟她講話可以得到什麼回饋，最好的情況是在你腦門上送一發子彈。
@@ -129,16 +133,18 @@
       <div class="world__content">
         <div class="world__layout">
           <div class="world__logo-slot">
-            <div class="world__logo-placeholder">
-              <img
-                src="../images/MORRIS_LOGO.png"
-                alt="莫里斯公司 Logo"
-                class="world__logo-image"
-              >
-            </div>
+            <a class="world__logo-link" href="../faction-morris.html">
+              <div class="world__logo-placeholder">
+                <img
+                  src="../images/MORRIS_LOGO.png"
+                  alt="莫里斯公司 Logo"
+                  class="world__logo-image"
+                >
+              </div>
+            </a>
           </div>
           <ul class="world__list">
-            <li><span class="world__label">所屬勢力</span>莫里斯公司</li>
+            <li><span class="world__label">所屬勢力</span><a class="world__link" href="../faction-morris.html">莫里斯公司</a></li>
             <li><span class="world__label">職位</span>十號部門 主管</li>
             <li><span class="world__label">身分</span>無可取代</li>
           </ul>
@@ -1226,5 +1232,6 @@
       updateExpandState();
     })();
   </script>
+  <script src="../site-nav.js"></script>
 </body>
 </html>

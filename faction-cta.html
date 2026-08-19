@@ -2,6 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>中央技術局 · CTA · 蠟燭與邪神</title>
   <link rel="icon" href="images/OPCU_ICON.png" type="image/png">
@@ -40,10 +44,24 @@
         <p>數十年後，CTA 的站點已遍布全球，中央技術局創造的 O.P.C.U 系統仍是全球異常管理的共同語言。CTA 也讓異常事件防範的重要程度與國防和財政比肩。</p>
       </div>
     </section>
+
+    <section class="faction-detail__section" aria-labelledby="cta-related">
+      <h2 id="cta-related" class="faction-detail__section-title">相關頁面</h2>
+      <div class="faction-detail__body">
+        <p>
+          <a href="anomaly-event.html#opcu">O.P.C.U 分級</a>
+          ／
+          <a href="anomaly-event-list.html">異常事件清單</a>
+          ／
+          <a href="glossary-angel.html">天使</a>
+        </p>
+      </div>
+    </section>
   </main>
 
   <footer class="footer footer--faction">
     <p>© 2026 蠟燭與邪神 · CTA</p>
   </footer>
+  <script src="site-nav.js"></script>
 </body>
 </html>

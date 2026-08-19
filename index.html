@@ -2,6 +2,30 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    (function () {
+      var hash = location.hash.replace('#', '');
+      try {
+        if (hash === 'glossary' || sessionStorage.getItem('myoc:drawer-glossary') === '1') {
+          document.documentElement.classList.add('open-glossary', 'myoc-pending-scroll');
+        }
+        if (hash === 'worldview' || hash === 'opcu-ref' || sessionStorage.getItem('myoc:drawer-worldview') === '1') {
+          document.documentElement.classList.add('open-worldview', 'myoc-pending-scroll');
+        }
+        var path = decodeURIComponent(location.pathname || '').replace(/\\/g, '/').toLowerCase();
+        if (path.endsWith('/')) path += 'index.html';
+        var saved = JSON.parse(sessionStorage.getItem('myoc:scroll') || '{}')[path];
+        if (saved && typeof saved.y === 'number') {
+          document.documentElement.classList.add('myoc-pending-scroll');
+          document.addEventListener('DOMContentLoaded', function () {
+            window.scrollTo(0, saved.y);
+          });
+        }
+      } catch (error) {}
+    })();
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>蠟燭與邪神</title>
   <link rel="icon" href="images/Alaya/Alaya_Icon.png" type="image/png">
@@ -84,7 +108,7 @@
       </div>
     </section>
 
-    <section class="home-worldview-bar" aria-label="世界觀">
+    <section id="worldview" class="home-worldview-bar" aria-label="世界觀">
       <div class="home-worldview-bar__panel" id="worldview-drawer">
         <span class="home-worldview-bar__stripe" aria-hidden="true"></span>
         <span class="home-worldview-bar__stripe home-worldview-bar__stripe--corner" aria-hidden="true"></span>
@@ -152,7 +176,7 @@
                 <h3 class="home-worldview-bar__heading">人們如何處裡異常事件？</h3>
                 <ol class="home-worldview-bar__steps">
                   <li>當有人發現自己身邊有發生異常事件的跡象時，他們可以直接通報當區的警察前來進行確認。</li>
-                  <li>在排除人員傷亡的可能性後，警方會通報CTA的人來進行處裡。</li>
+                  <li>在排除人員傷亡的可能性後，警方會通報<a class="home-worldview-bar__term" href="faction-cta.html">CTA</a>的人來進行處裡。</li>
                   <li>CTA人員會進行現場的勘查，在確認異常可供歸檔收容後進行作業，並在離開現場時進行清理善後。</li>
                   <li>若異常事件發生於個人財產區域內，CTA會給予一定的賠償慰問金。</li>
                 </ol>
@@ -181,107 +205,6 @@
                 type="button"
                 class="home-worldview-bar__collapse"
                 id="worldview-drawer-collapse"
-              >
-                點擊收起
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="home-worldview-bar" aria-label="設定釋義">
-      <div class="home-worldview-bar__panel" id="glossary-drawer">
-        <span class="home-worldview-bar__stripe" aria-hidden="true"></span>
-        <span class="home-worldview-bar__stripe home-worldview-bar__stripe--corner" aria-hidden="true"></span>
-        <button
-          type="button"
-          class="home-worldview-bar__toggle"
-          id="glossary-drawer-toggle"
-          aria-expanded="false"
-          aria-controls="glossary-drawer-detail"
-        >
-          <div class="home-worldview-bar__content">
-            <span class="home-worldview-bar__label">設定釋義</span>
-            <p class="home-worldview-bar__text">「更加詳細的瞭解這一切」</p>
-            <span class="home-worldview-bar__hint" aria-hidden="true">點擊展開</span>
-          </div>
-        </button>
-
-        <div
-          class="home-worldview-bar__detail"
-          id="glossary-drawer-detail"
-        >
-          <div class="home-worldview-bar__detail-inner">
-            <div class="home-worldview-bar__content home-worldview-bar__content--detail">
-              <div class="home-worldview-bar__section">
-                <h3 class="home-worldview-bar__heading">生體改造科技</h3>
-                <p>
-                  某方面來說，由於異常事件的頻發，導致許多公司行號、甚至國家政府也開始了生體改造科技的研發，但與異常事件不同之處在於，生體改造科技並沒有廣泛的宣傳給普羅大眾。
-                </p>
-                <a class="home-worldview-bar__opcu-card home-worldview-bar__opcu-card--green" href="glossary-biomod.html">
-                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
-                  <span class="home-worldview-bar__opcu-card-title">生體改造科技</span>
-                  <span class="home-worldview-bar__opcu-card-desc">查看生體改造科技的詳細釋義與案例</span>
-                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
-                </a>
-              </div>
-
-              <div class="home-worldview-bar__section">
-                <h3 class="home-worldview-bar__heading">異常武裝力量</h3>
-                <p>
-                  「異常武裝化」一直以來都是媒體版面最好拿來炒作的話題之一。
-                </p>
-                <p>
-                  將異常事件結合國家正規武力的概念，讓各個有實力的國家想入非非，在不顧CTA的反對下暗自成立了各自的異常武裝力量，並搜刮著各類異常事件進行研究。
-                </p>
-                <p>
-                  此詞直到CTA被爆料出內部也有雇用受管束者進行任務後才公布在大眾之下，成為人盡皆知的秘密。
-                </p>
-                <p>
-                  目前，全球最有名的異常武裝力量是來自中國的「干支」部隊。
-                </p>
-              </div>
-
-              <div class="home-worldview-bar__section">
-                <h3 class="home-worldview-bar__heading">生活中隨處可見</h3>
-                <p>
-                  並不是說你今天出個門買晚餐就一定會撞到。
-                </p>
-                <p>
-                  異常事件多種多樣，大部分人遇到的異常都是有預兆、能預防甚至可以逃離或與之對抗的——雖然公部門並不建議與異常事件發生衝突。
-                </p>
-                <p>
-                  以美國而言，平均一百人每年只會有約莫五人遭遇異常事件。
-                </p>
-                <p>
-                  主觀而言，遇到異常事件的機率跟自身的「異常適性」有關。
-                </p>
-                <a class="home-worldview-bar__opcu-card home-worldview-bar__opcu-card--red" href="anomaly-adaptability.html">
-                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
-                  <span class="home-worldview-bar__opcu-card-title">異常適性</span>
-                  <span class="home-worldview-bar__opcu-card-desc">查看異常適性的評級與子項目詳情</span>
-                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
-                </a>
-              </div>
-
-              <div class="home-worldview-bar__section">
-                <h3 class="home-worldview-bar__heading">天使</h3>
-                <p>
-                  CTA 透過某個異常事件，與名為「天使」的生物進行名面上的合作。
-                </p>
-                <a class="home-worldview-bar__opcu-card" href="glossary-angel.html">
-                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
-                  <span class="home-worldview-bar__opcu-card-title">天使</span>
-                  <span class="home-worldview-bar__opcu-card-desc">查看「天使」在本世界觀中的定義與設定</span>
-                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
-                </a>
-              </div>
-
-              <button
-                type="button"
-                class="home-worldview-bar__collapse"
-                id="glossary-drawer-collapse"
               >
                 點擊收起
               </button>
@@ -386,8 +309,8 @@
             <p class="home-story__kicker">Main Story</p>
             <h3 class="home-story__title">主線《蠟燭與邪神》</h3>
             <p class="home-story__summary">
-              CTA前員工艾萊亞遭到了自家單位的背叛，不只慘遭降職，還被公司內部派人追殺。
-              在瀕死之際，她意外的從莫里斯公司主管CAE的手中活了下來，並帶進莫里斯公司，就此開始了她那充滿異常事件的生活……
+              <a href="faction-cta.html">CTA</a>前員工<a href="html/character-profile-alaya.html">艾萊亞</a>遭到了自家單位的背叛，不只慘遭降職，還被公司內部派人追殺。
+              在瀕死之際，她意外的從<a href="faction-morris.html">莫里斯公司</a>主管<a href="html/character-profile-CAE.html">CAE</a>的手中活了下來，並帶進莫里斯公司，就此開始了她那充滿異常事件的生活……
             </p>
 
             <div class="home-story__chapters" aria-label="章節">
@@ -671,6 +594,107 @@
         </article>
       </div>
     </section>
+
+    <section id="glossary" class="home-worldview-bar" aria-label="設定釋義">
+      <div class="home-worldview-bar__panel" id="glossary-drawer">
+        <span class="home-worldview-bar__stripe" aria-hidden="true"></span>
+        <span class="home-worldview-bar__stripe home-worldview-bar__stripe--corner" aria-hidden="true"></span>
+        <button
+          type="button"
+          class="home-worldview-bar__toggle"
+          id="glossary-drawer-toggle"
+          aria-expanded="false"
+          aria-controls="glossary-drawer-detail"
+        >
+          <div class="home-worldview-bar__content">
+            <span class="home-worldview-bar__label">設定釋義</span>
+            <p class="home-worldview-bar__text">「更加詳細的瞭解這一切」</p>
+            <span class="home-worldview-bar__hint" aria-hidden="true">點擊展開</span>
+          </div>
+        </button>
+
+        <div
+          class="home-worldview-bar__detail"
+          id="glossary-drawer-detail"
+        >
+          <div class="home-worldview-bar__detail-inner">
+            <div class="home-worldview-bar__content home-worldview-bar__content--detail">
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">生體改造科技</h3>
+                <p>
+                  某方面來說，由於異常事件的頻發，導致許多公司行號、甚至國家政府也開始了生體改造科技的研發，但與異常事件不同之處在於，生體改造科技並沒有廣泛的宣傳給普羅大眾。
+                </p>
+                <a class="home-worldview-bar__opcu-card home-worldview-bar__opcu-card--green" href="glossary-biomod.html">
+                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
+                  <span class="home-worldview-bar__opcu-card-title">生體改造科技</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看生體改造科技的詳細釋義與案例</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">異常武裝力量</h3>
+                <p>
+                  「異常武裝化」一直以來都是媒體版面最好拿來炒作的話題之一。
+                </p>
+                <p>
+                  將異常事件結合國家正規武力的概念，讓各個有實力的國家想入非非，在不顧<a class="home-worldview-bar__term" href="faction-cta.html">CTA</a>的反對下暗自成立了各自的異常武裝力量，並搜刮著各類異常事件進行研究。
+                </p>
+                <p>
+                  此詞直到CTA被爆料出內部也有雇用受管束者進行任務後才公布在大眾之下，成為人盡皆知的秘密。
+                </p>
+                <p>
+                  目前，全球最有名的異常武裝力量是來自中國的「干支」部隊。
+                </p>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">生活中隨處可見</h3>
+                <p>
+                  並不是說你今天出個門買晚餐就一定會撞到。
+                </p>
+                <p>
+                  異常事件多種多樣，大部分人遇到的異常都是有預兆、能預防甚至可以逃離或與之對抗的——雖然公部門並不建議與異常事件發生衝突。
+                </p>
+                <p>
+                  以美國而言，平均一百人每年只會有約莫五人遭遇異常事件。
+                </p>
+                <p>
+                  主觀而言，遇到異常事件的機率跟自身的「異常適性」有關。
+                </p>
+                <a class="home-worldview-bar__opcu-card home-worldview-bar__opcu-card--red" href="anomaly-adaptability.html">
+                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
+                  <span class="home-worldview-bar__opcu-card-title">異常適性</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看異常適性的評級與子項目詳情</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <div class="home-worldview-bar__section">
+                <h3 class="home-worldview-bar__heading">天使</h3>
+                <p>
+                  <a class="home-worldview-bar__term" href="faction-cta.html">CTA</a> 透過某個<a class="home-worldview-bar__term" href="anomaly-event.html#covenant">異常事件</a>，與名為「天使」的生物進行名面上的合作。
+                </p>
+                <a class="home-worldview-bar__opcu-card" href="glossary-angel.html">
+                  <span class="home-worldview-bar__opcu-card-kicker">Glossary</span>
+                  <span class="home-worldview-bar__opcu-card-title">天使</span>
+                  <span class="home-worldview-bar__opcu-card-desc">查看「天使」在本世界觀中的定義與設定</span>
+                  <span class="home-worldview-bar__opcu-card-action">前往了解 →</span>
+                </a>
+              </div>
+
+              <button
+                type="button"
+                class="home-worldview-bar__collapse"
+                id="glossary-drawer-collapse"
+              >
+                點擊收起
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -785,6 +809,10 @@
       function setOpen(open) {
         panel.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.documentElement.classList.toggle('open-worldview', open);
+        try {
+          sessionStorage.setItem('myoc:drawer-worldview', open ? '1' : '0');
+        } catch (error) {}
       }
 
       toggle.addEventListener('click', () => {
@@ -798,12 +826,14 @@
         });
       }
 
-      if (window.location.hash === '#opcu-ref') {
+      const worldviewHash = window.location.hash.slice(1);
+      const shouldOpen =
+        document.documentElement.classList.contains('open-worldview') ||
+        worldviewHash === 'worldview' ||
+        worldviewHash === 'opcu-ref';
+      if (shouldOpen) {
+        panel.classList.add('is-open-instant');
         setOpen(true);
-        window.setTimeout(() => {
-          const target = document.getElementById('opcu-ref');
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 120);
       }
     })();
 
@@ -816,6 +846,10 @@
       function setOpen(open) {
         panel.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.documentElement.classList.toggle('open-glossary', open);
+        try {
+          sessionStorage.setItem('myoc:drawer-glossary', open ? '1' : '0');
+        } catch (error) {}
       }
 
       toggle.addEventListener('click', () => {
@@ -827,6 +861,14 @@
           setOpen(false);
           toggle.focus();
         });
+      }
+
+      const shouldOpen =
+        document.documentElement.classList.contains('open-glossary') ||
+        window.location.hash.slice(1) === 'glossary';
+      if (shouldOpen) {
+        panel.classList.add('is-open-instant');
+        setOpen(true);
       }
     })();
 
@@ -843,16 +885,23 @@
       let index = slides.findIndex((slide) => slide.classList.contains('is-active'));
       if (index < 0) index = 0;
 
-      function show(nextIndex, direction) {
+      function applyFaction(next, { animate = true, direction = 'next' } = {}) {
         const total = slides.length;
-        const next = ((nextIndex % total) + total) % total;
-        if (next === index) return;
+        const target = ((next % total) + total) % total;
+        if (target === index && slides[target].classList.contains('is-active')) {
+          section.setAttribute('data-faction', slides[target].getAttribute('data-faction') || '');
+          return;
+        }
 
         const currentSlide = slides[index];
-        const nextSlide = slides[next];
+        const nextSlide = slides[target];
 
         currentSlide.classList.remove('is-active');
-        currentSlide.classList.add(direction === 'prev' ? 'is-exit-right' : 'is-exit-left');
+        if (animate) {
+          currentSlide.classList.add(direction === 'prev' ? 'is-exit-right' : 'is-exit-left');
+        } else {
+          currentSlide.classList.remove('is-exit-left', 'is-exit-right');
+        }
         currentSlide.setAttribute('aria-hidden', 'true');
 
         nextSlide.classList.remove('is-exit-left', 'is-exit-right');
@@ -862,17 +911,52 @@
         section.setAttribute('data-faction', nextSlide.getAttribute('data-faction') || '');
 
         dots.forEach((dot, i) => {
-          const active = i === next;
+          const active = i === target;
           dot.classList.toggle('is-active', active);
           dot.setAttribute('aria-selected', active ? 'true' : 'false');
         });
 
-        window.setTimeout(() => {
-          currentSlide.classList.remove('is-exit-left', 'is-exit-right');
-        }, 400);
+        if (animate) {
+          window.setTimeout(() => {
+            currentSlide.classList.remove('is-exit-left', 'is-exit-right');
+          }, 400);
+        }
 
-        index = next;
+        index = target;
+        try {
+          sessionStorage.setItem('myoc:home-faction', nextSlide.getAttribute('data-faction') || '');
+        } catch (error) {
+          /* ignore */
+        }
       }
+
+      try {
+        const savedFaction = sessionStorage.getItem('myoc:home-faction');
+        if (savedFaction) {
+          const savedIndex = slides.findIndex((slide) => slide.getAttribute('data-faction') === savedFaction);
+          if (savedIndex >= 0) applyFaction(savedIndex, { animate: false });
+        }
+      } catch (error) {
+        /* ignore */
+      }
+
+      function show(nextIndex, direction) {
+        applyFaction(nextIndex, { animate: true, direction });
+      }
+
+      section.querySelectorAll('.home-factions__link').forEach((link) => {
+        link.addEventListener('click', () => {
+          const slide = link.closest('.home-factions__slide');
+          try {
+            sessionStorage.setItem(
+              'myoc:home-faction',
+              (slide && slide.getAttribute('data-faction')) || ''
+            );
+          } catch (error) {
+            /* ignore */
+          }
+        });
+      });
 
       if (prevBtn) {
         prevBtn.addEventListener('click', () => show(index - 1, 'prev'));
@@ -1176,5 +1260,6 @@
       });
     })();
   </script>
+  <script src="site-nav.js"></script>
 </body>
 </html>

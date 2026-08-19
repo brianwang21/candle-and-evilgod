@@ -50,7 +50,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-gutter: stable;
   overflow-x: clip;
   --scrollbar-size: 5px;
@@ -58,6 +58,37 @@ html {
   --scrollbar-track: transparent;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html.is-instant-scroll {
+  scroll-behavior: auto !important;
+}
+
+html.myoc-pending-scroll body {
+  opacity: 0;
+}
+
+html.open-glossary #glossary-drawer .home-worldview-bar__detail,
+html.open-worldview #worldview-drawer .home-worldview-bar__detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.is-smooth-nav:not(.is-instant-scroll) {
+    scroll-behavior: smooth;
+  }
+}
+
+#preface,
+#worldview,
+#factions,
+#story,
+#characters,
+#anomaly-events,
+#glossary {
+  scroll-margin-top: 1.25rem;
 }
 
 /* --- 自訂捲軸（預設紅豎條；勢力頁用代表色） --- */
@@ -656,6 +687,10 @@ a {
   opacity: 1;
 }
 
+.home-worldview-bar__panel.is-open-instant .home-worldview-bar__detail {
+  transition: none;
+}
+
 .home-worldview-bar__body {
   margin-top: 1.25rem;
   max-width: 42em;
@@ -842,6 +877,19 @@ a {
 .home-worldview-bar__collapse:focus-visible {
   color: #000000;
   outline: none;
+}
+
+.home-worldview-bar__term {
+  color: #111111;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.25s ease;
+}
+
+.home-worldview-bar__term:hover,
+.home-worldview-bar__term:focus-visible {
+  color: #b71c1c;
 }
 
 .home-worldview-bar__opcu-inline {
@@ -3384,6 +3432,20 @@ html.is-tag-modal-open {
   color: var(--text-secondary);
 }
 
+.home-story__summary a {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(229, 57, 53, 0.55);
+}
+
+.home-story__summary a:hover,
+.home-story__summary a:focus-visible {
+  color: var(--accent-red-bright);
+  text-decoration-color: var(--accent-red-bright);
+}
+
 .home-story__chapters {
   display: flex;
   flex-direction: column;
@@ -4580,6 +4642,20 @@ html.is-tag-modal-open {
   padding-top: 0.25rem;
 }
 
+.character-intro__bio a {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-accent);
+}
+
+.character-intro__bio a:hover,
+.character-intro__bio a:focus-visible {
+  color: var(--accent-red-bright);
+  text-decoration-color: var(--accent-red-bright);
+}
+
 .character-intro__bottom {
   display: flex;
   align-items: flex-start;
@@ -4760,6 +4836,7 @@ html.is-tag-modal-open {
   max-width: 1100px;
   margin: 0 auto;
   padding: 1.25rem 2rem 2rem;
+  scroll-margin-top: 5rem;
 }
 
 .abilities__content {
@@ -7734,6 +7811,13 @@ html.is-tag-modal-open {
   text-align: left;
 }
 
+.anomaly-ref__lead a {
+  color: var(--accent-red-bright);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .anomaly-ref__lead strong {
   color: var(--text-primary);
   font-weight: 600;
@@ -9637,6 +9721,31 @@ body.weapon-modal-nav-exit .navbar {
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--text-muted);
+}
+
+.world__link {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-accent);
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+.world__link:hover,
+.world__link:focus-visible {
+  color: var(--accent-red-bright);
+  text-decoration-color: var(--accent-red-bright);
+}
+
+.world__logo-link {
+  display: block;
+  color: inherit;
+}
+
+.world__logo-link:hover .world__logo-image,
+.world__logo-link:focus-visible .world__logo-image {
+  filter: brightness(1.08);
 }
 
 /* --- 潔西卡：勢力 glitch --- */

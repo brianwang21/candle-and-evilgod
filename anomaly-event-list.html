@@ -2,6 +2,10 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>異常事件清單 · 蠟燭與邪神</title>
   <link rel="icon" href="images/Alaya/Alaya_Icon.png" type="image/png">
@@ -15,7 +19,7 @@
 
   <header class="navbar">
     <nav class="navbar__inner">
-      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left">← 返回主頁</a>
+      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left">← 返回異常事件</a>
     </nav>
   </header>
 
@@ -349,5 +353,6 @@
       buildList();
     })();
   </script>
+  <script src="site-nav.js"></script>
 </body>
 </html>
