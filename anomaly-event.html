@@ -31,12 +31,12 @@
         <p class="anomaly-ref__eyebrow">Anomaly Classification</p>
         <h1 class="anomaly-ref__title">異常事件</h1>
         <p class="anomaly-ref__lead">
-          在《蠟燭與邪神》中，一個異常事件需經過「O.P.C.U」及「管理物質標籤」的分類才可進行完整的歸檔。
-          前者告知一線人員如何處置，後者告訴研究人員這類異常屬於何種類型。
+          在《蠟燭與邪神》中，一個異常事件需經過「O.P.C.U」、「管理物質標籤」及「保密等級」的分類才可進行完整的歸檔。
+          前者告知一線人員如何處置，中者告訴研究人員這類異常屬於何種類型，後者標示相關資訊的閱覽權限。
           若要查看已公開歸檔的案例，請前往
           <a href="anomaly-event-list.html">異常事件清單</a>。
         </p>
-        <div class="anomaly-ref__axes" role="tablist" aria-label="雙軸對照">
+        <div class="anomaly-ref__axes" role="tablist" aria-label="分類軸對照">
           <button
             type="button"
             class="anomaly-ref__axis anomaly-ref__axis--opcu is-active"
@@ -62,6 +62,19 @@
             <span class="anomaly-ref__axis-kicker">Axis B · Research</span>
             <span class="anomaly-ref__axis-name">管理物質標籤</span>
             <span class="anomaly-ref__axis-desc">類型歸檔</span>
+          </button>
+          <button
+            type="button"
+            class="anomaly-ref__axis anomaly-ref__axis--ceist"
+            id="anomaly-ref-tab-ceist"
+            role="tab"
+            aria-selected="false"
+            aria-controls="ceist"
+            data-axis="ceist"
+          >
+            <span class="anomaly-ref__axis-kicker">Axis C · Clearance</span>
+            <span class="anomaly-ref__axis-name">保密等級</span>
+            <span class="anomaly-ref__axis-desc">閱覽權限</span>
           </button>
         </div>
       </header>
@@ -296,6 +309,129 @@
           </div>
         </div>
       </section>
+
+      <section
+        class="anomaly-ref__section anomaly-ref__panel anomaly-ref__section--ceist"
+        id="ceist"
+        role="tabpanel"
+        aria-labelledby="ceist-title"
+        data-panel="ceist"
+        hidden
+      >
+        <p class="anomaly-ref__section-eyebrow">Clearance Classification</p>
+        <h2 class="anomaly-ref__section-title" id="ceist-title">保密等級</h2>
+        <p class="ceist-hero__acronym" aria-hidden="true">C.E.I.S.T</p>
+        <div class="anomaly-ref__section-lead">
+          <p>
+            保密等級標示該異常事件相關資訊的閱覽權限與對外公開範圍。
+            可拆成「極機密（Clandestine）」、「受保護（Encrypted）」、「內部流通（Intramural）」、「有限度公開（Sanitized）」及「完全公開（Transparent）」五級。
+          </p>
+        </div>
+
+        <div class="ceist-ladder" role="list" aria-label="保密等級">
+          <article class="ceist-level" role="listitem">
+            <div class="ceist-level__stamp">
+              <img
+                src="images/anomaly/C.png"
+                alt="Clandestine（極機密）"
+                width="430"
+                height="491"
+              >
+            </div>
+            <div class="ceist-level__body">
+              <h3 class="ceist-level__title">
+                <span class="ceist-level__en">Clandestine</span>
+                <span class="ceist-level__zh">極機密</span>
+              </h3>
+              <p class="ceist-level__text">
+                僅在國家領導人、CTA 核心領導層等最高級別授權下始可檢閱。其外洩後果將造成無法挽回的災難性破壞，絕對禁止對外公開。未經授權之知情者將面臨最嚴厲之懲處，最高可逕行判處死刑。
+              </p>
+            </div>
+          </article>
+
+          <article class="ceist-level" role="listitem">
+            <div class="ceist-level__stamp">
+              <img
+                src="images/anomaly/E.png"
+                alt="Encrypted（受保護）"
+                width="431"
+                height="491"
+              >
+            </div>
+            <div class="ceist-level__body">
+              <h3 class="ceist-level__title">
+                <span class="ceist-level__en">Encrypted</span>
+                <span class="ceist-level__zh">受保護</span>
+              </h3>
+              <p class="ceist-level__text">
+                受加密與權限管控之資訊。僅限多數政府高層與 CTA 內部核心人員進行完整檢閱。因全面公開的潛在風險極高，針對低權限人員仍需進行嚴格的資訊屏蔽（Redaction）或存取限制。
+              </p>
+            </div>
+          </article>
+
+          <article class="ceist-level" role="listitem">
+            <div class="ceist-level__stamp">
+              <img
+                src="images/anomaly/I.png"
+                alt="Intramural（內部流通）"
+                width="430"
+                height="491"
+              >
+            </div>
+            <div class="ceist-level__body">
+              <h3 class="ceist-level__title">
+                <span class="ceist-level__en">Intramural</span>
+                <span class="ceist-level__zh">內部流通</span>
+              </h3>
+              <p class="ceist-level__text">
+                僅限於政府相關部門與 CTA 內部流通之資訊。若未經授權外洩，可能引發社會恐慌或對組織運作造成干擾。需進行標準的保密管控，嚴禁外部人士存取。
+              </p>
+            </div>
+          </article>
+
+          <article class="ceist-level" role="listitem">
+            <div class="ceist-level__stamp">
+              <img
+                src="images/anomaly/S.png"
+                alt="Sanitized（有限度公開）"
+                width="431"
+                height="491"
+              >
+            </div>
+            <div class="ceist-level__body">
+              <h3 class="ceist-level__title">
+                <span class="ceist-level__en">Sanitized</span>
+                <span class="ceist-level__zh">有限度公開</span>
+              </h3>
+              <p class="ceist-level__text">
+                經脫敏處理之資訊，在特定條件下可有限度釋出。經評估確認「適度公開有助於該異常事件的管理或公眾安全」時，將授權開放給特定新聞媒體、醫療組織、教育機構或法律顧問等外部單位。
+              </p>
+            </div>
+          </article>
+
+          <article class="ceist-level" role="listitem">
+            <div class="ceist-level__stamp">
+              <img
+                src="images/anomaly/T.png"
+                alt="Transparent（完全公開）"
+                width="431"
+                height="491"
+              >
+            </div>
+            <div class="ceist-level__body">
+              <h3 class="ceist-level__title">
+                <span class="ceist-level__en">Transparent</span>
+                <span class="ceist-level__zh">完全公開</span>
+              </h3>
+              <p class="ceist-level__text">
+                無任何閱覽限制之公開資訊。經確認全面公開不會引發負面效應，或該異常事件之威脅已完全解除（或已常態化）時適用此等級，任何人皆可自由查閱。
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <p class="ceist-note">上述等級皆可因異常事件的變化而改變保密等級。</p>
+      </section>
       </div>
     </div>
 
@@ -449,8 +585,9 @@
         });
       });
 
-      const initial =
-        location.hash === '#substance-tags' ? 'substance-tags' : 'opcu';
+      const AXIS_HASHES = new Set(['opcu', 'substance-tags', 'ceist']);
+      const hashKey = location.hash.slice(1);
+      const initial = AXIS_HASHES.has(hashKey) ? hashKey : 'opcu';
       showAxis(initial, { updateHash: false, instant: true });
     })();
   </script>
@@ -744,7 +881,7 @@
       const backLink = document.getElementById('anomaly-event-back');
       if (!refEl || !detailEl) return;
 
-      const REF_HASHES = new Set(['', 'opcu', 'substance-tags']);
+      const REF_HASHES = new Set(['', 'opcu', 'substance-tags', 'ceist']);
 
       function showRef() {
         document.title = '異常事件 · 蠟燭與邪神';
@@ -758,7 +895,7 @@
         detailEl.innerHTML = '';
 
         const hash = location.hash.slice(1);
-        if (hash === 'opcu' || hash === 'substance-tags') {
+        if (hash === 'opcu' || hash === 'substance-tags' || hash === 'ceist') {
           if (typeof window.__anomalyRefShowAxis === 'function') {
             window.__anomalyRefShowAxis(hash, { updateHash: false, instant: true });
           }

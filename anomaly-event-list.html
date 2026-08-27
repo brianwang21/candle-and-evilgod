@@ -57,6 +57,24 @@
           </div>
         </div>
 
+        <div class="anomaly-file__filter-block is-open" data-filter="ceist">
+          <div class="anomaly-file__filter-summary" role="button" tabindex="0" aria-expanded="true" aria-controls="anomaly-file-ceist-panel">
+            <span class="anomaly-file__filter-summary-text">
+              <span class="anomaly-file__filter-label">保密等級</span>
+              <span class="anomaly-file__filter-note">點選圖示開關篩選 · 符合任一即列出 · 對照見 <a href="anomaly-event.html#ceist">分類頁</a></span>
+            </span>
+            <span class="anomaly-file__filter-summary-actions">
+              <button type="button" class="anomaly-file__filter-clear" data-clear="ceist">清除</button>
+              <span class="anomaly-file__filter-chevron" aria-hidden="true"></span>
+            </span>
+          </div>
+          <div class="anomaly-file__filter-body" id="anomaly-file-ceist-panel">
+            <div class="anomaly-file__filter-body-inner">
+              <div class="anomaly-file__ceist-grid" id="anomaly-file-ceist-filters" role="group" aria-label="保密等級篩選"></div>
+            </div>
+          </div>
+        </div>
+
         <div class="anomaly-file__filter-block anomaly-file__filter-block--tags" data-filter="tags">
           <div class="anomaly-file__filter-summary" role="button" tabindex="0" aria-expanded="false" aria-controls="anomaly-file-tag-panel">
             <span class="anomaly-file__filter-summary-text">
@@ -96,10 +114,12 @@
       const emptyEl = document.getElementById('anomaly-file-empty');
       const countEl = document.getElementById('anomaly-file-count');
       const opcuFiltersEl = document.getElementById('anomaly-file-opcu-filters');
+      const ceistFiltersEl = document.getElementById('anomaly-file-ceist-filters');
       const tagFiltersEl = document.getElementById('anomaly-file-tag-filters');
-      if (!listEl || !opcuFiltersEl || !tagFiltersEl) return;
+      if (!listEl || !opcuFiltersEl || !ceistFiltersEl || !tagFiltersEl) return;
 
       const selectedOpcu = new Set();
+      const selectedCeist = new Set();
       const selectedTags = new Set();
 
       function assetUrl(path) {
@@ -125,6 +145,33 @@
           if (selectedOpcu.has(item.id)) selectedOpcu.delete(item.id);
           else selectedOpcu.add(item.id);
           const on = selectedOpcu.has(item.id);
+          btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+          btn.classList.toggle('is-on', on);
+          applyFilters();
+        });
+        return btn;
+      }
+
+      function makeCeistToggle(item) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'anomaly-file__ceist';
+        btn.dataset.kind = 'ceist';
+        btn.dataset.id = item.id;
+        btn.setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-label', `篩選 ${item.zh} ${item.en}`);
+        btn.title = `${item.zh} · ${item.en}`;
+        btn.innerHTML = `
+          <span class="anomaly-file__ceist-frame">
+            <img src="${assetUrl(item.icon)}" alt="" width="512" height="512" loading="lazy">
+          </span>
+          <span class="anomaly-file__ceist-caption">${item.zh}</span>
+          <span class="anomaly-file__ceist-en">${item.en}</span>
+        `;
+        btn.addEventListener('click', () => {
+          if (selectedCeist.has(item.id)) selectedCeist.delete(item.id);
+          else selectedCeist.add(item.id);
+          const on = selectedCeist.has(item.id);
           btn.setAttribute('aria-pressed', on ? 'true' : 'false');
           btn.classList.toggle('is-on', on);
           applyFilters();
@@ -192,16 +239,19 @@
 
       function renderFilters() {
         ANOMALY_FILE_OPCU.forEach((item) => opcuFiltersEl.appendChild(makeOpcuDiamond(item)));
+        ANOMALY_FILE_CEIST.forEach((item) => ceistFiltersEl.appendChild(makeCeistToggle(item)));
         ANOMALY_FILE_TAGS.forEach((item) => tagFiltersEl.appendChild(makeTagToggle(item)));
       }
 
-      /** OPCU／標籤皆為聯集：選中多個時，符合其中任一即顯示 */
+      /** OPCU／保密等級／標籤皆為聯集：選中多個時，符合其中任一即顯示；三軸之間為交集 */
       function matchesFilters(event) {
         const opcuOk = selectedOpcu.size === 0
           || event.opcu.some((id) => selectedOpcu.has(id));
+        const ceistOk = selectedCeist.size === 0
+          || selectedCeist.has(event.ceist);
         const tagOk = selectedTags.size === 0
           || event.tags.some((id) => selectedTags.has(id));
-        return opcuOk && tagOk;
+        return opcuOk && ceistOk && tagOk;
       }
 
       function buildList() {
@@ -214,6 +264,7 @@
           details.dataset.code = event.code;
           details.dataset.opcu = event.opcu.join(',');
           details.dataset.tags = event.tags.join(',');
+          details.dataset.ceist = event.ceist || '';
 
           const pageHref = getAnomalyFilePage(event);
 
@@ -302,6 +353,12 @@
         if (kind === 'opcu') {
           selectedOpcu.clear();
           opcuFiltersEl.querySelectorAll('.anomaly-file__opcu-cell').forEach((el) => {
+            el.classList.remove('is-on');
+            el.setAttribute('aria-pressed', 'false');
+          });
+        } else if (kind === 'ceist') {
+          selectedCeist.clear();
+          ceistFiltersEl.querySelectorAll('.anomaly-file__ceist').forEach((el) => {
             el.classList.remove('is-on');
             el.setAttribute('aria-pressed', 'false');
           });

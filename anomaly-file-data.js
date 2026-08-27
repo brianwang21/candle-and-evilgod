@@ -24,7 +24,16 @@
  *    images/anomaly/{code}.png　（1:1）
  *    例：images/anomaly/P-ANM-111.png
  *
- * 4) 新增步驟
+ * 4) 保密等級圖示（C.E.I.S.T）
+ *    完整印章（分類說明頁）：images/anomaly/{C|E|I|S|T}.png
+ *    精簡圖示（清單篩選／摘要徽章／檔案頁）：images/anomaly/{C|E|I|S|T}_0.png
+ *      C_0.png  Clandestine  極機密
+ *      E_0.png  Encrypted    受保護
+ *      I_0.png  Intramural   內部流通
+ *      S_0.png  Sanitized    有限度公開
+ *      T_0.png  Transparent  完全公開
+ *
+ * 5) 新增步驟
  *    A. 複製 anomaly_html/_TEMPLATE.html → anomaly_html/{code}.html，替換所有 【】 佔位
  *    B. 在下方 ANOMALY_FILE_EVENTS 陣列末尾追加一筆（格式見註解範本）
  *    C. 若有圖，放入 images/anomaly/{code}.png 並在詳細頁取消 img 註解
@@ -35,6 +44,7 @@
  * name / nameEn 中文名／英文名
  * opcu        ['O'|'P'|'C'|'U'] 可複數
  * tags        物質標籤簡寫陣列，可複數（見 ANOMALY_FILE_TAGS.id）
+ * ceist       'C'|'E'|'I'|'S'|'T' 保密等級（單選；與 OPCU 的 C 無關）
  * controlled  是否為受管束事件 true/false
  * brief       清單折疊列可用短述（目前清單展開不顯示，仍建議填）
  * measures    管理措施（詳細頁）
@@ -46,6 +56,49 @@ const ANOMALY_FILE_OPCU = [
   { id: 'P', zh: '規範型', en: 'Protocol' },
   { id: 'C', zh: '協議型', en: 'Contractual' },
   { id: 'U', zh: '無解型', en: 'Uncontainable' },
+];
+
+const ANOMALY_FILE_CEIST = [
+  {
+    id: 'C',
+    zh: '極機密',
+    en: 'Clandestine',
+    image: 'images/anomaly/C.png',
+    icon: 'images/anomaly/C_0.png',
+    desc: '僅在國家領導人、CTA 核心領導層等最高級別授權下始可檢閱。其外洩後果將造成無法挽回的災難性破壞，絕對禁止對外公開。未經授權之知情者將面臨最嚴厲之懲處，最高可逕行判處死刑。',
+  },
+  {
+    id: 'E',
+    zh: '受保護',
+    en: 'Encrypted',
+    image: 'images/anomaly/E.png',
+    icon: 'images/anomaly/E_0.png',
+    desc: '受加密與權限管控之資訊。僅限多數政府高層與 CTA 內部核心人員進行完整檢閱。因全面公開的潛在風險極高，針對低權限人員仍需進行嚴格的資訊屏蔽（Redaction）或存取限制。',
+  },
+  {
+    id: 'I',
+    zh: '內部流通',
+    en: 'Intramural',
+    image: 'images/anomaly/I.png',
+    icon: 'images/anomaly/I_0.png',
+    desc: '僅限於政府相關部門與 CTA 內部流通之資訊。若未經授權外洩，可能引發社會恐慌或對組織運作造成干擾。需進行標準的保密管控，嚴禁外部人士存取。',
+  },
+  {
+    id: 'S',
+    zh: '有限度公開',
+    en: 'Sanitized',
+    image: 'images/anomaly/S.png',
+    icon: 'images/anomaly/S_0.png',
+    desc: '經脫敏處理之資訊，在特定條件下可有限度釋出。經評估確認「適度公開有助於該異常事件的管理或公眾安全」時，將授權開放給特定新聞媒體、醫療組織、教育機構或法律顧問等外部單位。',
+  },
+  {
+    id: 'T',
+    zh: '完全公開',
+    en: 'Transparent',
+    image: 'images/anomaly/T.png',
+    icon: 'images/anomaly/T_0.png',
+    desc: '無任何閱覽限制之公開資訊。經確認全面公開不會引發負面效應，或該異常事件之威脅已完全解除（或已常態化）時適用此等級，任何人皆可自由查閱。',
+  },
 ];
 
 const ANOMALY_FILE_TAGS = [
@@ -71,6 +124,7 @@ const ANOMALY_FILE_EVENTS = [
     nameEn: 'White bread',
     opcu: ['P'],
     tags: ['ANM'],
+    ceist: 'T',
     controlled: false,
     brief: '數袋異常 Wonder Bread 樣式白麵包；取出並暴露於空氣將導致十公里內自然生物死亡。',
     measures: '樣本須全程留置於原包裝內，嚴禁開封、移出或分裝。一旦取出並暴露於空氣，半徑約十公里範圍內之自然生態將遭受毀滅性破壞。',
@@ -83,6 +137,7 @@ const ANOMALY_FILE_EVENTS = [
     nameEn: 'World Without Words',
     opcu: ['O'],
     tags: ['EXM'],
+    ceist: 'E',
     controlled: true,
     measures: '當前已交由十號部門管理。',
     description: 'O-EXM-125 經受管束事件化後，已完全附著至 ■■■■■■■■ 上。本條目僅就其異常本體之表現進行紀錄。O-EXM-125 為一異常空間事件，以碎形構成之純黑通道作為進出途徑；該通道呈不規則形狀，並以極度緩慢之速度持續擴張。進入後，內部呈現溫帶平原景觀，地理結構與當前世界一致，然任何文化、語言及原生碳基生物皆無法於其中存續。',
@@ -94,6 +149,7 @@ const ANOMALY_FILE_EVENTS = [
     nameEn: 'I wish for Ivy',
     opcu: ['O', 'P'],
     tags: ['UKS'],
+    ceist: 'I',
     controlled: false,
     brief: '極端絕望狀態下現身的常春藤纏繞人影，遞交未知藥品予接收者。',
     measures: '未決定',
@@ -110,6 +166,7 @@ const ANOMALY_FILE_EVENTS = [
     nameEn: 'Gametophyte',
     opcu: ['P'],
     tags: ['ANS'],
+    ceist: 'E',
     controlled: false,
     brief: '亞裔混血女性外觀之活態樣本；體內含 U-UKS/UBC-666 植入生物質，於劇場型收容區塊「日落鎮」輪換監控管理。',
     measures:
@@ -139,12 +196,22 @@ const ANOMALY_FILE_EVENTS = [
     nameEn: 'English name',
     opcu: ['P'],
     tags: ['ANM'],
+    ceist: 'T',
     controlled: false,
     measures: '管理措施全文。',
     description: '項目描述全文。',
   },
   ─────────────────────────────────────────────────────────────── */
 ];
+
+function getAnomalyFileCeist(id) {
+  return ANOMALY_FILE_CEIST.find((item) => item.id === id) || null;
+}
+
+function formatAnomalyFileCeist(id) {
+  const item = getAnomalyFileCeist(id);
+  return item ? `${item.zh}（${item.en}）` : id;
+}
 
 function getAnomalyFileTag(id) {
   return ANOMALY_FILE_TAGS.find((tag) => tag.id === id) || null;

@@ -12,8 +12,9 @@
     1. 依命名規則決定 code，例如 P-ANM-112
     2. 另存為 anomaly_html/{code}.html（本檔勿改名覆寫）
     3. 全域搜尋 【】 並替換成實際內容
-    4. 在 anomaly-file-data.js 的 ANOMALY_FILE_EVENTS 追加對應一筆
+    4. 在 anomaly-file-data.js 的 ANOMALY_FILE_EVENTS 追加對應一筆（含 ceist）
     5. 有圖時：images/anomaly/{code}.png，並取消下方 img 註解
+    6. 保密等級精簡圖：images/anomaly/{C|E|I|S|T}_0.png
   -->
   <title>【CODE】「【中文名】」· 異常事件檔案</title>
   <link rel="icon" href="../images/Alaya/Alaya_Icon.png" type="image/png">
@@ -39,13 +40,16 @@
         <h1 class="anomaly-file__title" id="anomaly-detail-title">【CODE】「【中文名】」</h1>
         <p class="anomaly-file__lead">
           <span class="anomaly-file__name-en">【English name】</span>
-          · 【OPCU中文】（【OPCU英文】）· 【標籤中文】（【Tag English】 / 【TAG】）
+          · 【OPCU中文】（【OPCU英文】）· 【標籤中文】（【Tag English】 / 【TAG】）· 【保密等級中文】（【Clearance English】）
         </p>
       </header>
 
       <div class="anomaly-file__sheet">
         <div class="anomaly-file__sheet-meta">
           <span>CASE FILE</span>
+          <span class="anomaly-file__ceist-mark">
+            <img src="../images/anomaly/【C|E|I|S|T】_0.png" alt="" width="512" height="512">
+          </span>
         </div>
         <!-- 複數 OPCU 時複製多個 mark；class 尾碼用小寫 o/p/c/u -->
         <div class="anomaly-file__stamp" aria-hidden="true">

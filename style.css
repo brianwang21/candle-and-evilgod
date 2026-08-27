@@ -6684,7 +6684,7 @@ html.is-tag-modal-open {
 
 .anomaly-file__filters {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(14rem, 1fr) minmax(16rem, 1.2fr);
   gap: 0.85rem 1.1rem;
   align-items: start;
   margin-bottom: 3.25rem;
@@ -6700,6 +6700,7 @@ html.is-tag-modal-open {
 }
 
 .anomaly-file__filter-block--tags {
+  grid-column: 1 / -1;
   min-width: 0;
 }
 
@@ -7074,6 +7075,102 @@ html.is-tag-modal-open {
   color: #fff;
 }
 
+.anomaly-file__ceist-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem 0.35rem;
+  width: 100%;
+}
+
+.anomaly-file__ceist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.25rem 0.1rem;
+  min-width: 0;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: center;
+  font: inherit;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.anomaly-file__ceist:hover,
+.anomaly-file__ceist:focus-visible {
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.anomaly-file__ceist:hover .anomaly-file__ceist-frame,
+.anomaly-file__ceist:focus-visible .anomaly-file__ceist-frame {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.anomaly-file__ceist-frame {
+  display: block;
+  width: 3.1rem;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: #000;
+  overflow: hidden;
+}
+
+.anomaly-file__ceist-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.anomaly-file__ceist-caption {
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--afile-ink-soft);
+  line-height: 1.3;
+}
+
+.anomaly-file__ceist-en {
+  font-family: var(--afile-font-doc);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  color: var(--afile-ink-mute);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.anomaly-file__ceist.is-on,
+.anomaly-file__ceist[aria-pressed='true'] {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.anomaly-file__ceist.is-on .anomaly-file__ceist-frame,
+.anomaly-file__ceist[aria-pressed='true'] .anomaly-file__ceist-frame {
+  border-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.anomaly-file__ceist.is-on .anomaly-file__ceist-caption,
+.anomaly-file__ceist[aria-pressed='true'] .anomaly-file__ceist-caption,
+.anomaly-file__ceist.is-on .anomaly-file__ceist-en,
+.anomaly-file__ceist[aria-pressed='true'] .anomaly-file__ceist-en {
+  color: #fff;
+}
+
 .anomaly-file__tag-chips {
   display: flex;
   flex-direction: column;
@@ -7183,6 +7280,15 @@ html.is-tag-modal-open {
   display: none;
 }
 
+.anomaly-file__summary-marks {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55rem;
+}
+
 .anomaly-file__opcu-marks {
   display: flex;
   flex-direction: column;
@@ -7190,7 +7296,23 @@ html.is-tag-modal-open {
   align-items: center;
   justify-content: flex-start;
   gap: 0.55rem;
-  padding-top: 0.2rem;
+}
+
+.anomaly-file__ceist-mark {
+  display: block;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #000;
+  overflow: hidden;
+}
+
+.anomaly-file__ceist-mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .anomaly-file__opcu-mark {
@@ -7222,15 +7344,14 @@ html.is-tag-modal-open {
   flex-direction: column;
   gap: 0.35rem;
   min-width: 0;
-  padding-top: 0.05rem;
 }
 
 .anomaly-file__summary-code {
   font-family: var(--afile-font-doc);
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 1.05rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--afile-ink-mute);
+  color: #fff;
 }
 
 .anomaly-file__summary-name {
@@ -7252,19 +7373,18 @@ html.is-tag-modal-open {
 
 .anomaly-file__summary-chevron {
   position: absolute;
-  top: 1.25rem;
+  top: 50%;
   right: 1rem;
   width: 0.55rem;
   height: 0.55rem;
   border-right: 1.5px solid #fff;
   border-bottom: 1.5px solid #fff;
-  transform: rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
   transition: transform 0.2s ease;
 }
 
 .anomaly-file__entry[open] .anomaly-file__summary-chevron {
-  top: 1.4rem;
-  transform: rotate(225deg);
+  transform: translateY(-50%) rotate(225deg);
 }
 
 .anomaly-file__entry[open] .anomaly-file__summary {
@@ -7326,7 +7446,7 @@ html.is-tag-modal-open {
 
 .anomaly-file__index-code {
   font-family: var(--afile-font-doc);
-  font-size: 0.92rem;
+  font-size: 1.18rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #fff;
@@ -7466,9 +7586,9 @@ html.is-tag-modal-open {
 
 .anomaly-file__sheet-meta {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
   margin: 0 0 1.5rem;
   padding: 0 0 0.75rem 0.35rem;
   border-bottom: 1px dashed var(--afile-line);
@@ -7476,6 +7596,11 @@ html.is-tag-modal-open {
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   color: var(--afile-ink-mute);
+}
+
+.anomaly-file__sheet-meta .anomaly-file__ceist-mark {
+  width: 3.25rem;
+  height: 3.25rem;
 }
 
 .anomaly-file__stamp {
@@ -7511,7 +7636,7 @@ html.is-tag-modal-open {
   margin: 0 0 0.55rem;
   padding-left: 0.35rem;
   font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-  font-size: 0.98rem;
+  font-size: 1.22rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 1.7;
@@ -7520,8 +7645,9 @@ html.is-tag-modal-open {
 
 .anomaly-file__code-value {
   display: inline;
-  font-weight: 500;
-  color: var(--afile-ink);
+  font-weight: 600;
+  font-size: 1.28rem;
+  color: #fff;
   border-bottom: 1px solid var(--afile-line-strong);
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -7679,6 +7805,10 @@ html.is-tag-modal-open {
   .anomaly-file__tag-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  .anomaly-file__ceist-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -7734,6 +7864,14 @@ html.is-tag-modal-open {
     display: none;
   }
 
+  .anomaly-file__ceist-en {
+    display: none;
+  }
+
+  .anomaly-file__ceist-frame {
+    width: 2.6rem;
+  }
+
   .anomaly-file__summary {
     grid-template-columns: auto minmax(0, 1fr);
     padding-right: 2rem;
@@ -7746,6 +7884,11 @@ html.is-tag-modal-open {
   .anomaly-file__opcu-mark {
     width: 1.45rem;
     height: 1.45rem;
+  }
+
+  .anomaly-file__sheet-meta .anomaly-file__ceist-mark {
+    width: 2.45rem;
+    height: 2.45rem;
   }
 
   .anomaly-file__opcu-mark-face {
@@ -7779,7 +7922,7 @@ html.is-tag-modal-open {
 }
 
 .anomaly-ref__header {
-  max-width: 46rem;
+  max-width: 54rem;
   margin: 0 auto 3rem;
   text-align: center;
 }
@@ -7825,7 +7968,7 @@ html.is-tag-modal-open {
 
 .anomaly-ref__axes {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.85rem;
   text-align: left;
 }
@@ -7867,6 +8010,12 @@ html.is-tag-modal-open {
   background: rgba(255, 255, 255, 0.06);
 }
 
+.anomaly-ref__axis--ceist:hover,
+.anomaly-ref__axis--ceist:focus-visible {
+  border-color: rgba(142, 200, 212, 0.5);
+  background: rgba(142, 200, 212, 0.08);
+}
+
 .anomaly-ref__axis-kicker {
   font-family: var(--font-display);
   font-size: 0.62rem;
@@ -7897,6 +8046,10 @@ html.is-tag-modal-open {
   color: #cfcfcf;
 }
 
+.anomaly-ref__axis--ceist .anomaly-ref__axis-name {
+  color: #8ec8d4;
+}
+
 .anomaly-ref__axis--opcu.is-active {
   border-color: rgba(255, 165, 34, 0.65);
   background: rgba(255, 165, 34, 0.12);
@@ -7907,6 +8060,12 @@ html.is-tag-modal-open {
   border-color: rgba(255, 255, 255, 0.38);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.anomaly-ref__axis--ceist.is-active {
+  border-color: rgba(142, 200, 212, 0.65);
+  background: rgba(142, 200, 212, 0.12);
+  box-shadow: 0 0 0 1px rgba(142, 200, 212, 0.2);
 }
 
 .anomaly-ref__panels {
@@ -8038,6 +8197,109 @@ html.is-tag-modal-open {
   margin-top: 0.5rem;
 }
 
+.anomaly-ref__section--ceist {
+  --ceist-accent: #8ec8d4;
+  --ceist-ink: var(--text-primary);
+  --ceist-ink-soft: var(--text-secondary);
+  padding: 2.25rem 1.35rem 2.5rem;
+  background: var(--bg-card);
+  color: var(--ceist-ink);
+  border: 1px solid rgba(142, 200, 212, 0.22);
+}
+
+.anomaly-ref__section--ceist .anomaly-ref__section-eyebrow {
+  color: var(--ceist-accent);
+}
+
+.anomaly-ref__section--ceist .anomaly-ref__section-title {
+  margin-bottom: 0.4rem;
+}
+
+.ceist-hero__acronym {
+  margin: -0.55rem 0 1.35rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-align: center;
+  color: rgba(142, 200, 212, 0.72);
+}
+
+.ceist-ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.ceist-level {
+  display: grid;
+  grid-template-columns: 8.25rem minmax(0, 1fr);
+  gap: 1.15rem 1.4rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(142, 200, 212, 0.22);
+  background: rgba(142, 200, 212, 0.05);
+}
+
+.ceist-level__stamp {
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #000;
+}
+
+.ceist-level__stamp img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ceist-level__body {
+  min-width: 0;
+}
+
+.ceist-level__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.7rem;
+  margin: 0 0 0.55rem;
+}
+
+.ceist-level__en {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+}
+
+.ceist-level__zh {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ceist-accent);
+}
+
+.ceist-level__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--ceist-ink-soft);
+}
+
+.ceist-note {
+  max-width: 48rem;
+  margin: 1.35rem auto 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(142, 200, 212, 0.22);
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
 .anomaly-ref[hidden] {
   display: none;
 }
@@ -8047,9 +8309,25 @@ html.is-tag-modal-open {
     grid-template-columns: 1fr;
   }
 
-  .anomaly-ref__section.opcu-main {
+  .anomaly-ref__section.opcu-main,
+  .anomaly-ref__section--ceist {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .ceist-level {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding: 1.1rem 0.95rem 1.2rem;
+  }
+
+  .ceist-level__stamp {
+    width: 9rem;
+  }
+
+  .ceist-level__title {
+    justify-content: center;
   }
 }
 
