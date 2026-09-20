@@ -3307,6 +3307,16 @@ html.is-tag-modal-open {
   isolation: isolate;
 }
 
+.home-story__credit {
+  margin: 0.55rem 0 0;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: right;
+}
+
 .home-story__banner {
   position: absolute;
   inset: 0;
