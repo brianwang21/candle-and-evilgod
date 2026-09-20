@@ -21,7 +21,7 @@
 
   <header class="navbar navbar--story">
     <nav class="navbar__inner">
-      <a href="../../index.html#story" class="navbar__link navbar__link--left">← 返回劇情</a>
+      <a href="../../index.html#story" class="navbar__link navbar__link--left">← 返回</a>
     </nav>
   </header>
 
@@ -77,23 +77,23 @@
         { num: 'I', name: '魔術師', en: 'The Magician', tagline: '生命會自己找到出路的。' },
         { num: 'II', name: '女祭司', en: 'The High Priestess', tagline: '以妳的冷血為冰，放入杯中，添上一杯威士忌吧。' },
         { num: 'III', name: '女皇', en: 'The Empress', locked: true },
-        { num: 'IV', name: '皇帝', en: 'The Emperor', tagline: '折衷的方案。' },
+        { num: 'IV', name: '皇帝', en: 'The Emperor', tagline: '折衷的方案。', locked: true },
         { num: 'V', name: '教皇', en: 'The Hierophant', locked: true },
         { num: 'VI', name: '戀人', en: 'The Lovers', tagline: '這是以恨輝映著愛的歌謠。' },
         { num: 'VII', name: '戰車', en: 'The Chariot', tagline: '就算是懸崖，也得把油門踩到底。' },
-        { num: 'VIII', name: '力量', en: 'Strength', tagline: '非善類、亦非惡者。只問手段、與你要出多少。' },
-        { num: 'IX', name: '隱者', en: 'The Hermit', tagline: '埋葬。' },
+        { num: 'VIII', name: '力量', en: 'Strength', tagline: '非善類、亦非惡者。只問手段、與你要出多少。', locked: true },
+        { num: 'IX', name: '隱者', en: 'The Hermit', tagline: '埋葬。', locked: true },
         { num: 'X', name: '命運之輪', en: 'Wheel of Fortune', tagline: '這裡甚麼都沒有，又或著你已經瞧見了他的真實面貌。' },
         { num: 'XI', name: '正義', en: 'Justice', tagline: '天秤的兩端，要擺上什麼呢？', updated: '2026-07-15' },
-        { num: 'XII', name: '倒吊人', en: 'The Hanged Man', tagline: '犧牲。' },
+        { num: 'XII', name: '倒吊人', en: 'The Hanged Man', tagline: '犧牲。', locked: true },
         { num: 'XIII', name: '死神', en: 'Death', tagline: '變與不變。' },
-        { num: 'XIV', name: '節制', en: 'Temperance', tagline: '心理諮商。' },
-        { num: 'XV', name: '惡魔', en: 'The Devil', tagline: '這世界上沒有絕對的惡事與壞事、只有潔西卡想做的事。' },
-        { num: 'XVI', name: '高塔', en: 'The Tower', tagline: '再堅固的高塔亦會動搖。' },
-        { num: 'XVII', name: '星星', en: 'The Star', tagline: '說不出口的希望。' },
+        { num: 'XIV', name: '節制', en: 'Temperance', tagline: '心理諮商。', locked: true },
+        { num: 'XV', name: '惡魔', en: 'The Devil', tagline: '這世界上沒有絕對的惡事與壞事、只有潔西卡想做的事。', locked: true },
+        { num: 'XVI', name: '高塔', en: 'The Tower', tagline: '再堅固的高塔亦會動搖。', locked: true },
+        { num: 'XVII', name: '星星', en: 'The Star', tagline: '說不出口的希望。', locked: true },
         { num: 'XVIII', name: '月亮', en: 'The Moon', tagline: '虛實萬象、唯有聆聽內心最真實的聲音。' },
-        { num: 'XIX', name: '太陽', en: 'The Sun', tagline: '終究會天明的對吧。' },
-        { num: 'XX', name: '審判', en: 'Judgement', tagline: '有些事情你就不該去知道。' },
+        { num: 'XIX', name: '太陽', en: 'The Sun', tagline: '終究會天明的對吧。', locked: true },
+        { num: 'XX', name: '審判', en: 'Judgement', tagline: '有些事情你就不該去知道。', locked: true },
         { num: 'XXI', name: '世界', en: 'The World', locked: true },
       ].map((chapter, index) => ({
         id: index,
@@ -295,7 +295,7 @@
         numEl.textContent = card.dataset.num || '';
         titleEl.textContent = card.dataset.name || '';
         enEl.textContent = card.dataset.en || '';
-        taglineEl.textContent = locked ? '' : (card.dataset.tagline || '');
+        taglineEl.textContent = card.dataset.tagline || '';
         summaryEl.textContent = locked ? '' : (card.dataset.summary || '');
         updatedEl.textContent = locked
           ? ''

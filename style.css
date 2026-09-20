@@ -10760,6 +10760,11 @@ body.is-chapter-modal-open {
   outline: none;
 }
 
+.story-chapter-modal__read[hidden],
+.story-chapter-modal.is-locked .story-chapter-modal__read {
+  display: none;
+}
+
 .story-chapter-modal__updated {
   position: absolute;
   right: 1.6rem;
@@ -10822,8 +10827,12 @@ body.is-chapter-modal-open {
   transform: translateY(-50%);
 }
 
-.story-chapter-modal.is-locked .story-chapter-modal__close {
+.story-chapter-modal.is-locked .story-chapter-modal__content {
   z-index: 4;
+}
+
+.story-chapter-modal.is-locked .story-chapter-modal__close {
+  z-index: 5;
 }
 
 .story-reader__body {

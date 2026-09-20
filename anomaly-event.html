@@ -21,7 +21,7 @@
 
   <header class="navbar">
     <nav class="navbar__inner">
-      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left" id="anomaly-event-back">← 返回異常事件</a>
+      <a href="index.html#anomaly-events" class="navbar__link navbar__link--left" id="anomaly-event-back">← 返回</a>
     </nav>
   </header>
 
@@ -165,8 +165,8 @@
             <h3 class="opcu-panel__title"><span class="opcu-panel__code">P</span> - 規範型</h3>
             <p class="opcu-panel__en">Protocol</p>
             <p class="opcu-panel__text">可透過既定程序與防範機制進行有限使用或收容；需要嚴格執行SOP與設備維護。</p>
-            <p class="opcu-panel__hook">「你不能控制它，但可以用一套規則讓它乖一點。」</p>
-            <p class="opcu-panel__text">像是在玩一個Bug超多的遊戲──你知道不能在某張地圖跳三下，不然會閃退。所以你立了個方法，只要照著流程走，它通常不會炸。</p>
+            <p class="opcu-panel__hook">「你不能控制它，但有一套規則可以讓它安分點。」</p>
+            <p class="opcu-panel__text">你能替這類異常寫一本說明書，詳細記錄如何與之接觸、互動並安全脫身，但無論如何，一定得按照說明書上的內容行事。</p>
             <p class="opcu-panel__quote">「進入區域要穿三層手套、不能說『風車』這個詞、移動只能逆時針……對，就是這麼莫名其妙，但它有用。」</p>
           </article>
           <article class="opcu-panel__card" data-opcu-panel="c" hidden>
@@ -175,7 +175,7 @@
             <p class="opcu-panel__text">與異常建立協議或交換條件，維持合作關係；違約可能導致該異常脫控或懲罰。</p>
             <p class="opcu-panel__hook">「我們跟它簽了約，它幫我們做事，我們不能惹它。」</p>
             <p class="opcu-panel__text">這種異常有點像雇傭兵或惡魔，你可以合作、交換東西，但它會記住，每一次。比你請的律師還認真。要是敢違約一次，就等著整個人被燒成灰吧。</p>
-            <p class="opcu-panel__quote">「你可以請它幫忙，但你要給得起代價──而且不能反悔，它會記得每個字。」</p>
+            <p class="opcu-panel__quote">「你可以請它幫忙，任何事都能，但無論如何千萬要記住，你必須付出代價，且絕對不能反悔」</p>
           </article>
           <article class="opcu-panel__card" data-opcu-panel="u" hidden>
             <h3 class="opcu-panel__title"><span class="opcu-panel__code">U</span> - 無解型</h3>
@@ -183,7 +183,7 @@
             <p class="opcu-panel__text">完全無法收容或控制，只能持續隔離觀察或定期調整世界應對結構；本質不可控、不可知。</p>
             <p class="opcu-panel__hook">「它就是個不能碰的麻煩，我們只能把它丟到最深的洞裡，然後祈禱它永遠別醒來。」</p>
             <p class="opcu-panel__text">這種東西……你根本沒辦法對付。不能對話、不能封印、不能殺死，只能隔離它、偷看它、希望它別變更糟。</p>
-            <p class="opcu-panel__quote">「基本上，那東西是公司高層也會作惡夢的存在。別靠近，也別問太多。」</p>
+            <p class="opcu-panel__quote">「為什麼你會知道這個東西。」</p>
           </article>
         </section>
 
@@ -209,8 +209,8 @@
           <article class="opcu-notes__block opcu-notes__block--memo">
             <h3 class="opcu-notes__heading">總結</h3>
             <div class="opcu-notes__body">
-              <p class="opcu-notes__quote">「O.P.C.U條款的重點不在於如何收容，而是『怎麼撐下去』。我們不是在管理什麼，我們是在跟災難簽停戰協議，然後想辦法撐到下一次例行檢查為止。」</p>
-              <p class="opcu-notes__attribution">——莫里斯公司執行長　莉莉．莫里斯　筆</p>
+              <p class="opcu-notes__quote">「O.P.C.U 條款的重點向來都不在乎『收容』，就像我們無法真正的控制天災。為此，我們必須建立一套系統，讓所有人都真正的意識到自己在面對甚麼，才能有效的存續並消彌危機。」</p>
+              <p class="opcu-notes__attribution">—— CTA 發言人</p>
             </div>
           </article>
         </section>
@@ -888,7 +888,7 @@
         document.body.classList.add('anomaly-ref-page');
         if (backLink) {
           backLink.href = 'index.html#anomaly-events';
-          backLink.textContent = '← 返回異常事件';
+          backLink.textContent = '← 返回';
         }
         refEl.hidden = false;
         detailEl.hidden = true;
@@ -922,7 +922,7 @@
         document.body.classList.remove('anomaly-ref-page');
         if (backLink) {
           backLink.href = backHref;
-          backLink.textContent = backCharacterId ? '← 返回能力區' : '← 返回事件清單';
+          backLink.textContent = '← 返回';
         }
 
         const iconHref = getCharacterIcon(backCharacterId);
@@ -955,7 +955,7 @@
         document.body.classList.remove('anomaly-ref-page');
         if (backLink) {
           backLink.href = 'anomaly-event-list.html';
-          backLink.textContent = '← 返回事件清單';
+          backLink.textContent = '← 返回';
         }
 
         refEl.hidden = true;
@@ -967,7 +967,7 @@
           </h2>
           <div class="anomaly-event-detail__empty">
             <p>找不到對應的事件資料。</p>
-            <a href="anomaly-event-list.html" class="anomaly-event-detail__back">返回事件清單</a>
+            <a href="anomaly-event-list.html" class="anomaly-event-detail__back">返回</a>
           </div>
         `;
       }

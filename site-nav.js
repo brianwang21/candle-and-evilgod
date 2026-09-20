@@ -241,44 +241,10 @@
     }
   }
 
-  function backLabelFor(prev) {
-    const path = pageKey(prev);
-    let hash = '';
-    try {
-      hash = new URL(prev, location.href).hash.replace(/^#/, '');
-    } catch (error) {}
-    if (path.includes('character-profile')) return '返回人物設定';
-    if (path.includes('anomaly-event-list')) return '返回事件清單';
-    if (path.includes('anomaly-event')) return '返回異常事件';
-    if (path.includes('faction-morris')) return '返回莫里斯公司';
-    if (path.includes('faction-cta')) return '返回 CTA';
-    if (path.includes('faction-witch')) return '返回魔女議會';
-    if (path.includes('glossary-angel')) return '返回天使釋義';
-    if (path.includes('glossary-biomod')) return '返回生體改造';
-    if (path.includes('anomaly-adaptability')) return '返回異常適性';
-    if (path.endsWith('/index.html') || path.endsWith('index.html')) {
-      if (path.includes('/story/')) return '返回段落列表';
-      if (hash === 'glossary') return '返回設定釋義';
-      if (hash === 'factions') return '返回勢力';
-      if (hash === 'characters') return '返回人物設定';
-      if (hash === 'story') return '返回劇情';
-      if (hash === 'anomaly-events') return '返回異常事件';
-      if (hash === 'worldview' || hash === 'opcu-ref') return '返回世界觀';
-      try {
-        if (sessionStorage.getItem('myoc:drawer-glossary') === '1') return '返回設定釋義';
-        if (sessionStorage.getItem('myoc:drawer-worldview') === '1') return '返回世界觀';
-      } catch (error) {}
-      if (!path.includes('/html/') && !path.includes('/story/')) return '返回首頁';
-    }
-    return '返回上一頁';
-  }
-
   function relabelBackLink() {
     const link = document.querySelector('.navbar__link--left');
     if (!link) return;
-    const prev = previousPage();
-    if (!prev || !isSameOriginPrev(prev) || pageKey(prev) === pageKey(location.href)) return;
-    link.textContent = '← ' + backLabelFor(prev);
+    link.textContent = '← 返回';
   }
 
   document.addEventListener(

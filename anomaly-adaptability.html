@@ -21,7 +21,7 @@
 
   <header class="navbar navbar--faction">
     <nav class="navbar__inner">
-      <a href="index.html" class="navbar__link navbar__link--left">← 返回設定釋義</a>
+      <a href="index.html" class="navbar__link navbar__link--left">← 返回</a>
     </nav>
   </header>
 
@@ -234,7 +234,7 @@
       const backLinkLeft = document.querySelector('.navbar__link--left');
       if (backLinkLeft) {
         backLinkLeft.href = backHref;
-        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回設定釋義';
+        backLinkLeft.textContent = '← 返回';
       }
 
       const iconHref = getCharacterIcon(backCharacterId);

@@ -21,7 +21,7 @@
 
   <header class="navbar">
     <nav class="navbar__inner">
-      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回能力區</a>
+      <a href="index.html#characters" class="navbar__link navbar__link--left">← 返回</a>
     </nav>
   </header>
 
@@ -73,7 +73,7 @@
       const backLinkLeft = document.querySelector('.navbar__link--left');
       if (backLinkLeft) {
         backLinkLeft.href = backHref;
-        backLinkLeft.textContent = backCharacterId ? '← 返回能力區' : '← 返回人物設定';
+        backLinkLeft.textContent = '← 返回';
       }
 
       if (!weapon) {
@@ -84,9 +84,7 @@
           </h2>
           <div class="weapon-detail__empty">
             <p>找不到對應的武器資料。</p>
-            <a href="${backHref}" class="weapon-detail__back">${
-              backCharacterId ? '返回能力區' : '返回人物設定'
-            }</a>
+            <a href="${backHref}" class="weapon-detail__back">返回</a>
           </div>
         `;
         document.title = '武器詳情 · 蠟燭與邪神';
