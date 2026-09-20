@@ -463,6 +463,10 @@ function getAnomalyEventById(id) {
   return ANOMALY_EVENTS_DB.events.find((event) => event.id === id) || null;
 }
 
+function toWebpUrl(src) {
+  return typeof src === 'string' ? src.replace(/\.(png|jpe?g)$/i, '.webp') : src || '';
+}
+
 function getAllAnomalyEvents() {
   return ANOMALY_EVENTS_DB.events.slice();
 }
@@ -517,7 +521,7 @@ function renderAnomalyEventDetail(event) {
               .join('')}</ul>`;
           case 'figure':
             return `<figure class="anomaly-event-detail__figure">
-              <img src="${typeof siteUrl === 'function' ? siteUrl(block.src) : block.src}" alt="${block.alt || ''}" class="anomaly-event-detail__figure-img">
+              <img src="${toWebpUrl(typeof siteUrl === 'function' ? siteUrl(block.src) : block.src)}" alt="${block.alt || ''}" class="anomaly-event-detail__figure-img" loading="lazy" decoding="async">
               ${block.caption ? `<figcaption class="anomaly-event-detail__figure-caption">${block.caption}</figcaption>` : ''}
             </figure>`;
           case 'quote': {
@@ -534,7 +538,7 @@ function renderAnomalyEventDetail(event) {
             const imgSrc = typeof siteUrl === 'function' ? siteUrl(block.image) : block.image;
             return `
               <a class="anomaly-event-detail__link-card" href="${block.href || '#'}">
-                <img src="${imgSrc}" alt="" class="anomaly-event-detail__link-card-img">
+                <img src="${toWebpUrl(imgSrc)}" alt="" class="anomaly-event-detail__link-card-img" loading="lazy" decoding="async">
                 <span class="anomaly-event-detail__link-card-label">${block.label}</span>
                 <span class="anomaly-event-detail__link-card-arrow">→</span>
               </a>

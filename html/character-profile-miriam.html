@@ -54,22 +54,31 @@
                   繪師：<span class="artist-drawer__name">匿名人物</span>
                 </p>
               </div>
-              <img
-                src="../images/Miriam/Miriam_Head_.png"
-                alt="米利暗 角色頭像"
-                class="character-intro__avatar-img"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Miriam/Miriam_Head_.webp">
+                <img
+                  src="../images/Miriam/Miriam_Head_.png"
+                  alt="米利暗 角色頭像"
+                  class="character-intro__avatar-img"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
 
           <!-- 右側：名稱與簡介 -->
           <div class="character-intro__text">
             <div class="character-intro__title-row">
-              <img
-                src="../images/Miriam/Miriam_icon.png"
-                alt="米利暗角色 Icon"
-                class="character-intro__icon"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Miriam/Miriam_icon.webp">
+                <img
+                  src="../images/Miriam/Miriam_icon.png"
+                  alt="米利暗角色 Icon"
+                  class="character-intro__icon"
+                  decoding="async"
+                >
+              </picture>
               <h1 class="character-intro__title">米利暗</h1>
             </div>
             <p class="character-intro__bio">
@@ -104,11 +113,16 @@
                   繪師：<span class="artist-drawer__name">匿名人物</span>
                 </p>
               </div>
-              <img
-                src="../images/Miriam/Miriam_FullSize.png"
-                alt="米利暗 全身／半身立繪"
-                class="character-intro__figure-img"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Miriam/Miriam_FullSize.webp">
+                <img
+                  src="../images/Miriam/Miriam_FullSize.png"
+                  alt="米利暗 全身／半身立繪"
+                  class="character-intro__figure-img"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
         </div>
@@ -126,11 +140,16 @@
           <div class="world__logo-slot">
             <a class="world__logo-link" href="../faction-cta.html">
               <div class="world__logo-placeholder">
-                <img
-                  src="../images/ICON_CTA.png"
-                  alt="中央技術局 Logo"
-                  class="world__logo-image"
-                >
+                <picture>
+                  <source type="image/webp" srcset="../images/ICON_CTA.webp">
+                  <img
+                    src="../images/ICON_CTA.png"
+                    alt="中央技術局 Logo"
+                    class="world__logo-image"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </div>
             </a>
           </div>
@@ -606,7 +625,7 @@
           <div class="weapon-detail__card">
             <div class="weapon-detail__media">
               <img
-                src="${siteUrl(weapon.image)}"
+                src="${toWebpUrl(siteUrl(weapon.image))}"
                 alt="${weapon.name}"
                 class="weapon-detail__img"
               >
@@ -719,7 +738,7 @@
 
           const img = document.createElement('img');
           img.className = 'weapon-card__img';
-          img.src = siteUrl(weapon.image);
+          img.src = toWebpUrl(siteUrl(weapon.image));
           img.alt = weapon.name;
 
           const hover = document.createElement('p');

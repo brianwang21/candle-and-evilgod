@@ -143,9 +143,10 @@
         <div class="weapon-detail__card">
           <div class="weapon-detail__media">
             <img
-              src="${weapon.image}"
+              src="${toWebpUrl(weapon.image)}"
               alt="${weapon.name}"
               class="weapon-detail__img"
+              decoding="async"
             >
           </div>
           <div class="weapon-detail__info">

@@ -54,11 +54,16 @@
                   繪師：<span class="artist-drawer__name">藍焰Lazer</span>
                 </p>
               </div>
-              <img
-                src="../images/Lily/Lily_Head.jpg"
-                alt="莉莉．莫里斯 角色頭像"
-                class="character-intro__avatar-img"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Lily/Lily_Head.webp">
+                <img
+                  src="../images/Lily/Lily_Head.jpg"
+                  alt="莉莉．莫里斯 角色頭像"
+                  class="character-intro__avatar-img"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
 
@@ -112,11 +117,16 @@
           <div class="world__logo-slot">
             <a class="world__logo-link" href="../faction-morris.html">
               <div class="world__logo-placeholder">
-                <img
-                  src="../images/MORRIS_LOGO.png"
-                  alt="莫里斯公司 Logo"
-                  class="world__logo-image"
-                >
+                <picture>
+                  <source type="image/webp" srcset="../images/MORRIS_LOGO.webp">
+                  <img
+                    src="../images/MORRIS_LOGO.png"
+                    alt="莫里斯公司 Logo"
+                    class="world__logo-image"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </div>
             </a>
           </div>
@@ -588,7 +598,7 @@
           <div class="weapon-detail__card">
             <div class="weapon-detail__media">
               <img
-                src="${siteUrl(weapon.image)}"
+                src="${toWebpUrl(siteUrl(weapon.image))}"
                 alt="${weapon.name}"
                 class="weapon-detail__img"
               >
@@ -701,7 +711,7 @@
 
           const img = document.createElement('img');
           img.className = 'weapon-card__img';
-          img.src = siteUrl(weapon.image);
+          img.src = toWebpUrl(siteUrl(weapon.image));
           img.alt = weapon.name;
 
           const hover = document.createElement('p');

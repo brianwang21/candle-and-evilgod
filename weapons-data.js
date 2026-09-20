@@ -307,6 +307,10 @@ function escapeWeaponHtml(value) {
     .replace(/"/g, '&quot;');
 }
 
+function toWebpUrl(src) {
+  return typeof src === 'string' ? src.replace(/\.(png|jpe?g)$/i, '.webp') : src || '';
+}
+
 function getWeaponCaptionHtml(weapon) {
   if (!weapon || !weapon.hoverText) return '';
   const toneClass =
@@ -363,9 +367,11 @@ function renderWeaponRelated(related) {
           aria-label="${escapeWeaponHtml(item.name)}"
         >
           <img
-            src="${escapeWeaponHtml(imageSrc)}"
+            src="${escapeWeaponHtml(toWebpUrl(imageSrc))}"
             alt="${escapeWeaponHtml(item.alt || item.name)}"
             class="weapon-detail__related-img"
+            loading="lazy"
+            decoding="async"
           >
         </button>
       `;
@@ -397,9 +403,10 @@ function renderWeaponRelatedDetail(item) {
     <div class="weapon-related-detail">
       <div class="weapon-related-detail__media">
         <img
-          src="${escapeWeaponHtml(imageSrc)}"
+          src="${escapeWeaponHtml(toWebpUrl(imageSrc))}"
           alt="${escapeWeaponHtml(item.alt || item.name)}"
           class="weapon-related-detail__img"
+          decoding="async"
         >
       </div>
       <h2 class="weapon-related-detail__name" id="weapon-related-modal-title">

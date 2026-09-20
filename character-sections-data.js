@@ -2524,6 +2524,10 @@ const CHARACTER_SECTIONS_DB = {
 
 const CHARACTER_SECTION_KEYS = ['background', 'anecdotes', 'notes'];
 
+function toWebpUrl(src) {
+  return typeof src === 'string' ? src.replace(/\.(png|jpe?g)$/i, '.webp') : src || '';
+}
+
 function getCharacterSection(key, characterId) {
   const group = CHARACTER_SECTIONS_DB[key];
   if (!group) return null;
@@ -2640,7 +2644,7 @@ function renderCharacterBlocks(blocks, options = {}) {
           return `
             <figure class="character-section__figure">
               <div class="character-section__figure-media${block.artist ? ' character-intro__media' : ''}">
-              <img src="${typeof siteUrl === 'function' ? siteUrl(block.src || '') : (block.src || '')}" alt="${block.alt || ''}" class="character-section__figure-img">
+              <img src="${toWebpUrl(typeof siteUrl === 'function' ? siteUrl(block.src || '') : (block.src || ''))}" alt="${block.alt || ''}" class="character-section__figure-img" loading="lazy" decoding="async">
                 ${artistDrawer}
               </div>
               ${caption}

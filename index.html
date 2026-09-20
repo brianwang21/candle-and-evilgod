@@ -29,6 +29,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>蠟燭與邪神</title>
   <link rel="icon" href="images/Alaya/Alaya_Icon.png" type="image/png">
+  <link rel="preload" as="image" href="images/HomePage/Candle_and_EvilGod.webp" type="image/webp">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,11 +41,18 @@
   <div class="bg-glow bg-glow--right"></div>
 
   <header class="home-banner">
-    <img
-      src="images/HomePage/Candle_and_EvilGod.png"
-      alt="蠟燭與邪神"
-      class="home-banner__img"
-    >
+    <picture>
+      <source type="image/webp" srcset="images/HomePage/Candle_and_EvilGod.webp">
+      <img
+        src="images/HomePage/Candle_and_EvilGod.png"
+        alt="蠟燭與邪神"
+        class="home-banner__img"
+        width="1200"
+        height="340"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </picture>
   </header>
 
   <main class="home-main">
@@ -188,12 +196,19 @@
                   <a class="home-worldview-bar__opcu-inline" href="anomaly-event.html#opcu">O.P.C.U</a>
                 </p>
                 <a class="home-worldview-bar__opcu-card" href="anomaly-event.html#opcu">
-                  <img
-                    class="home-worldview-bar__opcu-card-icon"
-                    src="images/OPCU_ICON.png"
-                    alt=""
-                    aria-hidden="true"
-                  >
+                  <picture>
+                    <source type="image/webp" srcset="images/OPCU_ICON.webp">
+                    <img
+                      class="home-worldview-bar__opcu-card-icon"
+                      src="images/OPCU_ICON.png"
+                      alt=""
+                      aria-hidden="true"
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    >
+                  </picture>
                   <span class="home-worldview-bar__opcu-card-kicker">Classification</span>
                   <span class="home-worldview-bar__opcu-card-title">O.P.C.U</span>
                   <span class="home-worldview-bar__opcu-card-desc">查看異常事件分級、物質標籤與保密等級</span>
@@ -231,7 +246,10 @@
               <a class="home-factions__link" href="faction-morris.html">
                 <span class="home-factions__view">查看</span>
                 <span class="home-factions__media">
-                  <img src="images/force_morris.png" alt="莫里斯公司" class="home-factions__img" width="2511" height="1080">
+                  <picture>
+                    <source type="image/webp" srcset="images/force_morris.webp">
+                    <img src="images/force_morris.png" alt="莫里斯公司" class="home-factions__img" width="1600" height="688" loading="lazy" decoding="async">
+                  </picture>
                 </span>
               </a>
               <h3 class="home-factions__name">莫里斯公司</h3>
@@ -242,7 +260,10 @@
               <a class="home-factions__link" href="faction-cta.html">
                 <span class="home-factions__view">查看</span>
                 <span class="home-factions__media">
-                  <img src="images/force_CTA.png" alt="CTA" class="home-factions__img" width="2511" height="1080">
+                  <picture>
+                    <source type="image/webp" srcset="images/force_CTA.webp">
+                    <img src="images/force_CTA.png" alt="CTA" class="home-factions__img" width="1600" height="688" loading="lazy" decoding="async">
+                  </picture>
                 </span>
               </a>
               <h3 class="home-factions__name">CTA</h3>
@@ -253,7 +274,10 @@
               <a class="home-factions__link" href="faction-witch.html">
                 <span class="home-factions__view">查看</span>
                 <span class="home-factions__media">
-                  <img src="images/force_witch.png" alt="魔女議會" class="home-factions__img" width="2511" height="1080">
+                  <picture>
+                    <source type="image/webp" srcset="images/force_witch.webp">
+                    <img src="images/force_witch.png" alt="魔女議會" class="home-factions__img" width="1600" height="688" loading="lazy" decoding="async">
+                  </picture>
                 </span>
               </a>
               <h3 class="home-factions__name">魔女議會</h3>
@@ -281,11 +305,18 @@
 
         <article class="home-story__arc" data-story-panel="open">
           <div class="home-story__banner" aria-hidden="true">
-            <img
-              src="images/HomePage/Candle_and_EvilGod.png"
-              alt=""
-              class="home-story__banner-img"
-            >
+            <picture>
+              <source type="image/webp" srcset="images/HomePage/Candle_and_EvilGod.webp">
+              <img
+                src="images/HomePage/Candle_and_EvilGod.png"
+                alt=""
+                class="home-story__banner-img"
+                width="1200"
+                height="462"
+                loading="lazy"
+                decoding="async"
+              >
+            </picture>
           </div>
 
           <button
@@ -349,11 +380,18 @@
           >
             <a class="home-characters__card" href="html/character-profile-alaya.html">
               <span class="home-characters__avatar">
-                <img
-                  src="images/profile_icon/Alaya_profile_ICON.png"
-                  alt=""
-                  class="home-characters__img"
-                >
+                <picture>
+                  <source type="image/webp" srcset="images/profile_icon/Alaya_profile_ICON.webp">
+                  <img
+                    src="images/profile_icon/Alaya_profile_ICON.png"
+                    alt=""
+                    class="home-characters__img"
+                    width="512"
+                    height="512"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </span>
               <span class="home-characters__name">艾萊亞</span>
               <span class="home-characters__tags" aria-hidden="true">
@@ -369,11 +407,18 @@
           >
             <a class="home-characters__card" href="html/character-profile-CAE.html">
               <span class="home-characters__avatar">
-                <img
-                  src="images/profile_icon/CAE_profile_ICON.png"
-                  alt=""
-                  class="home-characters__img"
-                >
+                <picture>
+                  <source type="image/webp" srcset="images/profile_icon/CAE_profile_ICON.webp">
+                  <img
+                    src="images/profile_icon/CAE_profile_ICON.png"
+                    alt=""
+                    class="home-characters__img"
+                    width="512"
+                    height="512"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </span>
               <span class="home-characters__name">CAE</span>
               <span class="home-characters__tags" aria-hidden="true">
@@ -390,11 +435,18 @@
           >
             <a class="home-characters__card" href="html/character-profile-Jessica.html">
               <span class="home-characters__avatar">
-                <img
-                  src="images/profile_icon/JCA_profile_ICON.png"
-                  alt=""
-                  class="home-characters__img"
-                >
+                <picture>
+                  <source type="image/webp" srcset="images/profile_icon/JCA_profile_ICON.webp">
+                  <img
+                    src="images/profile_icon/JCA_profile_ICON.png"
+                    alt=""
+                    class="home-characters__img"
+                    width="512"
+                    height="512"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </span>
               <span class="home-characters__name">潔西卡</span>
             </a>
@@ -407,11 +459,18 @@
           >
             <a class="home-characters__card" href="html/character-profile-42.html" aria-label="42">
               <span class="home-characters__avatar">
-                <img
-                  src="images/profile_icon/42_profile_ICON.png"
-                  alt=""
-                  class="home-characters__img"
-                >
+                <picture>
+                  <source type="image/webp" srcset="images/profile_icon/42_profile_ICON.webp">
+                  <img
+                    src="images/profile_icon/42_profile_ICON.png"
+                    alt=""
+                    class="home-characters__img"
+                    width="512"
+                    height="512"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </span>
               <span class="home-characters__name">42</span>
               <span class="home-characters__tags" aria-hidden="true">
@@ -427,11 +486,18 @@
           >
             <a class="home-characters__card" href="html/character-profile-lily.html">
               <span class="home-characters__avatar">
-                <img
-                  src="images/profile_icon/LILI_profile_ICON.png"
-                  alt=""
-                  class="home-characters__img"
-                >
+                <picture>
+                  <source type="image/webp" srcset="images/profile_icon/LILI_profile_ICON.webp">
+                  <img
+                    src="images/profile_icon/LILI_profile_ICON.png"
+                    alt=""
+                    class="home-characters__img"
+                    width="512"
+                    height="512"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </span>
               <span class="home-characters__name">莉莉．莫里斯</span>
               <span class="home-characters__tags" aria-hidden="true">
@@ -447,11 +513,18 @@
           >
             <a class="home-characters__card" href="html/character-profile-miriam.html">
               <span class="home-characters__avatar">
-                <img
-                  src="images/profile_icon/MIRIAM_profile_ICON.png"
-                  alt=""
-                  class="home-characters__img"
-                >
+                <picture>
+                  <source type="image/webp" srcset="images/profile_icon/MIRIAM_profile_ICON.webp">
+                  <img
+                    src="images/profile_icon/MIRIAM_profile_ICON.png"
+                    alt=""
+                    class="home-characters__img"
+                    width="512"
+                    height="512"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </span>
               <span class="home-characters__name">米利暗</span>
               <span class="home-characters__tags" aria-hidden="true">
@@ -503,6 +576,7 @@
 
           <div class="home-anomaly-events__stage">
             <picture>
+              <source media="(min-width: 761px)" type="image/webp" srcset="images/anomaly/VHS.webp">
               <source media="(min-width: 761px)" srcset="images/anomaly/VHS.png">
               <img
                 class="home-anomaly-events__vhs"
@@ -510,6 +584,8 @@
                 alt=""
                 width="1942"
                 height="1092"
+                loading="lazy"
+                decoding="async"
               >
             </picture>
 

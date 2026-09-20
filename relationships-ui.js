@@ -361,8 +361,10 @@ function buildRelationships() {
     if (node.image) {
       const img = document.createElement('img');
       img.className = 'relationship-card__img';
-      img.src = siteUrl(node.image);
+      img.src = (typeof toWebpUrl === 'function' ? toWebpUrl(siteUrl(node.image)) : siteUrl(node.image));
       img.alt = node.name;
+      img.loading = 'lazy';
+      img.decoding = 'async';
       avatar.appendChild(img);
     } else {
       const fallback = document.createElement('span');

@@ -273,6 +273,22 @@ a {
   object-position: center 32%;
 }
 
+.home-banner picture,
+.home-factions__media picture,
+.home-story__banner picture,
+.home-characters__avatar picture,
+.home-worldview-bar__opcu-card picture,
+.character-intro__avatar-frame picture,
+.character-intro__figure-frame picture,
+.world__logo-placeholder picture,
+.faction-detail__banner picture,
+.faction-tag__frame picture,
+.ceist-level__stamp picture,
+.faction-sephirot__logo picture,
+.anomaly-file__ceist-mark picture {
+  display: contents;
+}
+
 .home-main {
   position: relative;
   z-index: 2;
@@ -1481,7 +1497,10 @@ a {
 .faction-page--morris-home {
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.82) 45%, rgba(0, 0, 0, 0.9) 100%),
-    url("images/Morris/Morris_BackGround.png") center top / cover no-repeat fixed,
+    image-set(
+      url("images/Morris/Morris_BackGround.webp") type("image/webp"),
+      url("images/Morris/Morris_BackGround.png") type("image/png")
+    ) center top / cover no-repeat fixed,
     #000000;
 }
 
@@ -11225,12 +11244,12 @@ body.is-chapter-modal-open {
   overflow: hidden;
   transform: rotate(-1.1deg);
   /* 撕紙邊緣：對應真實撕紙剪影 */
-  -webkit-mask-image: url('images/story/torn-paper-mask.png');
+  -webkit-mask-image: url('images/Story/torn-paper-mask.webp');
   -webkit-mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-source-type: luminance;
-  mask-image: url('images/story/torn-paper-mask.png');
+  mask-image: url('images/Story/torn-paper-mask.webp');
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
   mask-position: center;

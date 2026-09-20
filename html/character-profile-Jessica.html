@@ -54,28 +54,41 @@
                   繪師：<span class="artist-drawer__name">YAMA</span>
                 </p>
               </div>
-              <img
-                src="../images/Jessica/Jessica_Head.PNG"
-                alt="潔西卡 角色頭像"
-                class="character-intro__avatar-img character-intro__avatar-img--base"
-              >
-              <img
-                src="../images/Jessica/Jessica_Head_OffMask.PNG"
-                alt=""
-                class="character-intro__avatar-img character-intro__avatar-img--alt"
-                aria-hidden="true"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Jessica/Jessica_Head.webp">
+                <img
+                  src="../images/Jessica/Jessica_Head.PNG"
+                  alt="潔西卡 角色頭像"
+                  class="character-intro__avatar-img character-intro__avatar-img--base"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              </picture>
+              <picture>
+                <source type="image/webp" srcset="../images/Jessica/Jessica_Head_OffMask.webp">
+                <img
+                  src="../images/Jessica/Jessica_Head_OffMask.PNG"
+                  alt=""
+                  class="character-intro__avatar-img character-intro__avatar-img--alt"
+                  aria-hidden="true"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
 
           <!-- 右側：名稱與簡介 -->
           <div class="character-intro__text">
             <div class="character-intro__title-row">
-              <img
-                src="../images/Jessica/Jessica_ICON.png"
-                alt="潔西卡 角色 Icon"
-                class="character-intro__icon"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Jessica/Jessica_ICON.webp">
+                <img
+                  src="../images/Jessica/Jessica_ICON.png"
+                  alt="潔西卡 角色 Icon"
+                  class="character-intro__icon"
+                  decoding="async"
+                >
+              </picture>
               <h1 class="character-intro__title">潔西卡</h1>
             </div>
             <p class="character-intro__bio">
@@ -110,11 +123,16 @@
                 <p class="artist-drawer__text">
                   繪師：<span class="artist-drawer__name">繪里奈</span>
                 </p>
-              </div><img
-                src="../images/Jessica/Jessica_FullSize.png"
-                alt="潔西卡 全身／半身立繪"
-                class="character-intro__figure-img"
-              >
+              </div><picture>
+                <source type="image/webp" srcset="../images/Jessica/Jessica_FullSize.webp">
+                <img
+                  src="../images/Jessica/Jessica_FullSize.png"
+                  alt="潔西卡 全身／半身立繪"
+                  class="character-intro__figure-img"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
         </div>
@@ -608,7 +626,7 @@
           <div class="weapon-detail__card">
             <div class="weapon-detail__media">
               <img
-                src="${siteUrl(weapon.image)}"
+                src="${toWebpUrl(siteUrl(weapon.image))}"
                 alt="${weapon.name}"
                 class="weapon-detail__img"
               >
@@ -721,7 +739,7 @@
 
           const img = document.createElement('img');
           img.className = 'weapon-card__img';
-          img.src = siteUrl(weapon.image);
+          img.src = toWebpUrl(siteUrl(weapon.image));
           img.alt = weapon.name;
 
           const hover = document.createElement('p');

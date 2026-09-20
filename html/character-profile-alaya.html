@@ -54,22 +54,31 @@
                   繪師：<span class="artist-drawer__name">YAMA</span>
                 </p>
               </div>
-              <img
-                src="../images/Alaya/Alaya_Head_.png"
-                alt="艾萊亞 角色頭像"
-                class="character-intro__avatar-img"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Alaya/Alaya_Head_.webp">
+                <img
+                  src="../images/Alaya/Alaya_Head_.png"
+                  alt="艾萊亞 角色頭像"
+                  class="character-intro__avatar-img"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
 
           <!-- 右側：名稱與簡介 -->
           <div class="character-intro__text">
             <div class="character-intro__title-row">
-              <img
-                src="../images/Alaya/Alaya_Icon.png"
-                alt="艾萊亞角色 Icon"
-                class="character-intro__icon"
-              >
+              <picture>
+                <source type="image/webp" srcset="../images/Alaya/Alaya_Icon.webp">
+                <img
+                  src="../images/Alaya/Alaya_Icon.png"
+                  alt="艾萊亞角色 Icon"
+                  class="character-intro__icon"
+                  decoding="async"
+                >
+              </picture>
               <h1 class="character-intro__title">艾萊亞</h1>
             </div>
             <p class="character-intro__bio">
@@ -104,11 +113,16 @@
                 <p class="artist-drawer__text">
                   繪師：<span class="artist-drawer__name">錢都拿來養男人</span>
                 </p>
-              </div><img
-                src="../images/Alaya/Alaya_FullSize_.png"
-                alt="艾萊亞 全身／半身立繪"
-                class="character-intro__figure-img"
-              >
+              </div><picture>
+                <source type="image/webp" srcset="../images/Alaya/Alaya_FullSize_.webp">
+                <img
+                  src="../images/Alaya/Alaya_FullSize_.png"
+                  alt="艾萊亞 全身／半身立繪"
+                  class="character-intro__figure-img"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
             </div>
           </div>
         </div>
@@ -126,11 +140,16 @@
           <div class="world__logo-slot">
             <a class="world__logo-link" href="../faction-morris.html">
               <div class="world__logo-placeholder">
-                <img
-                  src="../images/MORRIS_LOGO.png"
-                  alt="莫里斯公司 Logo"
-                  class="world__logo-image"
-                >
+                <picture>
+                  <source type="image/webp" srcset="../images/MORRIS_LOGO.webp">
+                  <img
+                    src="../images/MORRIS_LOGO.png"
+                    alt="莫里斯公司 Logo"
+                    class="world__logo-image"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
               </div>
             </a>
           </div>
@@ -602,7 +621,7 @@
           <div class="weapon-detail__card">
             <div class="weapon-detail__media">
               <img
-                src="${siteUrl(weapon.image)}"
+                src="${toWebpUrl(siteUrl(weapon.image))}"
                 alt="${weapon.name}"
                 class="weapon-detail__img"
               >
@@ -709,7 +728,7 @@
 
           const img = document.createElement('img');
           img.className = 'weapon-card__img';
-          img.src = siteUrl(weapon.image);
+          img.src = toWebpUrl(siteUrl(weapon.image));
           img.alt = weapon.name;
 
           const hover = document.createElement('p');

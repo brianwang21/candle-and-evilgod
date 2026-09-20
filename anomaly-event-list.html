@@ -126,6 +126,10 @@
         return typeof siteUrl === 'function' ? siteUrl(path) : path;
       }
 
+      function assetUrlWebp(path) {
+        return assetUrl(path).replace(/\.(png|jpe?g)$/i, '.webp');
+      }
+
       function makeOpcuDiamond(item) {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -163,7 +167,7 @@
         btn.title = `${item.zh} · ${item.en}`;
         btn.innerHTML = `
           <span class="anomaly-file__ceist-frame">
-            <img src="${assetUrl(item.icon)}" alt="" width="512" height="512" loading="lazy">
+            <img src="${assetUrlWebp(item.icon)}" alt="" width="512" height="512" loading="lazy" decoding="async">
           </span>
           <span class="anomaly-file__ceist-caption">${item.zh}</span>
           <span class="anomaly-file__ceist-en">${item.en}</span>
@@ -190,7 +194,7 @@
         btn.title = `${item.zh} · ${item.en} · ${item.id}`;
         btn.innerHTML = `
           <span class="anomaly-file__tag-frame">
-            <img src="${assetUrl(item.image)}" alt="" width="512" height="512" loading="lazy">
+            <img src="${assetUrlWebp(item.image)}" alt="" width="512" height="512" loading="lazy" decoding="async">
           </span>
           <span class="anomaly-file__tag-caption">${item.zh}</span>
           <span class="anomaly-file__tag-meta">
@@ -228,7 +232,7 @@
           return `
             <div class="anomaly-file__tag-entry">
               <span class="anomaly-file__tag-chip" title="${tag.zh} · ${tag.en} · ${tag.id}">
-                <img src="${assetUrl(tag.image)}" alt="${tag.zh}" width="48" height="48" loading="lazy">
+                <img src="${assetUrlWebp(tag.image)}" alt="${tag.zh}" width="48" height="48" loading="lazy" decoding="async">
                 <span>${tag.zh}<small>${tag.id}</small></span>
               </span>
               <p class="anomaly-file__tag-desc">${tag.desc || ''}</p>
