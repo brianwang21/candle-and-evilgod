@@ -256,6 +256,19 @@ const WEAPONS_DB = {
         '目前仍不確定這種性質是因何種原因而導致。',
       ],
     },
+    {
+      id: 'dutch-angle',
+      name: '六發式半自動左輪手槍「斜鏡」',
+      image: 'images/weapons/RAVEN_ARM_DutchAngle.png',
+      hoverSound: 'audio/weapons/RAVEN_ARM_DotchAngle.wav',
+      hoverText: '敵人的不安來源於此',
+      summary: [
+        '渡鴉所持有的武器，從一次謀殺魔女的旅程中取得。使用 .357 Magnum 作為彈藥。',
+        '擁有能媲美射手步槍的射程卻又同時兼具高破壞性，這把經過渡鴉改裝的左輪手槍無論在任何場合都能表現出怪物般的精準度。其子彈在硬面上甚至能夠進行彈跳，不管多刁鑽的角度都能命中目標。',
+        '雖然剛開始不太情願，但當渡鴉發現自己的鱗羽能夠作為彈跳點後，便開始訓練自己用左眼瞄準半空中的目標。',
+        '這把槍的名稱「斜鏡 (Dutch angle)」出自攝影術語，意指「斜角鏡頭」——一種劇烈移動鏡頭的電影拍攝手法，這種鏡頭手法通常用來表示迷失、迷惑的氛圍，令畫面失去平衡感。',
+      ],
+    },
   ],
 
   ownership: [
@@ -269,6 +282,7 @@ const WEAPONS_DB = {
     { characterId: 'miriam', weaponId: 'hail-and-fire' },
     { characterId: 'miriam', weaponId: 'wormwood' },
     { characterId: 'miriam', weaponId: 'woe' },
+    { characterId: 'raven', weaponId: 'dutch-angle' },
     // 艾萊亞持有更多武器：再追加 { characterId: 'alaya', weaponId: '...' }
     // 其他角色共用同一把：追加 { characterId: '其他角色id', weaponId: 'weapon-01' }
   ],

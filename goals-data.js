@@ -28,6 +28,11 @@ const GOALS_DB = {
     miriam: [
       { order: 1, text: '消滅「惡魔」' },
     ],
+    raven: [
+      { order: 1, text: '擺脫詛咒' },
+      { order: 2, text: '跟CAE打好關係' },
+      { order: 3, text: '跟艾萊亞打好關係' },
+    ],
   },
 
   /* 氣泡基準位置（百分比，相對於畫布） */

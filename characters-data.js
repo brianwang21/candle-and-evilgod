@@ -43,6 +43,12 @@ const CHARACTERS_DB = {
       profilePage: 'html/character-profile-miriam.html',
       icon: 'images/Miriam/Miriam_icon.png',
     },
+    {
+      id: 'raven',
+      name: '渡鴉',
+      profilePage: 'html/character-profile-raven.html',
+      icon: 'images/RAVEN/RAVEN_ICON.png',
+    },
     // 新增角色時在此加入一筆
   ],
 };
