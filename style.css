@@ -563,13 +563,18 @@ a {
 }
 
 .home-preface__warning {
-  margin-top: 1.75rem !important;
+  margin-top: 2rem !important;
+  font-size: 1.28rem !important;
 }
 
 .home-preface__warning strong {
+  display: inline-block;
   color: var(--accent-red-bright) !important;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.7;
+  text-shadow: 0 0 16px rgba(255, 68, 68, 0.45);
 }
 
 /* --- 世界觀長條（抽屜） --- */
@@ -12142,6 +12147,11 @@ a.story-segment__nav-item:focus-visible {
   .home-preface__body p,
   .home-hero__lead {
     font-size: 1rem;
+  }
+
+  .home-preface__warning,
+  .home-preface__warning strong {
+    font-size: 1.22rem !important;
   }
 
   .story-segment__body p {

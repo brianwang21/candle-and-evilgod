@@ -17,7 +17,7 @@ const CHARACTER_SECTIONS_DB = {
         { type: 'rule' },
         {
           type: 'p',
-          text: '父親是美國人，母親是台灣人。她出生於台灣，但很小就舉家搬到美國來。有一個姐姐和一個弟弟，而她算是家裡最不起眼的那個。',
+          text: '身為華裔混血的她，自幼就舉家搬到美國。有一個姐姐和一個弟弟，而她算是家裡最不起眼的那個。',
         },
         { type: 'p', text: '雖然沒甚麼志向，但心地還算善良。' },
         {
@@ -910,6 +910,7 @@ const CHARACTER_SECTIONS_DB = {
             },
             {
               type: 'collapse',
+              hidden: true,
               summary: '第三次玉音播送_大致內容',
               blocks: [
                 { type: 'heading', text: '紀錄一' },
@@ -2544,18 +2545,6 @@ const CHARACTER_SECTIONS_DB = {
           type: 'p',
           text: '紙條上的內容是「莉莉．莫里斯是莉莉．莫里斯。」',
         },
-        {
-          type: 'p',
-          text: '而這張紙條是一道保險。',
-        },
-        {
-          type: 'p',
-          text: '哪怕發生任何不可預料的異常、即使世界的規則忽然被更高位的異常扭曲，這張紙條就會生效，將莉莉的存在重新固定於「莉莉．莫里斯」這個座標上。',
-        },
-        {
-          type: 'p',
-          text: '避免她被意外改寫，或者被徹底抹去。',
-        },
         { type: 'heading', text: '品酒' },
         {
           type: 'p',
@@ -2777,7 +2766,7 @@ const CHARACTER_SECTIONS_DB = {
           type: 'list',
           ordered: true,
           items: [
-            '艾萊亞的出生時間約為千禧年前後，父母正好是台灣在亞洲四小龍時期有累計一點資產的商人。',
+            '艾萊亞的出生時間約為千禧年前後，父母正好是在亞洲四小龍時期有累計一點資產的商人。',
             '某方面來說，艾萊亞的形象原型是考據自柴犬。',
             '能力「配子體」是源於可行世代交替的植物生命週期中，由孢子體分離、用於產生配子的單倍體世代。',
             '高速移動的昆蟲包括：蜘蛛、蟑螂、螞蟻（整群）、蒼蠅等。',
@@ -2883,6 +2872,7 @@ function renderCharacterBlocks(blocks, options = {}) {
 
   return source
     .map((block) => {
+      if (block.hidden) return '';
       switch (block.type) {
         case 'subtitle':
           return `<h3 class="character-section__subtitle">${block.text}</h3>`;
