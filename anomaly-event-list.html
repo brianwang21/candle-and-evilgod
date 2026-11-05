@@ -121,6 +121,7 @@
       const selectedOpcu = new Set();
       const selectedCeist = new Set();
       const selectedTags = new Set();
+      const listedEvents = ANOMALY_FILE_EVENTS.filter((event) => !event.hidden);
 
       function assetUrl(path) {
         return typeof siteUrl === 'function' ? siteUrl(path) : path;
@@ -262,7 +263,7 @@
         const resultsEl = document.querySelector('.anomaly-file__results');
         listEl.innerHTML = '';
 
-        ANOMALY_FILE_EVENTS.forEach((event) => {
+        listedEvents.forEach((event) => {
           const details = document.createElement('details');
           details.className = 'anomaly-file__entry';
           details.dataset.code = event.code;
@@ -341,7 +342,7 @@
         let visible = 0;
 
         listEl.querySelectorAll('.anomaly-file__entry').forEach((entry) => {
-          const event = ANOMALY_FILE_EVENTS.find((item) => item.code === entry.dataset.code);
+          const event = listedEvents.find((item) => item.code === entry.dataset.code);
           if (!event) return;
           const show = matchesFilters(event);
           entry.classList.toggle('is-filtered-out', !show);
@@ -350,7 +351,7 @@
         });
 
         emptyEl.hidden = visible > 0;
-        countEl.textContent = `顯示 ${visible}／${ANOMALY_FILE_EVENTS.length} 份檔案`;
+        countEl.textContent = `顯示 ${visible}／${listedEvents.length} 份檔案`;
       }
 
       function clearFilter(kind) {

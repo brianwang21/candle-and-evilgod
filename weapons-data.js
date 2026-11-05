@@ -210,6 +210,39 @@ const WEAPONS_DB = {
       ],
     },
     {
+      id: 'as-human',
+      name: '手槍「生而為人」',
+      image: 'images/weapons/CAE_ARM_AsHuman.png',
+      hoverSound: 'audio/weapons/CAE_ARM_AsHuman.wav',
+      hoverText: '時不時會抽動，深怕被人忘記仍存活的證明。',
+      summary: [
+        {
+          type: 'p',
+          text: 'CAE所持有的裝備之一，是潔西卡在第一次任務後送給她的「禮物」。',
+        },
+        {
+          type: 'p',
+          text: '這柄武器通體由該次行動中犧牲者的骸骨拼組而成。',
+        },
+        {
+          type: 'p',
+          text: '那些死者並未真正安息，他們殘存的知覺與思緒被強行攪碎、熔鑄，以白骨包裹，早已喪失作為獨立個體的意識，只剩下永無止境的絕望。',
+        },
+        {
+          type: 'p',
+          text: '當扣下扳機，其槍響宛如撕裂聲帶般的哀鳴，血肉與精神在擊發的瞬間一次又一次的受難，噴吐出的彈藥夾雜著鋒利的骨片與扭曲的肌腱，其穿透力能輕易撕裂 RF3 等級的防彈插板。',
+        },
+        {
+          type: 'p',
+          text: '若將槍口湊近曝露的屍骸，槍身前端便會如活物般向兩側裂開，瘋狂地大口撕咬、吞噬血肉。這種進食能顯著強化下一輪擊發的破壞力。',
+        },
+        {
+          type: 'p',
+          text: '據悉，CAE 鮮少使用這把武器，興許是因為它的本質完全由邪神的惡意構成。',
+        },
+      ],
+    },
+    {
       id: 'hail-and-fire',
       name: '手槍「雹、火與血」',
       image: 'images/weapons/MIRIAM_ARM_Hail and fire mingled with blood.png',
@@ -279,6 +312,7 @@ const WEAPONS_DB = {
     { characterId: 'cae', weaponId: 'detest' },
     { characterId: 'cae', weaponId: 'duck' },
     { characterId: 'cae', weaponId: 'akovou-127' },
+    { characterId: 'cae', weaponId: 'as-human' },
     { characterId: 'miriam', weaponId: 'hail-and-fire' },
     { characterId: 'miriam', weaponId: 'wormwood' },
     { characterId: 'miriam', weaponId: 'woe' },
