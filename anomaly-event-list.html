@@ -226,22 +226,6 @@
         `;
       }
 
-      function renderTagIcons(tagIds) {
-        return tagIds.map((id) => {
-          const tag = getAnomalyFileTag(id);
-          if (!tag) return '';
-          return `
-            <div class="anomaly-file__tag-entry">
-              <span class="anomaly-file__tag-chip" title="${tag.zh} · ${tag.en} · ${tag.id}">
-                <img src="${assetUrlWebp(tag.image)}" alt="${tag.zh}" width="48" height="48" loading="lazy" decoding="async">
-                <span>${tag.zh}<small>${tag.id}</small></span>
-              </span>
-              <p class="anomaly-file__tag-desc">${tag.desc || ''}</p>
-            </div>
-          `;
-        }).join('');
-      }
-
       function renderFilters() {
         ANOMALY_FILE_OPCU.forEach((item) => opcuFiltersEl.appendChild(makeOpcuDiamond(item)));
         ANOMALY_FILE_CEIST.forEach((item) => ceistFiltersEl.appendChild(makeCeistToggle(item)));
@@ -264,68 +248,36 @@
         listEl.innerHTML = '';
 
         listedEvents.forEach((event) => {
-          const details = document.createElement('details');
-          details.className = 'anomaly-file__entry';
-          details.dataset.code = event.code;
-          details.dataset.opcu = event.opcu.join(',');
-          details.dataset.tags = event.tags.join(',');
-          details.dataset.ceist = event.ceist || '';
+          const card = document.createElement('a');
+          card.className = 'card';
+          card.href = getAnomalyFilePage(event);
+          card.dataset.code = event.code;
+          card.dataset.opcu = event.opcu.join(',');
+          card.dataset.tags = event.tags.join(',');
+          card.dataset.ceist = event.ceist || '';
+          if (event.brief) card.title = event.brief;
 
-          const pageHref = getAnomalyFilePage(event);
-
-          details.innerHTML = `
-            <summary class="anomaly-file__summary">
-              ${renderOpcuMarks(event.opcu)}
-              <span class="anomaly-file__summary-body">
-                <span class="anomaly-file__summary-code">${event.displayCode}</span>
-                <span class="anomaly-file__summary-name">「${event.name}」<span class="anomaly-file__summary-en">(${event.nameEn})</span></span>
+          const ceist = getAnomalyFileCeist(event.ceist);
+          const ceistHtml = ceist
+            ? `
+              <span class="card__ceist" title="${ceist.zh} · ${ceist.en}">
+                <img src="${assetUrlWebp(ceist.icon)}" alt="" width="64" height="64" loading="lazy" decoding="async">
               </span>
-              <span class="anomaly-file__summary-chevron" aria-hidden="true"></span>
-            </summary>
-            <div class="anomaly-file__panel">
-              <dl class="anomaly-file__index">
-                <div class="anomaly-file__index-row">
-                  <dt>項目標號</dt>
-                  <dd>
-                    <span class="anomaly-file__index-code">${event.displayCode}</span>
-                    <span class="anomaly-file__index-title">「${event.name}」</span>
-                    <span class="anomaly-file__index-en">(${event.nameEn})</span>
-                  </dd>
-                </div>
-                <div class="anomaly-file__index-row">
-                  <dt>O.P.C.U類型</dt>
-                  <dd>
-                    <div class="anomaly-file__index-opcu">
-                      ${event.opcu.map((id) => {
-                        const item = getAnomalyFileOpcu(id);
-                        if (!item) return '';
-                        return `
-                          <span class="anomaly-file__index-opcu-item" title="${item.zh} · ${item.en}">
-                            <span class="anomaly-file__opcu-mark anomaly-file__opcu-mark--${id.toLowerCase()}">
-                              <span class="anomaly-file__opcu-mark-face">${id}</span>
-                            </span>
-                            <span class="anomaly-file__index-opcu-text">
-                              <strong>${item.zh}</strong>
-                              <small>${item.en}</small>
-                            </span>
-                          </span>
-                        `;
-                      }).join('')}
-                    </div>
-                  </dd>
-                </div>
-                <div class="anomaly-file__index-row">
-                  <dt>管理物質標籤</dt>
-                  <dd>
-                    <div class="anomaly-file__tag-chips">${renderTagIcons(event.tags)}</div>
-                  </dd>
-                </div>
-              </dl>
-              <a class="anomaly-file__link" href="${pageHref}">開啟專屬檔案 →</a>
+            `
+            : '';
+
+          card.innerHTML = `
+            <div class="card__content">
+              <span class="card__kicker">FILE</span>
+              <span class="card__code">${event.displayCode}</span>
+              <span class="card__name">${event.name}</span>
+              <span class="card__en">${event.nameEn}</span>
+              ${renderOpcuMarks(event.opcu)}
+              ${ceistHtml}
             </div>
           `;
 
-          listEl.appendChild(details);
+          listEl.appendChild(card);
         });
 
         applyFilters();
@@ -341,7 +293,7 @@
       function applyFilters() {
         let visible = 0;
 
-        listEl.querySelectorAll('.anomaly-file__entry').forEach((entry) => {
+        listEl.querySelectorAll('.card').forEach((entry) => {
           const event = listedEvents.find((item) => item.code === entry.dataset.code);
           if (!event) return;
           const show = matchesFilters(event);
