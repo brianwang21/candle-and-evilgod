@@ -28,6 +28,15 @@ function buildRelationships() {
 
   const nodeMap = new Map(network.nodes.map((node) => [node.id, node]));
   const centerNode = nodeMap.get(network.centerId);
+  const edgePad = 220;
+  const edgeOrigin = Math.ceil(
+    network.nodes.reduce((max, node) => Math.max(max, Math.abs(node.x), Math.abs(node.y)), 0) + edgePad
+  );
+  edgesEl.style.left = `-${edgeOrigin}px`;
+  edgesEl.style.top = `-${edgeOrigin}px`;
+  edgesEl.style.width = `${edgeOrigin * 2}px`;
+  edgesEl.style.height = `${edgeOrigin * 2}px`;
+  const cards = [];
   const state = {
     x: 0,
     y: 0,
@@ -44,7 +53,33 @@ function buildRelationships() {
   const edgeLabelEntries = [];
 
   function applyTransform() {
-    world.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+    const dpr = window.devicePixelRatio || 1;
+    const rect = viewport.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+    const tx = Math.round((originX + state.x) * dpr) / dpr - originX;
+    const ty = Math.round((originY + state.y) * dpr) / dpr - originY;
+    // zoom / left / top re-rasterize images. transform: scale() on this layer
+    // downscales the whole graph into one texture and makes the portraits soft.
+    world.style.left = `calc(50% + ${tx}px)`;
+    world.style.top = `calc(50% + ${ty}px)`;
+    world.style.zoom = String(state.scale);
+    world.style.transform = 'none';
+  }
+
+  function placeCard(card) {
+    const dpr = window.devicePixelRatio || 1;
+    const x = Math.round((card.offsetWidth / 2) * dpr) / dpr;
+    const y = Math.round((card.offsetHeight / 2) * dpr) / dpr;
+    card.style.marginLeft = `${-x}px`;
+    card.style.marginTop = `${-y}px`;
+  }
+
+  function placeCards() {
+    const previousZoom = world.style.zoom;
+    if (previousZoom && previousZoom !== '1') world.style.zoom = '1';
+    cards.forEach(placeCard);
+    if (previousZoom && previousZoom !== '1') world.style.zoom = previousZoom;
   }
 
   function clampScale(value) {
@@ -71,7 +106,7 @@ function buildRelationships() {
   }
 
   function worldPoint(node) {
-    return { x: 2000 + node.x, y: 2000 + node.y };
+    return { x: edgeOrigin + node.x, y: edgeOrigin + node.y };
   }
 
   /** 經典心電圖形狀（波峰已壓低） */
@@ -311,10 +346,10 @@ function buildRelationships() {
     const to = nodeMap.get(edge.to);
     if (!from || !to) return;
 
-    const x1 = 2000 + from.x;
-    const y1 = 2000 + from.y;
-    const x2 = 2000 + to.x;
-    const y2 = 2000 + to.y;
+    const x1 = edgeOrigin + from.x;
+    const y1 = edgeOrigin + from.y;
+    const x2 = edgeOrigin + to.x;
+    const y2 = edgeOrigin + to.y;
     const mx = (x1 + x2) / 2;
     const my = (y1 + y2) / 2;
 
@@ -385,6 +420,8 @@ function buildRelationships() {
     card.appendChild(name);
     if (isCenter && node.role) card.appendChild(role);
     nodesEl.appendChild(card);
+    cards.push(card);
+    placeCard(card);
 
     if (!isCenter) {
       const hasFeeling = network.edges.some(
@@ -475,6 +512,18 @@ function buildRelationships() {
   if (resetBtn) {
     resetBtn.addEventListener('click', resetView);
   }
+
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      placeCards();
+      applyTransform();
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    placeCards();
+    applyTransform();
+  });
 
   resetView();
 }

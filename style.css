@@ -6211,16 +6211,10 @@ html.is-tag-modal-open {
   top: 50%;
   width: 0;
   height: 0;
-  transform-origin: 0 0;
-  will-change: transform;
 }
 
 .relationships__edges {
   position: absolute;
-  left: -2000px;
-  top: -2000px;
-  width: 4000px;
-  height: 4000px;
   overflow: visible;
   pointer-events: none;
 }
@@ -6296,7 +6290,8 @@ html.is-tag-modal-open {
 .relationship-card {
   position: absolute;
   width: 132px;
-  transform: translate(-50%, -50%);
+  margin-left: -66px;
+  margin-top: -64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6332,6 +6327,8 @@ html.is-tag-modal-open {
 
 .relationship-card--center {
   width: 156px;
+  margin-left: -78px;
+  margin-top: -84px;
   border-color: rgba(229, 57, 53, 0.55);
   box-shadow:
     0 0 0 1px rgba(229, 57, 53, 0.2),
@@ -6361,6 +6358,8 @@ html.is-tag-modal-open {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
   display: block;
 }
 
