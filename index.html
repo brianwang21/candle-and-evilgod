@@ -359,206 +359,266 @@
         <p class="home-characters__eyebrow">Characters</p>
         <h2 class="home-characters__heading">人物設定</h2>
 
-        <form class="home-characters__filters" id="character-filters" role="search">
-          <label class="home-characters__select home-characters__select--wide">
-            <span>勢力</span>
-            <select id="character-faction" name="faction">
-              <option value="">全部</option>
-            </select>
-          </label>
-        </form>
+        <div class="home-characters__stage">
+          <div class="home-characters__filters" role="tablist" aria-label="依勢力篩選角色">
+            <button
+              type="button"
+              class="home-characters__filter home-characters__filter--all is-active"
+              role="tab"
+              aria-selected="true"
+              data-character-filter="all"
+            >
+              <span class="home-characters__filter-mark" aria-hidden="true"></span>
+              <span class="home-characters__filter-title">ALL</span>
+            </button>
+            <button
+              type="button"
+              class="home-characters__filter home-characters__filter--morris"
+              role="tab"
+              aria-selected="false"
+              data-character-filter="morris"
+              tabindex="-1"
+            >
+              <span class="home-characters__filter-mark" aria-hidden="true"></span>
+              <span class="home-characters__filter-title">莫里斯公司</span>
+            </button>
+            <button
+              type="button"
+              class="home-characters__filter home-characters__filter--cta"
+              role="tab"
+              aria-selected="false"
+              data-character-filter="cta"
+              tabindex="-1"
+            >
+              <span class="home-characters__filter-mark" aria-hidden="true"></span>
+              <span class="home-characters__filter-title">CTA</span>
+            </button>
+          </div>
+          <div
+            class="home-characters__rail"
+            id="character-rail"
+            role="radiogroup"
+            aria-label="選擇角色"
+          >
+            <div class="home-characters__rail-window">
+              <div class="home-characters__rail-track" id="character-rail-track">
+                <button
+                  type="button"
+                  class="home-characters__folder is-selected"
+                  role="radio"
+                  aria-checked="true"
+                  tabindex="0"
+                  data-name="艾萊亞"
+                  data-faction="莫里斯公司"
+                  data-filter="morris"
+                  data-intro="前 CTA 員工，被同事陷害，遭到 CTA 追殺，瀕死之際被 CAE 無意間帶進公司。||膽小、容易慌張。會輕易相信別人說的話（通俗地說就是有點笨），某些情況下將有可怕的決斷力。"
+                  data-quote="這、這裡是艾萊亞……||請不要殺我……"
+                  data-href="html/character-profile-alaya.html"
+                  data-art="images/profile_icon/Character_alpha/ALAYA_ALPHA.png"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/Alaya_profile_ICON.webp">
+                        <img src="images/profile_icon/Alaya_profile_ICON.png" alt="" width="512" height="512" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">艾萊亞</span>
+                </button>
+                <button
+                  type="button"
+                  class="home-characters__folder"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-name="CAE"
+                  data-faction="莫里斯公司"
+                  data-filter="morris"
+                  data-intro="莫里斯公司十號部門主管。專職負責部門內的各種委任處理。||別期待跟她講話可以得到什麼回饋，最好的情況是在你腦門上送一發子彈。"
+                  data-quote="……"
+                  data-href="html/character-profile-CAE.html"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/CAE_profile_ICON.webp">
+                        <img src="images/profile_icon/CAE_profile_ICON.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">CAE</span>
+                </button>
+                <button
+                  type="button"
+                  class="home-characters__folder"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-name="潔西卡"
+                  data-faction="莫里斯公司"
+                  data-filter="morris"
+                  data-intro="莫里斯公司所管理的異常，由十號部門負責。||詭異到讓人不安的女子，性格扭曲乖戾，行為準則難以預料的不定時炸彈。"
+                  data-quote="嗨～想找點樂子嗎？"
+                  data-href="html/character-profile-Jessica.html"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/JCA_profile_ICON.webp">
+                        <img src="images/profile_icon/JCA_profile_ICON.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">潔西卡</span>
+                </button>
+                <button
+                  type="button"
+                  class="home-characters__folder"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-name="42"
+                  data-faction="莫里斯公司"
+                  data-filter="morris"
+                  data-intro="莫里斯公司所管理的異常，由一號部門負責。||表情猶如平靜水面的少女。似乎只要一開口就會引發不小的問題，因此一直保持靜默。"
+                  data-quote="[ 對話已過濾 ]"
+                  data-href="html/character-profile-42.html"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/42_profile_ICON.webp">
+                        <img src="images/profile_icon/42_profile_ICON.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">42</span>
+                </button>
+                <button
+                  type="button"
+                  class="home-characters__folder"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-name="莉莉．莫里斯"
+                  data-faction="莫里斯公司"
+                  data-filter="morris"
+                  data-intro="莫里斯公司現任CEO。||用自己的才智證實了即使是個普通人也能領導整個由異常事件組成的公司。"
+                  data-quote="歡迎來到莫里斯公司，希望能有個愉快的合作。"
+                  data-href="html/character-profile-lily.html"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/LILI_profile_ICON.webp">
+                        <img src="images/profile_icon/LILI_profile_ICON.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">莉莉．莫里斯</span>
+                </button>
+                <button
+                  type="button"
+                  class="home-characters__folder"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-name="渡鴉"
+                  data-faction="莫里斯公司"
+                  data-filter="morris"
+                  data-intro="莫里斯公司八號部門傭兵，貳名，擅長單兵作戰與城市戰。||性格比較衝的傭兵，很容易跟別人打起來，但也容易變成夥伴。"
+                  data-quote="蛤？有事嗎？"
+                  data-href="html/character-profile-raven.html"
+                  data-art="images/profile_icon/Character_alpha/RAVEN_ALPHA.png"
+                  data-scale="1.08"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/RAVEN_profile_ICON.webp">
+                        <img src="images/profile_icon/RAVEN_profile_ICON.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">渡鴉</span>
+                </button>
+                <button
+                  type="button"
+                  class="home-characters__folder"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-name="米利暗"
+                  data-faction="中央技術局"
+                  data-filter="cta"
+                  data-intro="CTA 示劍單位的伯利恆小隊長，來到人類世界的天使之一。||有別於其他的同事，整天一副苦大深仇的樣子。"
+                  data-quote="CTA 示劍單位 伯利恆小隊長米利暗前來報到||是說……你有菸可以借一根嗎？"
+                  data-href="html/character-profile-miriam.html"
+                >
+                  <span class="home-characters__folder-bar" aria-hidden="true"></span>
+                  <span class="home-characters__folder-body">
+                    <span class="home-characters__folder-sheet">
+                      <picture>
+                        <source type="image/webp" srcset="images/profile_icon/MIRIAM_profile_ICON.webp">
+                        <img src="images/profile_icon/MIRIAM_profile_ICON.png" alt="" width="512" height="512" loading="lazy" decoding="async">
+                      </picture>
+                    </span>
+                  </span>
+                  <span class="home-characters__folder-name">米利暗</span>
+                </button>
+              </div>
+            </div>
+          </div>
 
-        <p class="home-characters__empty" id="character-empty" hidden>沒有符合條件的角色。</p>
-
-        <ul class="home-characters__grid" id="character-grid">
-          <li
-            class="home-characters__item"
-            data-name="艾萊亞"
-            data-priority="1"
-            data-faction="莫里斯公司"
-          >
-            <a class="home-characters__card" href="html/character-profile-alaya.html">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/Alaya_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/Alaya_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">艾萊亞</span>
-              <span class="home-characters__tags" aria-hidden="true">
-                <span class="home-characters__tag">莫里斯公司</span>
-              </span>
-            </a>
-          </li>
-          <li
-            class="home-characters__item"
-            data-name="CAE"
-            data-priority="2"
-            data-faction="莫里斯公司"
-          >
-            <a class="home-characters__card" href="html/character-profile-CAE.html">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/CAE_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/CAE_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">CAE</span>
-              <span class="home-characters__tags" aria-hidden="true">
-                <span class="home-characters__tag">莫里斯公司</span>
-              </span>
-            </a>
-          </li>
-          <li
-            class="home-characters__item"
-            data-name="潔西卡"
-            data-priority="3"
-            data-faction="莫里斯公司"
-            data-hide-faction-tag="true"
-          >
-            <a class="home-characters__card" href="html/character-profile-Jessica.html">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/JCA_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/JCA_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">潔西卡</span>
-            </a>
-          </li>
-          <li
-            class="home-characters__item"
-            data-name="42"
-            data-priority="4"
-            data-faction="莫里斯公司"
-          >
-            <a class="home-characters__card" href="html/character-profile-42.html" aria-label="42">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/42_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/42_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">42</span>
-              <span class="home-characters__tags" aria-hidden="true">
-                <span class="home-characters__tag">莫里斯公司</span>
-              </span>
-            </a>
-          </li>
-          <li
-            class="home-characters__item"
-            data-name="莉莉．莫里斯"
-            data-priority="5"
-            data-faction="莫里斯公司"
-          >
-            <a class="home-characters__card" href="html/character-profile-lily.html">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/LILI_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/LILI_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">莉莉．莫里斯</span>
-              <span class="home-characters__tags" aria-hidden="true">
-                <span class="home-characters__tag">莫里斯公司</span>
-              </span>
-            </a>
-          </li>
-          <li
-            class="home-characters__item"
-            data-name="渡鴉"
-            data-priority="6"
-            data-faction="莫里斯公司"
-          >
-            <a class="home-characters__card" href="html/character-profile-raven.html">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/RAVEN_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/RAVEN_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">渡鴉</span>
-              <span class="home-characters__tags" aria-hidden="true">
-                <span class="home-characters__tag">莫里斯公司</span>
-              </span>
-            </a>
-          </li>
-          <li
-            class="home-characters__item"
-            data-name="米利暗"
-            data-priority="7"
-            data-faction="中央技術局"
-          >
-            <a class="home-characters__card" href="html/character-profile-miriam.html">
-              <span class="home-characters__avatar">
-                <picture>
-                  <source type="image/webp" srcset="images/profile_icon/MIRIAM_profile_ICON.webp">
-                  <img
-                    src="images/profile_icon/MIRIAM_profile_ICON.png"
-                    alt=""
-                    class="home-characters__img"
-                    width="512"
-                    height="512"
-                    loading="lazy"
-                    decoding="async"
-                  >
-                </picture>
-              </span>
-              <span class="home-characters__name">米利暗</span>
-              <span class="home-characters__tags" aria-hidden="true">
-                <span class="home-characters__tag">中央技術局</span>
-              </span>
-            </a>
-          </li>
-        </ul>
+          <div class="home-characters__panel" id="character-panel">
+            <div class="home-characters__dossier">
+              <div class="home-characters__profile">
+                <h3 class="home-characters__name" id="character-name">艾萊亞</h3>
+                <p class="home-characters__faction" id="character-faction">莫里斯公司</p>
+                <p class="home-characters__intro-label">intro</p>
+                <div class="home-characters__intro" id="character-intro">
+                  <p>前 CTA 員工，被同事陷害，遭到 CTA 追殺，瀕死之際被 CAE 無意間帶進公司。</p>
+                  <p>膽小、容易慌張。會輕易相信別人說的話（通俗地說就是有點笨），某些情況下將有可怕的決斷力。</p>
+                </div>
+              </div>
+              <div class="home-characters__lower">
+                <a class="btn-31" id="character-more" href="html/character-profile-alaya.html">
+                  <span class="text-container">
+                    <span class="text">詳細設定</span>
+                  </span>
+                </a>
+                <blockquote class="home-characters__quote" id="character-quote-box" aria-label="這、這裡是艾萊亞……&#10;請不要殺我……">
+                  <span class="home-characters__quote-fit">
+                    <span class="home-characters__quote-sizer" id="character-quote">這、這裡是艾萊亞……
+請不要殺我……</span>
+                    <span class="home-characters__quote-live" id="character-quote-live" aria-hidden="true"></span>
+                  </span>
+                </blockquote>
+              </div>
+            </div>
+            <div class="home-characters__art" id="character-art">
+              <img
+                class="home-characters__figure is-entering"
+                id="character-figure"
+                src="images/profile_icon/Character_alpha/ALAYA_ALPHA.png"
+                alt="艾萊亞 立繪"
+                width="3500"
+                height="5600"
+                decoding="async"
+              >
+              <div class="home-characters__unknown" id="character-unknown" hidden>
+                <span class="home-characters__unknown-label">Unknow Image</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1157,67 +1217,302 @@
     })();
 
     (function () {
-      const grid = document.getElementById('character-grid');
-      const factionSelect = document.getElementById('character-faction');
-      const emptyEl = document.getElementById('character-empty');
-      const form = document.getElementById('character-filters');
-      if (!grid || !factionSelect) return;
+      const rail = document.getElementById('character-rail');
+      const track = document.getElementById('character-rail-track');
+      const panel = document.getElementById('character-panel');
+      if (!rail || !track || !panel) return;
 
-      const items = Array.from(grid.querySelectorAll('.home-characters__item'));
+      const buttons = Array.from(track.querySelectorAll('.home-characters__folder'));
+      const filterTabs = Array.from(document.querySelectorAll('[data-character-filter]'));
+      let filter = 'all';
+      const nameEl = document.getElementById('character-name');
+      const factionEl = document.getElementById('character-faction');
+      const introEl = document.getElementById('character-intro');
+      const quoteBox = document.getElementById('character-quote-box');
+      const quoteSizer = document.getElementById('character-quote');
+      const quoteLive = document.getElementById('character-quote-live');
+      const moreEl = document.getElementById('character-more');
+      const figureEl = document.getElementById('character-figure');
+      const unknownEl = document.getElementById('character-unknown');
+      const horizontalQuery = window.matchMedia('(max-width: 900px)');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let index = Math.max(0, buttons.findIndex((button) => button.classList.contains('is-selected')));
+      let fadeToken = 0;
+      let typeTimer = 0;
+      let wheelLock = false;
+      const quoteCaret = document.createElement('span');
+      quoteCaret.className = 'home-characters__quote-caret';
+      quoteCaret.setAttribute('aria-hidden', 'true');
 
-      function uniqueSorted(values) {
-        return Array.from(new Set(values.filter(Boolean))).sort((a, b) =>
-          String(a).localeCompare(String(b), 'zh-Hant')
-        );
+      function readCharacter(button) {
+        return {
+          name: button.getAttribute('data-name') || '',
+          faction: button.getAttribute('data-faction') || '',
+          intro: button.getAttribute('data-intro') || '',
+          quote: (button.getAttribute('data-quote') || '').replace(/\|\|/g, '\n'),
+          href: button.getAttribute('data-href') || '#',
+          art: button.getAttribute('data-art') || '',
+          scale: button.getAttribute('data-scale') || '',
+        };
       }
 
-      function priorityValue(item) {
-        const value = Number(item.getAttribute('data-priority'));
-        return Number.isFinite(value) ? value : Number.POSITIVE_INFINITY;
+      function visibleButtons() {
+        return buttons.filter((button) => filter === 'all' || button.getAttribute('data-filter') === filter);
       }
 
-      function sortByPriority(list) {
-        return list.slice().sort((a, b) => priorityValue(a) - priorityValue(b));
+      function slotSpan() {
+        const sample = visibleButtons()[0] || buttons[0];
+        if (!sample) return 0;
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const size = horizontalQuery.matches ? sample.offsetWidth : sample.offsetHeight;
+        return size + gap;
       }
 
-      function fillFactionSelect() {
-        const current = factionSelect.value;
-        const factions = uniqueSorted(items.map((item) => item.getAttribute('data-faction')));
-        factionSelect.innerHTML = '<option value="">全部</option>';
-        factions.forEach((value) => {
-          const option = document.createElement('option');
-          option.value = value;
-          option.textContent = value;
-          factionSelect.appendChild(option);
+      function placeTrack() {
+        const shown = visibleButtons();
+        const visualIndex = Math.max(0, shown.indexOf(buttons[index]));
+        const visibleSlots = 5;
+        const center = Math.floor(visibleSlots / 2);
+        const maxStart = Math.max(0, shown.length - visibleSlots);
+        const start = Math.max(0, Math.min(visualIndex - center, maxStart));
+        const offset = start * slotSpan();
+        track.style.transform = horizontalQuery.matches
+          ? 'translate3d(' + (-offset) + 'px, 0, 0)'
+          : 'translate3d(0, ' + (-offset) + 'px, 0)';
+      }
+
+      function renderQuote(text, typing) {
+        quoteLive.textContent = '';
+        quoteLive.append(document.createTextNode(text));
+        if (typing) quoteLive.append(quoteCaret);
+      }
+
+      function quoteLineCount(text) {
+        const previousDisplay = quoteLive.style.display;
+        quoteLive.style.display = 'none';
+        quoteSizer.style.alignSelf = 'start';
+        quoteSizer.textContent = text;
+        const style = getComputedStyle(quoteSizer);
+        const lineHeight = parseFloat(style.lineHeight) || parseFloat(style.fontSize) * 1.65;
+        const lines = Math.max(1, Math.round(quoteSizer.getBoundingClientRect().height / lineHeight));
+        quoteSizer.style.alignSelf = '';
+        quoteLive.style.display = previousDisplay;
+        return lines;
+      }
+
+      function typeQuote(text, instant) {
+        window.clearTimeout(typeTimer);
+        quoteBox.classList.add('is-ready');
+        quoteBox.setAttribute('aria-label', text);
+        const lines = quoteLineCount(text);
+        if (lines < 2) quoteSizer.textContent = '';
+        if (instant) {
+          renderQuote(text, false);
+          return;
+        }
+
+        const chars = Array.from(text);
+        let count = 0;
+        const step = () => {
+          count += 1;
+          renderQuote(chars.slice(0, count).join(''), count < chars.length);
+          if (count < chars.length) typeTimer = window.setTimeout(step, 42);
+        };
+        step();
+      }
+
+      let artGeneration = 0;
+
+      function applyFigureScale(scale) {
+        if (scale) figureEl.style.setProperty('--figure-scale', scale);
+        else figureEl.style.removeProperty('--figure-scale');
+      }
+
+      function showFigure(character, animate) {
+        const generation = ++artGeneration;
+        unknownEl.hidden = true;
+        applyFigureScale(character.scale);
+        if (figureEl.getAttribute('src') !== character.art) figureEl.src = character.art;
+        figureEl.alt = character.name + ' 立繪';
+        figureEl.hidden = false;
+        figureEl.classList.remove('is-leaving');
+        if (!animate) {
+          figureEl.classList.remove('is-entering');
+          return;
+        }
+        figureEl.classList.add('is-entering');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (generation !== artGeneration) return;
+            figureEl.classList.remove('is-entering');
+          });
         });
-        if (factions.includes(current)) factionSelect.value = current;
       }
 
-      function applyFilters() {
-        const faction = factionSelect.value;
-        let visible = 0;
+      function showUnknown() {
+        artGeneration += 1;
+        applyFigureScale('');
+        figureEl.classList.remove('is-entering', 'is-leaving');
+        figureEl.hidden = true;
+        figureEl.alt = '';
+        unknownEl.hidden = false;
+      }
 
-        sortByPriority(items).forEach((item) => {
-          grid.appendChild(item);
-          const itemFaction = item.getAttribute('data-faction') || '';
-          const show = !faction || itemFaction === faction;
-          item.hidden = !show;
-          if (show) visible += 1;
+      function paint(character, instantQuote, animateArt) {
+        nameEl.textContent = character.name;
+        factionEl.textContent = character.faction;
+        introEl.replaceChildren();
+        String(character.intro || '').split('||').forEach((part) => {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = part.trim();
+          if (paragraph.textContent) introEl.append(paragraph);
         });
-
-        if (emptyEl) emptyEl.hidden = visible > 0;
+        moreEl.href = character.href;
+        moreEl.setAttribute('aria-label', '查看' + character.name + '的詳細設定');
+        typeQuote(character.quote, instantQuote);
+        if (character.art) showFigure(character, animateArt);
+        else showUnknown();
       }
 
-      fillFactionSelect();
-      applyFilters();
+      function select(next, immediate) {
+        const clamped = Math.max(0, Math.min(buttons.length - 1, next));
+        const changed = clamped !== index;
+        index = clamped;
+        buttons.forEach((button, itemIndex) => {
+          const selected = itemIndex === index;
+          button.classList.toggle('is-selected', selected);
+          button.setAttribute('aria-checked', selected ? 'true' : 'false');
+          button.tabIndex = selected && !button.hidden ? 0 : -1;
+          if (!button.getAttribute('aria-label')) {
+            button.setAttribute('aria-label', button.getAttribute('data-name') || '角色');
+          }
+        });
+        placeTrack();
+        if (!changed && !immediate) return;
 
-      factionSelect.addEventListener('change', applyFilters);
-      if (form) {
-        form.addEventListener('submit', (event) => {
+        const character = readCharacter(buttons[index]);
+        const animateArt = !reduceMotion.matches;
+        if (immediate) {
+          fadeToken += 1;
+          panel.classList.remove('is-fading');
+          paint(character, reduceMotion.matches, animateArt);
+          return;
+        }
+
+        const token = ++fadeToken;
+        const leavingArt = !figureEl.hidden;
+        panel.classList.add('is-fading');
+
+        const reveal = () => {
+          if (token !== fadeToken) return;
+          paint(character, reduceMotion.matches, animateArt && !!character.art);
+          panel.classList.remove('is-fading');
+        };
+
+        if (!leavingArt || !animateArt) {
+          window.setTimeout(reveal, animateArt ? 160 : 0);
+          return;
+        }
+
+        figureEl.classList.remove('is-entering');
+        figureEl.classList.add('is-leaving');
+        let revealed = false;
+        const finishExit = () => {
+          if (revealed) return;
+          revealed = true;
+          figureEl.removeEventListener('transitionend', onEnd);
+          reveal();
+        };
+        const onEnd = (event) => {
+          if (event.target !== figureEl || event.propertyName !== 'opacity') return;
+          finishExit();
+        };
+        figureEl.addEventListener('transitionend', onEnd);
+        window.setTimeout(finishExit, 560);
+      }
+
+      buttons.forEach((button, itemIndex) => {
+        button.addEventListener('click', () => {
+          select(itemIndex);
+          button.focus();
+        });
+        button.addEventListener('keydown', (event) => {
+          const horizontal = horizontalQuery.matches;
+          const backward = horizontal ? event.key === 'ArrowLeft' : event.key === 'ArrowUp';
+          const forward = horizontal ? event.key === 'ArrowRight' : event.key === 'ArrowDown';
+          let target = null;
+          const shown = visibleButtons();
+          const visual = shown.indexOf(buttons[index]);
+          if (event.key === 'Home') target = buttons.indexOf(shown[0]);
+          else if (event.key === 'End') target = buttons.indexOf(shown[shown.length - 1]);
+          else if (backward) target = visual > 0 ? buttons.indexOf(shown[visual - 1]) : null;
+          else if (forward) target = visual < shown.length - 1 ? buttons.indexOf(shown[visual + 1]) : null;
+          if (target === null || target < 0 || target >= buttons.length) return;
           event.preventDefault();
-          applyFilters();
+          select(target);
+          buttons[target].focus();
         });
+      });
+
+      rail.addEventListener('wheel', (event) => {
+        event.preventDefault();
+        if (wheelLock) return;
+        const delta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+        if (Math.abs(delta) < 4) return;
+        const shown = visibleButtons();
+        const visual = shown.indexOf(buttons[index]);
+        const nextButton = shown[visual + (delta > 0 ? 1 : -1)];
+        if (!nextButton) return;
+        wheelLock = true;
+        select(buttons.indexOf(nextButton));
+        window.setTimeout(() => {
+          wheelLock = false;
+        }, 280);
+      }, { passive: false });
+
+      function applyFilter(next) {
+        filter = next;
+        filterTabs.forEach((tab) => {
+          const selected = tab.getAttribute('data-character-filter') === filter;
+          tab.classList.toggle('is-active', selected);
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+          tab.tabIndex = selected ? 0 : -1;
+        });
+        buttons.forEach((button) => {
+          button.hidden = filter !== 'all' && button.getAttribute('data-filter') !== filter;
+        });
+        const shown = visibleButtons();
+        if (!shown.length) return;
+        if (!shown.includes(buttons[index])) select(buttons.indexOf(shown[0]));
+        else {
+          buttons[index].tabIndex = 0;
+          placeTrack();
+        }
       }
+
+      filterTabs.forEach((tab, tabIndex) => {
+        tab.addEventListener('click', () => {
+          applyFilter(tab.getAttribute('data-character-filter'));
+        });
+        tab.addEventListener('keydown', (event) => {
+          let next = null;
+          if (event.key === 'ArrowRight') next = filterTabs[(tabIndex + 1) % filterTabs.length];
+          else if (event.key === 'ArrowLeft') next = filterTabs[(tabIndex - 1 + filterTabs.length) % filterTabs.length];
+          else if (event.key === 'Home') next = filterTabs[0];
+          else if (event.key === 'End') next = filterTabs[filterTabs.length - 1];
+          if (!next) return;
+          event.preventDefault();
+          next.focus();
+          applyFilter(next.getAttribute('data-character-filter'));
+        });
+      });
+
+      window.addEventListener('resize', placeTrack);
+      if (typeof horizontalQuery.addEventListener === 'function') {
+        horizontalQuery.addEventListener('change', placeTrack);
+      }
+
+      select(index, true);
     })();
 
     (function () {
